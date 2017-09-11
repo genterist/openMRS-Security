@@ -1,5 +1,5 @@
 # [A1 - Injection] [ Drop Table ]
-`DESIGNER : [Xiangqing Ding]`
+`DESIGNER : [Fuxing Luan]`
 `UPDATED ON : [09/09/2017]`
 
 ### Name of module : [  ]
