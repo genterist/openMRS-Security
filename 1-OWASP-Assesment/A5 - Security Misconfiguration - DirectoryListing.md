@@ -19,6 +19,7 @@ This test verified the application will not list any directory when we only chan
 
 ### * Test Data
 Test username: admin
+
 Test password: Admin123
 
 ### * Test steps
@@ -30,3 +31,4 @@ The application should not list any directory.
 
 ### * Actual results
 
+![alt text](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A5_002.PNG)
