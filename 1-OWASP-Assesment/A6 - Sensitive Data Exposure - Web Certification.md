@@ -1,4 +1,4 @@
-# [A5 - Sensitive Data Exposure ] [ Web Certification ]
+# [A6 - Sensitive Data Exposure ] [ Web Certification ]
 ### Test status : [ Failed ]
 `DESIGNER : [ZHUO LI]` <br/>
 `UPDATED ON : [05SEP2017]` <br/>
