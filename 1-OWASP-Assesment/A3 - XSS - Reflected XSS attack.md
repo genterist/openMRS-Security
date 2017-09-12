@@ -7,7 +7,7 @@
 ### Priority : [high]
 
 ### Test Description
-XSS attacks are essentially code injection attacks into the various interpreters in the browser. This test case is trying to see if script can be stored and executed in the allergy page.
+XSS attacks are essentially code injection attacks into the various interpreters in the browser. This test case is trying to detect if script can be integrated in HTML and executed.
 
 ### * Precondition
 1. A local computer with administrator privilege
@@ -21,12 +21,12 @@ XSS attacks are essentially code injection attacks into the various interpreters
 ### * Test Data
 1. Username: `nurse`
 2. Password: `Nurse123`
-3. Script: `<script>alert("Attacked")</script>` and `%3cscript%3ealert("Attacked")%3cscript%3e`
+3. Scripts: `<script>alert("Attacked")</script>` and `%3cscript%3ealert("Attacked")%3cscript%3e`
 
 ### * Test steps
 1. Start local openMRS and log in with the username and account
 2. Click “Find Patient Record” in the main page
-3. Input script in the search field and search
+3. Input scripts in the search field and search
 
 ### * Expected results
 1. The script is not accepted
@@ -34,6 +34,6 @@ XSS attacks are essentially code injection attacks into the various interpreters
 3. The script is accepted but not executed
 
 ### * Actual results
-The script is not accepted
+The script doesn't work
 
 ### Test status : [ pass ]

@@ -35,7 +35,7 @@ XSS attacks are essentially code injection attacks into the various interpreters
 
 ### * Expected results
 1. The script is not accepted
-2. The input is accepted but changed to valid form
+2. The script is accepted but changed to valid form
 3. The script is accepted but not executed
 
 ### * Actual results
