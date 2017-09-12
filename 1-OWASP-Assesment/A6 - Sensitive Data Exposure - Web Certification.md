@@ -20,6 +20,7 @@ This test verified the application need to certificate on every webpage.
 
 ### * Test Data
 Test username: admin
+
 Test password: Admin123
 
 ### * Test steps
@@ -31,3 +32,4 @@ The web application should have certification on each available website.
 
 ### * Actual results
 
+![alt text](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A6_001.PNG)
