@@ -18,9 +18,11 @@ This test verified there is no default username and password which can bu used b
 
 ### * Test Data
 Test username: admin
+
 Test password: password
 
 Test username: user
+
 Test password: password
 
 ### * Test steps
@@ -32,3 +34,4 @@ There should be no default user name and password.
 
 ### * Actual results
 
+![alt text](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A5_001.PNG)
