@@ -33,5 +33,6 @@ Test password: password
 There should be no default user name and password.
 
 ### * Actual results
+Log in failed with test username and password.
 
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A5_001.PNG)
