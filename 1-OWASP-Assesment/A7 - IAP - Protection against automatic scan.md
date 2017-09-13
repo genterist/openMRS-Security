@@ -33,14 +33,16 @@ Default rules that were pre-loaded in OWASP ZAP scanner
 
 ### * Expected results
 1. For each of OWASP ZAP's probe, the OpenMRS 2.6.0 Standalone console must give a description indicating a fail attempt at attacking the login page
-2. After a certain number of attempts, server will throw a 4xx page (for example a "HTTP 400 - Bad Request" page)
+2. After a certain number of attempts, server will throw a 4xx page (for example a "HTTP 400 - Bad Request" page). This expectation can be substituded with a page redirection code.
 
 ### * Post-condition
 Login page is made unavailable to whoever was doing the attack.
 
 ### * Actual results
 1. There was no alert in the OpenMRS 2.6.0 Standalone console while more than 100 of probing attempts were carried out on the login page
+![alt text](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A7-IAP-2.PNG)
 2. Login page's status codes returned to OWASP ZAP were all "200"
+![alt text](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A7-IAP-1.PNG)
 
 ### * NOTES:
 Contact tam.nguyen@ncsu.edu if you have problems following instructions in this test case.
