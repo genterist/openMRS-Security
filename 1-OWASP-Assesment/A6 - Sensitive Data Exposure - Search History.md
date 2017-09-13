@@ -33,4 +33,5 @@ Test password: Admin123
 There should be no information about Frank.
 
 ### * Actual results
+When we check the source code of webpage for patient Fred, the visit patient history part of code showed information of Frank, which is kind of sensitive exposure.
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A6_002.PNG)
