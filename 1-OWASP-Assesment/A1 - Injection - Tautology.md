@@ -2,12 +2,12 @@
 `DESIGNER : [Fuxing Luan]`
 `UPDATED ON : [09/09/2017]`
 
-### Name of module : [  ]
+### Name of module : [ Login ]
 
 ### Priority : [high]
 
 ### Test Description
-Injection attacks occur when unvalidated input is embedded in an instruction stream and cannot be distinguished from valid instructions.
+Injection attacks occur when unvalidated input is embedded in an instruction stream and cannot be distinguished from valid instructions. This test case is to test whether using tautology can bypass password authentication.
 
 ### * Precondition
 1. A local computer with administrator privilege

@@ -42,6 +42,9 @@ Webservice API is still up, available to serve further requests.
 ### * Actual results
 1. Used the browser test method and received and XML with "User is not logged in [Privileges required: Get Users]"
 
+![User is not logged in [Privileges required: Get Users](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A10-API-Authentication.PNG?raw=true)
+
+
 ### * NOTES:
 * OpenMRS API documentation together with examples can be found at http://localhost:8081/openmrs-standalone/module/webservices/rest/apiDocs.htm (logged in as admin first)
 You can expand the objects and click "try it out" to get sample codes.

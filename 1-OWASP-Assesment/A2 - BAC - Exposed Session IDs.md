@@ -2,12 +2,12 @@
 `DESIGNER : [Fuxing Luan]`
 `UPDATED ON : [09/09/2017]`
 
-### Name of module : [  ]
+### Name of module : [ Session ]
 
 ### Priority : [high]
 
 ### Test Description : Broken Access Control 
-Access control, sometimes called authorization, is how a web application grants access to content and functions to some users and not others. These checks are performed after authentication, and govern what 'authorized' users are allowed to do
+Access control, sometimes called authorization, is how a web application grants access to content and functions to some users and not others. These checks are performed after authentication, and govern what 'authorized' users are allowed to do. This test case focuses on whether the session IDs are exposed to the urls.
 
 ### * Precondition
 1. A local computer with administrator privilege
@@ -24,7 +24,7 @@ Access control, sometimes called authorization, is how a web application grants 
 
 ### * Test steps
 1. Start local openMRS and log in with the username and account
-2. Click all kinds of links and see the urls
+2. Click all links on the webpage and see the urls
 
 ### * Expected results
 1. No session infomation will be exposed in the urls
