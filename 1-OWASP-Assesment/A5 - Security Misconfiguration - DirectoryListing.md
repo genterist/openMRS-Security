@@ -30,5 +30,6 @@ Test password: Admin123
 The application should not list any directory.
 
 ### * Actual results
+No directory was listed following the test steps.
 
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A5_002.PNG)
