@@ -2,12 +2,12 @@
 `DESIGNER : [Fuxing Luan]`
 `UPDATED ON : [09/09/2017]`
 
-### Name of module : [  ]
+### Name of module : [ Session ]
 
 ### Priority : [high]
 
 ### Test Description : Broken Access Control 
-Access control, sometimes called authorization, is how a web application grants access to content and functions to some users and not others. These checks are performed after authentication, and govern what 'authorized' users are allowed to do
+Access control, sometimes called authorization, is how a web application grants access to content and functions to some users and not others. These checks are performed after authentication, and govern what 'authorized' users are allowed to do. In this test, we will test whether the session is ended when the browser closes.
 
 ### * Precondition
 1. A local computer with administrator privilege
