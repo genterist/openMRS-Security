@@ -2,7 +2,7 @@
 `DESIGNER : [Fuxing Luan]`
 `UPDATED ON : [09/09/2017]`
 
-### Name of module : [  ]
+### Name of module : [ Login ]
 
 ### Priority : [high]
 
