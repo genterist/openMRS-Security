@@ -37,7 +37,9 @@ The OpenMRS service should still be able to run normally with the right language
 ### * Actual results
 In the iframe, OpenMRS server gave an error message and the default language is still English.
 "UI Framework Error - Root Error"
+
 ![UI Framework Error - Root Error](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A8-CSRF-1.PNG)
+
 
 ### * NOTES:
 Contact tam.nguyen@ncsu.edu if you have problems following instructions in this test case.

@@ -40,7 +40,9 @@ The OpenMRS service should still be able to run normally
 ### * Actual results
 In the iframe, OpenMRS server gave an internal server error message
 HTTP Status 500 - Request processing failed; nested exception is java.lang.IllegalArgumentException ...
+
 ![java.lang.IllegalArgumentException](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A8-CSRF-CommandExec.PNG)
+
 
 ### * NOTES:
 Contact tam.nguyen@ncsu.edu if you have problems following instructions in this test case.

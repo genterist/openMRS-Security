@@ -40,9 +40,13 @@ Login page is made unavailable to whoever was doing the attack.
 
 ### * Actual results
 1. There was no alert in the OpenMRS 2.6.0 Standalone console while more than 100 of probing attempts were carried out on the login page
+
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A7-IAP-2.PNG)
+
 2. Login page's status codes returned to OWASP ZAP were all "200"
+
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A7-IAP-1.PNG)
+
 
 ### * NOTES:
 Contact tam.nguyen@ncsu.edu if you have problems following instructions in this test case.
