@@ -342,7 +342,7 @@ Test password: password
 There should be no default user name and password.
 
 ### * Actual results
-
+Log in failed with test username and password.
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A5_001.PNG)
 
 
@@ -379,8 +379,9 @@ Test password: Admin123
 The application should not list any directory.
 
 ### * Actual results
-
+No directory was listed following the test steps.
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A5_002.PNG)
+
 # [A6 - Sensitive Data Exposure ] [ Search History ]
 ### Test status : [ Failed ]
 `DESIGNER : [ZHUO LI]` <br/>
@@ -416,6 +417,7 @@ Test password: Admin123
 There should be no information about Frank.
 
 ### * Actual results
+When we check the source code of webpage for patient Fred, the visit patient history part of code showed information of Frank, which is kind of sensitive exposure. 
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A6_002.PNG)
 
 
@@ -452,7 +454,7 @@ Test password: Admin123
 The web application should have certification on each available website.
 
 ### * Actual results
-
+The settings showed us that even the home page for this application is not secure. 
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A6_001.PNG)
 
 
