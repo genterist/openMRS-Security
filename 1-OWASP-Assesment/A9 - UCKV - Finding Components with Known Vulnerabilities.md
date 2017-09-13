@@ -10,7 +10,7 @@
 This case is listing all the components with known vulnerabilities. And describe some  related vulnerabilities.
 
 ### List of Components
-1. Apache Tomcat:6.0.29
+1. Apache Tomcat:7.0.50
 2. MySQL: Latest
 3. JQuery: 1.12.4
 4. Spring framework: 3.x
