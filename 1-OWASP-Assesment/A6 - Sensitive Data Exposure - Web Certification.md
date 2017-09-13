@@ -31,5 +31,5 @@ Test password: Admin123
 The web application should have certification on each available website.
 
 ### * Actual results
-
+The settings showed us that even the home page for this application is not secure.
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A6_001.PNG)
