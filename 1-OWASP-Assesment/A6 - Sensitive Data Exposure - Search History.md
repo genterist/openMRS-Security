@@ -23,9 +23,9 @@ Test username: admin
 Test password: Admin123
 
 ### * Test steps
-1. Log in as admin and register two patients named “Frank” and “Fred”
+1. Go to http://localhost:8081/openmrs-standalone/login.htm . Log in as admin and register two patients named “Frank” and “Fred”
 2. Back to home page.
-3. Click on search patient and right click "Frank".
+3. Click on "search patient" and right click "Frank".
 4. Redo step 2-3 and search "Fred".
 5. Check whether the source code remember admin’s behavior.
 

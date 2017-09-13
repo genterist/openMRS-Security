@@ -5,7 +5,7 @@
 
 ### * Description
 
-This test verified the application will not list any directory when we only change the link.
+This test verifies the application will not list any directory when we only change the link.
 
 
 ### * Precondition
@@ -23,8 +23,8 @@ Test username: admin
 Test password: Admin123
 
 ### * Test steps
-1. Log in as admin
-2. Change the link to directorylisting.(localhost://8081/openmrs-standalone/directorylisting)
+1. Go to http://localhost:8081/openmrs-standalone/login.htm . Log in as admin (credentials in Test Data section)
+2. Change the link to directorylisting.(http://localhost:8081/openmrs-standalone/directorylisting)
 
 ### * Expected results
 The application should not list any directory.

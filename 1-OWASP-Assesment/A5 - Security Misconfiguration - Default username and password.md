@@ -5,7 +5,7 @@
 
 ### * Description
 
-This test verified there is no default username and password which can bu used by hacker.
+This test verifies there is no default username and password which can be used by hackers.
 
 ### * Precondition
 1. A local computer with administrator privilege
@@ -26,11 +26,11 @@ Test username: user
 Test password: password
 
 ### * Test steps
-1. Go to the home page
-2. Try default user name and password such as admin
+1. Go to http://localhost:8081/openmrs-standalone/login.htm
+2. Try to login with default user name and password  (listed in Test Data section)
 
 ### * Expected results
-There should be no default user name and password.
+There should be no default user name and password and tester should not be able to logon
 
 ### * Actual results
 Log in failed with test username and password.
