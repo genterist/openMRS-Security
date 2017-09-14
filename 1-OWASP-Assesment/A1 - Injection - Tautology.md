@@ -22,6 +22,8 @@ Injection attacks occur when unvalidated input is embedded in an instruction str
 1. Username: ’ OR ‘1’ = ‘1 
 2. Password: ’ OR ‘1’ = ‘1 
 
+![alt text](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A1_003.png?raw=true)
+
 ### * Test steps
 1. Start local openMRS and 
 2. Log in with the username and account
