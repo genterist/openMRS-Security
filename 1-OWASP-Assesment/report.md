@@ -1,91 +1,13 @@
-# A1 - Injection - Drop Table
+# [A1 - 01 - Injection] [ Drop Table ]
 `DESIGNER : [Fuxing Luan]`
 `UPDATED ON : [09/09/2017]`
 
-### Name of module : Search module
+### Name of module : [ Search ]
 
 ### Priority : [high]
 
 ### Test Description
-Injection attacks occur when unvalidated input is embedded in an instruction stream and cannot be distinguished from valid instructions.
-This test will test if an attacker can use SQL injection to drop a table
-
-### * Precondition
-1. A local computer with administrator privilege
-2. Java environment installed
-3. OpenMRS Standalone Version 2.6.0 downloaded and unzipped
-4. Latest Chrome browser
-
-### * Assumption
-1. OpenMRS with demo database runs normally
-
-### * Test Data
-test'; DROP TABLE Patients; #
-
-### * Test steps
-1. Start local openMRS and log in with the username and account
-2. Click “Find Patient Record” in the main page
-3. Input " test'; DROP TABLE Patients; #" (without the double quotes) in the search field
-
-<<we need to put additional step to verify if table patients was drop or not in here>>
-
-### * Expected results
-1. No result will be shown
-
-### * Actual results
- No result showed
-
-### Test status : [ PASS ]
-
-
-# A1 - Injection - Tautology
-`DESIGNER : [Fuxing Luan]`
-`UPDATED ON : [09/09/2017]`
-
-### Name of module : Login Module
-
-### Priority : [high]
-
-### Test Description
-Injection attacks occur when unvalidated input is embedded in an instruction stream and cannot be distinguished from valid instructions.
-This test will test if an attack can use SQL injection to bypass login.
-
-### * Precondition
-1. A local computer with administrator privilege
-2. Java environment installed
-3. OpenMRS Standalone Version 2.6.0 downloaded and unzipped
-4. Latest Chrome browser
-
-### * Assumption
-1. OpenMRS with demo database runs normally
-
-### * Test Data
-1. Username: ’ OR ‘1’ = ‘1 
-2. Password: ’ OR ‘1’ = ‘1 
-
-### * Test steps
-1. Start local openMRS and 
-2. Log in with the username and password mentioned in Test Data section
-
-### * Expected results
-1. Fail to login
-
-### * Actual results
-Login Failed
-
-### Test status : [ pass ]
-
-
-# A2 - BAC -Exposed Session IDs
-`DESIGNER : [Fuxing Luan]`
-`UPDATED ON : [09/09/2017]`
-
-### Name of module : entire site
-
-### Priority : [high]
-
-### Test Description : Broken Access Control 
-Access control, sometimes called authorization, is how a web application grants access to content and functions to some users and not others. These checks are performed after authentication, and govern what 'authorized' users are allowed to do. This test will check if session ID or important access control data will be exposed on URLs or not.
+Injection attacks occur when unvalidated input is embedded in an instruction stream and cannot be distinguished from valid instructions. This test is to see whether using SQL key words in the search fields will affect the database.
 
 ### * Precondition
 1. A local computer with administrator privilege
@@ -101,11 +23,94 @@ Access control, sometimes called authorization, is how a web application grants 
 2. Password: `Nurse123`
 
 ### * Test steps
-1. Start local openMRS and log in with the username and password mentioned in Test Data section
-2. Browsing the system and observe the urls
+1. Start local openMRS and log in with the username and account
+2. Click “Find Patient Record” in the main page
+3. Input a'; Drop Table Patients;" in the search field
+
+![alt text](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A1_001.png?raw=true)
 
 ### * Expected results
-1. No session related infomation will be exposed in the urls
+1. No result will be shown
+2. Existed patients will not be deleted
+
+### * Actual results
+ No result showed
+ Exisited patients still there
+ 
+ ![alt text](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A1_002.png?raw=true)
+
+### Test status : [ pass ]
+
+
+# [A1 - 02 - Injection] [ Tautology ]
+`DESIGNER : [Fuxing Luan]`
+`UPDATED ON : [09/09/2017]`
+
+### Name of module : [ Login ]
+
+### Priority : [high]
+
+### Test Description
+Injection attacks occur when unvalidated input is embedded in an instruction stream and cannot be distinguished from valid instructions. This test case is to test whether using tautology can bypass password authentication.
+
+### * Precondition
+1. A local computer with administrator privilege
+2. Java environment installed
+3. OpenMRS Standalone Version 2.6.0 downloaded and unzipped
+4. Latest Chrome browser
+
+### * Assumption
+1. OpenMRS with demo database runs normally
+
+### * Test Data
+1. Username: ’ OR ‘1’ = ‘1 
+2. Password: ’ OR ‘1’ = ‘1 
+
+![alt text](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A1_003.png?raw=true)
+
+### * Test steps
+1. Start local openMRS and 
+2. Log in with the username and account
+
+### * Expected results
+1. Fail to login
+
+### * Actual results
+Login Failed
+
+### Test status : [ pass ]
+
+
+# [A2 - 01 - BAC] [ Exposed Session IDs ]
+`DESIGNER : [Fuxing Luan]`
+`UPDATED ON : [09/09/2017]`
+
+### Name of module : [ Session ]
+
+### Priority : [high]
+
+### Test Description : Broken Access Control 
+Access control, sometimes called authorization, is how a web application grants access to content and functions to some users and not others. These checks are performed after authentication, and govern what 'authorized' users are allowed to do. This test case focuses on whether the session IDs are exposed to the urls.
+
+### * Precondition
+1. A local computer with administrator privilege
+2. Java environment installed
+3. OpenMRS Standalone Version 2.6.0 downloaded and unzipped
+4. Latest Chrome browser
+
+### * Assumption
+1. OpenMRS with demo database runs normally
+
+### * Test Data
+1. Username: `nurse`
+2. Password: `Nurse123`
+
+### * Test steps
+1. Start local openMRS and log in with the username and account
+2. Click all links on the webpage and see the urls
+
+### * Expected results
+1. No session infomation will be exposed in the urls
 
 ### * Actual results
 No session infomation exposed
@@ -113,16 +118,16 @@ No session infomation exposed
 ### Test status : [ pass ]
 
 
-# [A2 - BAC] [ Session Time Outs ]
+# [A2 - 02 - BAC] [ Session Time Outs ]
 `DESIGNER : [Fuxing Luan]`
 `UPDATED ON : [09/09/2017]`
 
-### Name of module : Login module
+### Name of module : [ Session ]
 
 ### Priority : [high]
 
 ### Test Description : Broken Access Control 
-Access control, sometimes called authorization, is how a web application grants access to content and functions to some users and not others. These checks are performed after authentication, and govern what 'authorized' users are allowed to do
+Access control, sometimes called authorization, is how a web application grants access to content and functions to some users and not others. These checks are performed after authentication, and govern what 'authorized' users are allowed to do. In this test, we will test whether the session is ended when the browser closes.
 
 ### * Precondition
 1. A local computer with administrator privilege
@@ -151,16 +156,16 @@ Login is required
 ### Test status : [ pass ]
 
 
-# [A3 - XSS] [ Detecting Reflected XSS ]
+# [A3 - 01 - XSS] [ Detecting Reflected XSS ]
 `DESIGNER : [Xiangqing Ding]`
-`UPDATED ON : [09/09/2017]`
+`UPDATED ON : [09/12/2017]`
 
-### Name of module : [ Find Patient Record ]
+### Name of module : [ Search field in Find Patient Record ]
 
 ### Priority : [high]
 
 ### Test Description
-XSS attacks are essentially code injection attacks into the various interpreters in the browser. This test case is trying to detect if script can be integrated in HTML and executed.
+XSS attacks are essentially code injection attacks into the various interpreters in the browser. This test case is trying to detect if a script can be integrated in HTML and executed.
 
 ### * Precondition
 1. A local computer with administrator privilege
@@ -171,27 +176,41 @@ XSS attacks are essentially code injection attacks into the various interpreters
 ### * Assumption
 1. OpenMRS with demo database runs normally
 
-### * Test Data
-1. Username: `nurse`
-2. Password: `Nurse123`
-3. Scripts: `<script>alert("Attacked")</script>` and `%3cscript%3ealert("Attacked")%3cscript%3e`
-
 ### * Test steps
-1. Start local openMRS and log in with the username and account
+1. Start local openMRS and log in with the username (`nurse`) and password (`Nurse123`)
+
+![](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Step/A3-01-01.PNG)
+
+
 2. Click “Find Patient Record” in the main page
-3. Input scripts in the search field and search
+
+![](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Step/A3-01-02.PNG)
+
+
+3. Input script (`<script>alert("Attacked")</script>`) in the search field and search
+
+![](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Step/A3-01-03.PNG)
+
+
+4. Input script (`%3cscript%3e alert("Attacked") %3cscript%3e`) in the search field and search
+
+![](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Step/A3-01-04.PNG)
+
 
 ### * Expected results
-1. The script is not accepted
-2. The input is accepted but changed to valid form
-3. The script is accepted but not executed
+1. Scripts are not accepted
+2. Scripts are accepted but not executed
 
 ### * Actual results
-The script doesn't work
+Scripts are accepted but not executed.
 
+![](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Step/A3-01-03.PNG)
 
+![](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Step/A3-01-04.PNG)
 
-### Test status : [ pass ]# [ A3 - XSS ] [ Detecting Stored XSS ]
+### Test status : [ Pass ]
+
+#[ A3 - 02 - XSS ] [ Detecting Stored XSS ]
 `DESIGNER : [Xiangqing Ding]`
 `UPDATED ON : [09/09/2017]`
 
@@ -200,7 +219,6 @@ The script doesn't work
 ### Priority : [high]
 
 ### Test Description
-
 
 XSS attacks are essentially code injection attacks into the various interpreters in the browser. This test case is trying to see if script can be stored and executed in the allergy page.
 
@@ -212,29 +230,59 @@ XSS attacks are essentially code injection attacks into the various interpreters
 ### * Assumption
 1. OpenMRS with demo database runs normally
 
-### * Test Data
-1. Username: `nurse`
-2. Password: `Nurse123`
-3. Script: `<script>alert("Attacked")</script>`
-
 ### * Test steps
-1. Start openMRS and log in with username and password provided
+1. Start openMRS and log in with username(`nurse`) and password(`Nurse123`)
+
+![](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Step/A3-02-01.PNG)
+
 2. Click “Find Patient Record” button in the main page
+
+![](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Step/A3-02-02.PNG)
+
+
 3. Search one of the patient (e.g. Christopher Allen) and go to the patient page by clicking the entry
+
+![](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Step/A3-02-03.PNG)
+
+
 4. In the patient page, find ALLERGIES column and click the edit button
+
+![](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Step/A3-02-04.PNG)
+
+
 5. In the allergy page, click “Add New Allergy” button to add a new allergy
-6. In the “comment” field, add the script. Other field can be filled with own choice. After that, save the allergy.
-7. Go to the allergy page again to see if there is a popup with message “Attacked”
+
+![](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Step/A3-02-05.PNG)
+
+
+6. In the “comment” field, add the script (`<script>alert("Attacked")</script>`). Other field can be filled with own choice. After that, save the allergy.
+
+![](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Step/A3-02-06.PNG)
+
+
+7. Go to the allergy page again to see if there is a pop-up with message "Attacked"
+
+
+8. Again add a new allergy and In the “comment” field, add the script(`comment"><script>alert("Attacked")</script>`). Other field can be filled with own choice. After that, save the allergy.
+
+![](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Step/A3-02-07.PNG)
+
+
+9. Go to the allergy page again to see if there is a pop-up with message "Attacked"
+
 
 ### * Expected results
-1. The script is not accepted
-2. The script is accepted but changed to valid form
-3. The script is accepted but not executed
+1. Scripts are not accepted. No pop-up.
+2. Scripts are accepted but not executed. No pop-up.
 
 ### * Actual results
-The script is accepted but doesn’t work
+Scripts are accepted but not executed. No pop-up.
 
-### Test status : [ pass ]# [ A4 - BAC ] [ Non-admin account access to admin function ]
+![](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Step/A3-02-08.PNG)
+
+### Test status : [ Pass ]
+
+# [ A4 - 01 - BAC ] [ Non-admin account access to admin function ]
 `DESIGNER : [Xiangqing Ding]`
 `UPDATED ON : [09/09/2017]`
 
@@ -254,13 +302,17 @@ This test case is designed to test whether a non-admin user can access to admin 
 ### * Assumption
 1. OpenMRS with demo database runs normally
 
-### * Test Data
-1. Username: `nurse`
-2. Password: `Nurse123`
-
 ### * Test steps
-1. Start local openMRS and log in with username and password
+1. Start local openMRS and log in with username(`nurse`) and password(`Nurse123`)
+
+![](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Step/A4-01-01.PNG)
+
+
 2. Replace the `/referenceapplication/home.page` in the URL with `/coreapps/systemadministration/systemAdministration.page`
+
+![](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Step/A4-01-02.PNG)
+
+
 3. Direct the URL to see if the user can access to the system administration page
 
 ### * Expected results
@@ -269,11 +321,12 @@ User cannot access to system administration page while logging in as Nurse accou
 ### * Actual results
 The Nurse account can access to the administration page
 
-### Test status : [ fail ]#
+![](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Step/A4-01-03.PNG)
 
 
+### Test status : [ Fail ]
 
-A4 - BAC - Unauthorized access to system
+# [ A4 - 02 - BAC ] [ Unauthorized access to system ]
 `DESIGNER : [Xiangqing Ding]`
 `UPDATED ON : [09/09/2017]`
 
@@ -293,28 +346,34 @@ This test case is designed to test whether someone could access to the system wi
 ### * Assumption
 1. OpenMRS with demo database runs normally
 
-### * Test Data
-N/A
-
 ### * Test steps
 1. Start local openMRS
+
+![](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Step/A4-02-01.PNG)
+
+
 2. Without logging in, put `http://localhost:8081/openmrs-standalone/referenceapplication/home.page` in the URL of browser.
+
+![](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Step/A4-02-02.PNG)
+
 3. Direct the URL to see if it can access to the system.
 
 ### * Expected results
 User cannot access to the main page without logging in
 
 ### * Actual results
-User cannot access to the main page without logging in
+No response from the page. User cannot access to the main page without logging in
 
-### Test status : [ pass ]# [A5 - Security Misconfiguration ] [ Default username and password]
+### Test status : [ pass ]
+
+# [A5 - 01 - Security Misconfiguration ] [ Default username and password]
 ### Test status : [ pass ]
 `DESIGNER : [ZHUO LI]` <br/>
 `UPDATED ON : [05SEP2017]` <br/>
 
 ### * Description
 
-This test verified there is no default username and password which can bu used by hacker.
+This test verifies there is no default username and password which can be used by hackers.
 
 ### * Precondition
 1. A local computer with administrator privilege
@@ -335,26 +394,26 @@ Test username: user
 Test password: password
 
 ### * Test steps
-1. Go to the home page
-2. Try default user name and password such as admin
+1. Go to http://localhost:8081/openmrs-standalone/login.htm
+2. Try to login with default user name and password  (listed in Test Data section)
 
 ### * Expected results
-There should be no default user name and password.
+There should be no default user name and password and tester should not be able to logon
 
 ### * Actual results
 Log in failed with test username and password.
+
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A5_001.PNG)
 
 
-
-# [A5 - Security Misconfiguration ] [ DirectoryListing]
+# [A5 - 02 - Security Misconfiguration ] [ DirectoryListing]
 ### Test status : [ pass ]
 `DESIGNER : [ZHUO LI]` <br/>
 `UPDATED ON : [05SEP2017]` <br/>
 
 ### * Description
 
-This test verified the application will not list any directory when we only change the link.
+This test verifies the application will not list any directory when we only change the link.
 
 
 ### * Precondition
@@ -372,17 +431,19 @@ Test username: admin
 Test password: Admin123
 
 ### * Test steps
-1. Log in as admin
-2. Change the link to directorylisting.(localhost://8081/openmrs-standalone/directorylisting)
+1. Go to http://localhost:8081/openmrs-standalone/login.htm . Log in as admin (credentials in Test Data section)
+2. Change the link to directorylisting.(http://localhost:8081/openmrs-standalone/directorylisting)
 
 ### * Expected results
 The application should not list any directory.
 
 ### * Actual results
 No directory was listed following the test steps.
+
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A5_002.PNG)
 
-# [A6 - Sensitive Data Exposure ] [ Search History ]
+
+# [A6 - 01 - Sensitive Data Exposure ] [ Search History ]
 ### Test status : [ Failed ]
 `DESIGNER : [ZHUO LI]` <br/>
 `UPDATED ON : [05SEP2017]` <br/>
@@ -407,21 +468,21 @@ Test username: admin
 Test password: Admin123
 
 ### * Test steps
-1. Log in as admin and register two patients named “Frank” and “Fred”
+1. Go to http://localhost:8081/openmrs-standalone/login.htm . Log in as admin and register two patients named “Frank” and “Fred”
 2. Back to home page.
-3. Click on search patient and right click "Frank".
+3. Click on "search patient" and right click "Frank" to view the source code.
 4. Redo step 2-3 and search "Fred".
-5. Check whether the source code remember admin’s behavior.
+5. Check whether the source code remember admin’s behavior by searching "Frank".
 
 ### * Expected results
 There should be no information about Frank.
 
 ### * Actual results
-When we check the source code of webpage for patient Fred, the visit patient history part of code showed information of Frank, which is kind of sensitive exposure. 
+When we check the source code of webpage for patient Fred, the visit patient history part of code showed information of Frank, which is kind of sensitive exposure.
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A6_002.PNG)
 
 
-# [A6 - Sensitive Data Exposure ] [ Web Certification ]
+# [A6 - 02 - Sensitive Data Exposure ] [ Web Certification ]
 ### Test status : [ Failed ]
 `DESIGNER : [ZHUO LI]` <br/>
 `UPDATED ON : [05SEP2017]` <br/>
@@ -454,11 +515,10 @@ Test password: Admin123
 The web application should have certification on each available website.
 
 ### * Actual results
-The settings showed us that even the home page for this application is not secure. 
+The settings showed us that even the home page for this application is not secure.
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A6_001.PNG)
 
-
-# A7 - IAP - DETECTING LEADING SPACE ATTACK
+# [A7 - 01 - IAP ] [ DETECTING LEADING SPACE ATTACKS ]
 ### Priority : medium
 ### Test status : FAILED
 `DESIGNER : TAM N NGUYEN` <br/>
@@ -518,7 +578,7 @@ Login page is still available to whoever was doing the attack.
 Contact tam.nguyen@ncsu.edu if you have problems following instructions in this test case.
 
 
-# A7 - IAP - PROTECTION AGAINST AUTOMATIC SCAN
+# [ A7 - 02 - IAP ] [ PROTECTION AGAINST AUTOMATIC SCAN ]
 ### Priority : medium
 ### Test status : FAILED
 `DESIGNER : TAM N NGUYEN` <br/>
@@ -553,21 +613,26 @@ Default rules that were pre-loaded in OWASP ZAP scanner
 
 ### * Expected results
 1. For each of OWASP ZAP's probe, the OpenMRS 2.6.0 Standalone console must give a description indicating a fail attempt at attacking the login page
-2. After a certain number of attempts, server will throw a 4xx page (for example a "HTTP 400 - Bad Request" page)
+2. After a certain number of attempts, server will throw a 4xx page (for example a "HTTP 400 - Bad Request" page). This expectation can be substituded with a page redirection code.
 
 ### * Post-condition
 Login page is made unavailable to whoever was doing the attack.
 
 ### * Actual results
 1. There was no alert in the OpenMRS 2.6.0 Standalone console while more than 100 of probing attempts were carried out on the login page
+
+![alt text](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A7-IAP-2.PNG)
+
 2. Login page's status codes returned to OWASP ZAP were all "200"
+
+![alt text](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A7-IAP-1.PNG)
+
 
 ### * NOTES:
 Contact tam.nguyen@ncsu.edu if you have problems following instructions in this test case.
 
 
-
-# A7 - CSRF - Change default language attack
+# [ A8 - 01 - CSRF ] [ CHANGE DEFAULT LANGAUGE ATTACK ]
 ### Priority : HIGH
 ### Test status : PASSED
 `DESIGNER : TAM N NGUYEN` <br/>
@@ -593,26 +658,27 @@ http://localhost:8081/openmrs-standalone/adminui/myaccount/changeDefaults.page?d
 
 ### * Test steps
 1. Open up OpenMRS V. 2.6.0 Standalone. Make sure Tomcat Port is 8081 and MySQL port is 3316. A web page starting with localhost:8081 will be automatically opened upon successful start. The default language should be English. Login to OpenMRS
-2. Go to "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_iframe"
+2. Using Windows Edge browser, go to "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_iframe"
 3. At the W3School page, replace the value of iframe src with "http://localhost:8081/openmrs-standalone/adminui/myaccount/changeDefaults.page?defaultLocale=fr" without the double quotes and click the "Run" button.
-4. Go back to the homepage of OpenMRS and observe the language of the page
+4. You may have to choose "Load all protected content" and repeat step 3. Go back to the homepage of OpenMRS and observe the language of the page
 
 ### * Expected results
-In the iframe, OpenMRS server will give an error message
+In the iframe, OpenMRS server will give an error message and the default language is still English.
 
 ### * Post-condition
 The OpenMRS service should still be able to run normally with the right language
 
 ### * Actual results
-In the iframe, OpenMRS server gave an error message
+In the iframe, OpenMRS server gave an error message and the default language is still English.
 "UI Framework Error - Root Error"
+
+![UI Framework Error - Root Error](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A8-CSRF-1.PNG)
+
 
 ### * NOTES:
 Contact tam.nguyen@ncsu.edu if you have problems following instructions in this test case.
 
-
-
-# A7 - CSRF - COMMAND EXECUTION
+# [ A8 - 02 - CSRF ] [ COMMAND EXECUTION ]
 ### Priority : HIGH
 ### Test status : PASSED
 `DESIGNER : TAM N NGUYEN` <br/>
@@ -639,10 +705,10 @@ http://localhost:8081/openmrs-standalone/adminui/myaccount/changeDefaults.page?l
 
 ### * Test steps
 1. Open up OpenMRS V. 2.6.0 Standalone. Make sure Tomcat Port is 8081 and MySQL port is 3316. A web page starting with localhost:8081 will be automatically opened upon successful start.
-2. Go to "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_iframe"
+2. Using Windows Edge browser, go to "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_iframe"
 3. At the W3School page, replace the value of iframe src with "http://localhost:8081/openmrs-standalone/adminui/myaccount/changeDefaults.page?lang=ZAP%25n%25s%25n%25s%25n%25s%25n%25s%25n%25s%25n%25s%25n%25s%25n%25s%25n%25s%25n%25s%25n%25s%25n%25s%25n%25s%25n%25s%25n%25s%25n%25s%25n%25s%25n%25s%25n%25s%25n%25s%0" without the double quotes and click the "Run" button.
 
-4. Observe the result on the right iframe
+4. You may have to choose "Load all protected content" and repeat step 3. Observe the result on the right iframe
 
 ### * Expected results
 In the iframe, OpenMRS server will give an internal server error message
@@ -654,6 +720,9 @@ The OpenMRS service should still be able to run normally
 ### * Actual results
 In the iframe, OpenMRS server gave an internal server error message
 HTTP Status 500 - Request processing failed; nested exception is java.lang.IllegalArgumentException ...
+
+![java.lang.IllegalArgumentException](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A8-CSRF-CommandExec.PNG)
+
 
 ### * NOTES:
 Contact tam.nguyen@ncsu.edu if you have problems following instructions in this test case.
@@ -696,8 +765,7 @@ Vulnerability: ReflectionHelper (org.hibernate.validator.util.ReflectionHelper) 
 Link:[https://nvd.nist.gov/vuln/detail/CVE-2014-3558](https://nvd.nist.gov/vuln/detail/CVE-2014-3558)
 
 
-
-# A10 - API - User object - Unvalidated Redirects and Forwards
+# [ A10 - 01 - API ] [ User object - Unvalidated Redirects and Forwards ]
 ### Priority : medium
 ### Test status : PASSED
 `DESIGNER : Fuxing Luan` <br/>
@@ -731,7 +799,7 @@ http://localhost:8081/openmrs- standalone/coreapps/activeVisits.page?app=www.goo
 1. The page was redirected to “www.google.com”
 
 
-# A10 - API - User object - TEST FOR AUTHENTICATION
+# [ A10 - 02 - API] [ User object - TEST FOR AUTHENTICATION ]
 ### Priority : medium
 ### Test status : PASSED
 `DESIGNER : TAM N NGUYEN` <br/>
@@ -774,6 +842,9 @@ Webservice API is still up, available to serve further requests.
 
 ### * Actual results
 1. Used the browser test method and received and XML with "User is not logged in [Privileges required: Get Users]"
+
+![User is not logged in [Privileges required: Get Users](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A10-API-Authentication.PNG?raw=true)
+
 
 ### * NOTES:
 * OpenMRS API documentation together with examples can be found at http://localhost:8081/openmrs-standalone/module/webservices/rest/apiDocs.htm (logged in as admin first)
