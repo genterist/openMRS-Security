@@ -4,7 +4,7 @@
 
 ### Name of module : [ Search ]
 
-### Priority : [high]
+### Priority : [ high ]
 
 ### Test Description
 Injection attacks occur when unvalidated input is embedded in an instruction stream and cannot be distinguished from valid instructions. This test is to see whether using SQL key words in the search fields will affect the database.
@@ -18,14 +18,11 @@ Injection attacks occur when unvalidated input is embedded in an instruction str
 ### * Assumption
 1. OpenMRS with demo database runs normally
 
-### * Test Data
-1. Username: `nurse`
-2. Password: `Nurse123`
 
 ### * Test steps
-1. Start local openMRS and log in with the username and account
+1. Start local openMRS and log in with the username(`nurse`) and password(`Nurse123`)
 2. Click “Find Patient Record” in the main page
-3. Input a'; Drop Table Patients;" in the search field
+3. Input `a'; Drop Table Patients;"` in the search field
 
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A1_001.png?raw=true)
 
@@ -35,11 +32,11 @@ Injection attacks occur when unvalidated input is embedded in an instruction str
 
 ### * Actual results
  No result showed
- Exisited patients still there
+ Existing patients still there
  
  ![alt text](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A1_002.png?raw=true)
 
-### Test status : [ pass ]
+### Test status : [ Pass ]
 
 
 # [A1 - 02 - Injection] [ Tautology ]
@@ -48,7 +45,7 @@ Injection attacks occur when unvalidated input is embedded in an instruction str
 
 ### Name of module : [ Login ]
 
-### Priority : [high]
+### Priority : [ High ]
 
 ### Test Description
 Injection attacks occur when unvalidated input is embedded in an instruction stream and cannot be distinguished from valid instructions. This test case is to test whether using tautology can bypass password authentication.
@@ -63,14 +60,13 @@ Injection attacks occur when unvalidated input is embedded in an instruction str
 1. OpenMRS with demo database runs normally
 
 ### * Test Data
-1. Username: ’ OR ‘1’ = ‘1 
-2. Password: ’ OR ‘1’ = ‘1 
+1. Username: `' OR '1' = '1` Password: `' OR '1' = '1 `
 
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A1_003.png?raw=true)
 
 ### * Test steps
-1. Start local openMRS and 
-2. Log in with the username and account
+1. Start local openMRS
+2. Log in with the username and password
 
 ### * Expected results
 1. Fail to login
@@ -90,7 +86,7 @@ Login Failed
 ### Priority : [high]
 
 ### Test Description : Broken Access Control 
-Access control, sometimes called authorization, is how a web application grants access to content and functions to some users and not others. These checks are performed after authentication, and govern what 'authorized' users are allowed to do. This test case focuses on whether the session IDs are exposed to the urls.
+Access control, sometimes called authorization, is how a web application grants access to content and functions to some users and not others. These checks are performed after authentication, and govern what 'authorized' users are allowed to do. This test case focuses on whether the session IDs are exposed to the URLs.
 
 ### * Precondition
 1. A local computer with administrator privilege
@@ -106,14 +102,14 @@ Access control, sometimes called authorization, is how a web application grants 
 2. Password: `Nurse123`
 
 ### * Test steps
-1. Start local openMRS and log in with the username and account
-2. Click all links on the webpage and see the urls
+1. Start local openMRS and log in with the username and password
+2. Click all links on the web page and see the URLs
 
 ### * Expected results
-1. No session infomation will be exposed in the urls
+1. No session information will be exposed in the URLs
 
 ### * Actual results
-No session infomation exposed
+No session information exposed
 
 ### Test status : [ pass ]
 
@@ -408,8 +404,8 @@ Log in failed with test username and password.
 
 # [A5 - 02 - Security Misconfiguration ] [ DirectoryListing]
 ### Test status : [ pass ]
-`DESIGNER : [ZHUO LI]` <br/>
-`UPDATED ON : [05SEP2017]` <br/>
+`DESIGNER : [ZHUO LI]` 
+`UPDATED ON : [05SEP2017]` 
 
 ### * Description
 
@@ -431,8 +427,8 @@ Test username: admin
 Test password: Admin123
 
 ### * Test steps
-1. Go to http://localhost:8081/openmrs-standalone/login.htm . Log in as admin (credentials in Test Data section)
-2. Change the link to directorylisting.(http://localhost:8081/openmrs-standalone/directorylisting)
+1. Go to `http://localhost:8081/openmrs-standalone/login.htm` . Log in as admin (credentials in Test Data section)
+2. Change the link to directorylisting.(`http://localhost:8081/openmrs-standalone/directorylisting`)
 
 ### * Expected results
 The application should not list any directory.
@@ -445,8 +441,8 @@ No directory was listed following the test steps.
 
 # [A6 - 01 - Sensitive Data Exposure ] [ Search History ]
 ### Test status : [ Failed ]
-`DESIGNER : [ZHUO LI]` <br/>
-`UPDATED ON : [05SEP2017]` <br/>
+`DESIGNER : [ZHUO LI]` 
+`UPDATED ON : [05SEP2017]` 
 
 ### * Description
 
@@ -468,17 +464,18 @@ Test username: admin
 Test password: Admin123
 
 ### * Test steps
-1. Go to http://localhost:8081/openmrs-standalone/login.htm . Log in as admin and register two patients named “Frank” and “Fred”
+1. Go to `http://localhost:8081/openmrs-standalone/login.htm` . Log in as admin and register two patients named “Frank” and “Fred”
 2. Back to home page.
 3. Click on "search patient" and right click "Frank" to view the source code.
 4. Redo step 2-3 and search "Fred".
-5. Check whether the source code remember admin’s behavior by searching "Frank".
+5. Check whether the source code remember admin's behavior by searching "Frank".
 
 ### * Expected results
 There should be no information about Frank.
 
 ### * Actual results
 When we check the source code of webpage for patient Fred, the visit patient history part of code showed information of Frank, which is kind of sensitive exposure.
+
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A6_002.PNG)
 
 
@@ -489,7 +486,7 @@ When we check the source code of webpage for patient Fred, the visit patient his
 
 ### * Description
 
-This test verified the application need to certificate on every webpage.
+This test verified the application need to certificate on every web page.
 
 
 ### * Precondition
@@ -516,6 +513,7 @@ The web application should have certification on each available website.
 
 ### * Actual results
 The settings showed us that even the home page for this application is not secure.
+
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A6_001.PNG)
 
 # [A7 - 01 - IAP ] [ DETECTING LEADING SPACE ATTACKS ]
@@ -593,7 +591,7 @@ This test determines the level of OpenMRS protection against repeated, automatic
 ### * Precondition
 1. A local computer with administrator privilege
 2. Java JRE installed
-3. OpenMRS Standalone Version 2.6.0 downloaded and unziped
+3. OpenMRS Standalone Version 2.6.0 downloaded and unzipped
 4. OWASP ZAP Version 2.6.0 downloaded and installed
 
 ### * Dependencies
@@ -613,7 +611,7 @@ Default rules that were pre-loaded in OWASP ZAP scanner
 
 ### * Expected results
 1. For each of OWASP ZAP's probe, the OpenMRS 2.6.0 Standalone console must give a description indicating a fail attempt at attacking the login page
-2. After a certain number of attempts, server will throw a 4xx page (for example a "HTTP 400 - Bad Request" page). This expectation can be substituded with a page redirection code.
+2. After a certain number of attempts, server will throw a 4xx page (for example a "HTTP 400 - Bad Request" page). This expectation can be substituted with a page redirection code.
 
 ### * Post-condition
 Login page is made unavailable to whoever was doing the attack.
@@ -646,7 +644,7 @@ Contact tam.nguyen@ncsu.edu if you have problems following instructions in this 
 ### * Precondition
 1. A local computer with administrator privilege
 2. Java JRE installed
-3. OpenMRS Standalone Version 2.6.0 downloaded and unziped
+3. OpenMRS Standalone Version 2.6.0 downloaded and unzipped
 4. A connection to the internet
 
 ### * Dependencies
