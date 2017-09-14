@@ -27,6 +27,7 @@ This test case is designed to test whether someone could access to the system wi
 2. Without logging in, put `http://localhost:8081/openmrs-standalone/referenceapplication/home.page` in the URL of browser.
 
 ![](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Step/A4-02-02.PNG)
+
 3. Direct the URL to see if it can access to the system.
 
 ### * Expected results
