@@ -1,3 +1,12 @@
+# TEAM 8
+
+# TEAM MEMBERS IDS:
+## ZLI36, XDING3, FLUAN, TNNGUYE6
+
+
+***
+
+
 # [A1 - 01 - Injection] [ Drop Table ]
 `DESIGNER : [Fuxing Luan]`
 `UPDATED ON : [09/09/2017]`
