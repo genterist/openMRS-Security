@@ -38,6 +38,7 @@ Injection attacks occur when unvalidated input is embedded in an instruction str
 
 ### Test status : [ Pass ]
 
+***
 
 # [A1 - 02 - Injection] [ Tautology ]
 `DESIGNER : [Fuxing Luan]`
@@ -76,6 +77,7 @@ Login Failed
 
 ### Test status : [ pass ]
 
+***
 
 # [A2 - 01 - BAC] [ Exposed Session IDs ]
 `DESIGNER : [Fuxing Luan]`
@@ -113,6 +115,7 @@ No session information exposed
 
 ### Test status : [ pass ]
 
+***
 
 # [A2 - 02 - BAC] [ Session Time Outs ]
 `DESIGNER : [Fuxing Luan]`
@@ -151,6 +154,7 @@ Login is required
 
 ### Test status : [ pass ]
 
+***
 
 # [A3 - 01 - XSS] [ Detecting Reflected XSS ]
 `DESIGNER : [Xiangqing Ding]`
@@ -205,6 +209,9 @@ Scripts are accepted but not executed.
 ![](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Step/A3-01-04.PNG)
 
 ### Test status : [ Pass ]
+
+***
+
 
 # [ A3 - 02 - XSS ] [ Detecting Stored XSS ]
 `DESIGNER : [Xiangqing Ding]`
@@ -278,6 +285,9 @@ Scripts are accepted but not executed. No pop-up.
 
 ### Test status : [ Pass ]
 
+***
+
+
 # [ A4 - 01 - BAC ] [ Non-admin account access to admin function ]
 `DESIGNER : [Xiangqing Ding]`
 `UPDATED ON : [09/09/2017]`
@@ -322,6 +332,9 @@ The Nurse account can access to the administration page
 
 ### Test status : [ Fail ]
 
+***
+
+
 # [ A4 - 02 - BAC ] [ Unauthorized access to system ]
 `DESIGNER : [Xiangqing Ding]`
 `UPDATED ON : [09/09/2017]`
@@ -362,6 +375,9 @@ No response from the page. User cannot access to the main page without logging i
 
 ### Test status : [ pass ]
 
+***
+
+
 # [A5 - 01 - Security Misconfiguration ] [ Default username and password]
 ### Test status : [ pass ]
 `DESIGNER : [ZHUO LI]` <br/>
@@ -401,6 +417,7 @@ Log in failed with test username and password.
 
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A5_001.PNG)
 
+***
 
 # [A5 - 02 - Security Misconfiguration ] [ DirectoryListing]
 ### Test status : [ pass ]
@@ -438,6 +455,7 @@ No directory was listed following the test steps.
 
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A5_002.PNG)
 
+***
 
 # [A6 - 01 - Sensitive Data Exposure ] [ Search History ]
 ### Test status : [ Failed ]
@@ -478,6 +496,8 @@ When we check the source code of webpage for patient Fred, the visit patient his
 
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A6_002.PNG)
 
+***
+
 
 # [A6 - 02 - Sensitive Data Exposure ] [ Web Certification ]
 ### Test status : [ Failed ]
@@ -515,6 +535,9 @@ The web application should have certification on each available website.
 The settings showed us that even the home page for this application is not secure.
 
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A6_001.PNG)
+
+***
+
 
 # [A7 - 01 - IAP ] [ DETECTING LEADING SPACE ATTACKS ]
 ### Priority : medium
@@ -575,6 +598,7 @@ Login page is still available to whoever was doing the attack.
 ### * NOTES:
 Contact tam.nguyen@ncsu.edu if you have problems following instructions in this test case.
 
+***
 
 # [ A7 - 02 - IAP ] [ PROTECTION AGAINST AUTOMATIC SCAN ]
 ### Priority : medium
@@ -629,6 +653,7 @@ Login page is made unavailable to whoever was doing the attack.
 ### * NOTES:
 Contact tam.nguyen@ncsu.edu if you have problems following instructions in this test case.
 
+***
 
 # [ A8 - 01 - CSRF ] [ CHANGE DEFAULT LANGAUGE ATTACK ]
 ### Priority : HIGH
@@ -675,6 +700,9 @@ In the iframe, OpenMRS server gave an error message and the default language is 
 
 ### * NOTES:
 Contact tam.nguyen@ncsu.edu if you have problems following instructions in this test case.
+
+***
+
 
 # [ A8 - 02 - CSRF ] [ COMMAND EXECUTION ]
 ### Priority : HIGH
@@ -725,6 +753,8 @@ HTTP Status 500 - Request processing failed; nested exception is java.lang.Illeg
 ### * NOTES:
 Contact tam.nguyen@ncsu.edu if you have problems following instructions in this test case.
 
+***
+
 
 # [A9 - UCKA] [ Finding Components with Known Vulnerabilities ]
 `DESIGNER : [Xiangqing Ding]`
@@ -762,6 +792,7 @@ Vulnerability: ReflectionHelper (org.hibernate.validator.util.ReflectionHelper) 
 
 Link:[https://nvd.nist.gov/vuln/detail/CVE-2014-3558](https://nvd.nist.gov/vuln/detail/CVE-2014-3558)
 
+***
 
 # [ A10 - 01 - API ] [ User object - Unvalidated Redirects and Forwards ]
 ### Priority : medium
@@ -796,6 +827,7 @@ http://localhost:8081/openmrs- standalone/coreapps/activeVisits.page?app=www.goo
 ### * Actual results
 1. The page was redirected to “www.google.com”
 
+***
 
 # [ A10 - 02 - API] [ User object - TEST FOR AUTHENTICATION ]
 ### Priority : medium
