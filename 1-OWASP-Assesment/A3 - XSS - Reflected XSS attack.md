@@ -20,13 +20,24 @@ XSS attacks are essentially code injection attacks into the various interpreters
 
 ### * Test steps
 1. Start local openMRS and log in with the username (`nurse`) and password (`Nurse123`)
+
 ![](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Step/A3-01-01.PNG)
+
+
 2. Click “Find Patient Record” in the main page
+
 ![](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Step/A3-01-02.PNG)
+
+
 3. Input script (`<script>alert("Attacked")</script>`) in the search field and search
+
 ![](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Step/A3-01-03.PNG)
+
+
 4. Input script (`%3cscript%3e alert("Attacked") %3cscript%3e`) in the search field and search
+
 ![](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Step/A3-01-04.PNG)
+
 
 ### * Expected results
 1. Scripts are not accepted
@@ -34,6 +45,9 @@ XSS attacks are essentially code injection attacks into the various interpreters
 
 ### * Actual results
 Scripts are accepted but not executed.
+
 ![](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Step/A3-01-03.PNG)
+
 ![](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Step/A3-01-04.PNG)
+
 ### Test status : [ Pass ]

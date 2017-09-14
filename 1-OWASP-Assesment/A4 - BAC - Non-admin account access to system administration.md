@@ -20,9 +20,15 @@ This test case is designed to test whether a non-admin user can access to admin 
 
 ### * Test steps
 1. Start local openMRS and log in with username(`nurse`) and password(`Nurse123`)
+
 ![](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Step/A4-01-01.PNG)
+
+
 2. Replace the `/referenceapplication/home.page` in the URL with `/coreapps/systemadministration/systemAdministration.page`
+
 ![](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Step/A4-01-02.PNG)
+
+
 3. Direct the URL to see if the user can access to the system administration page
 
 ### * Expected results
@@ -30,5 +36,8 @@ User cannot access to system administration page while logging in as Nurse accou
 
 ### * Actual results
 The Nurse account can access to the administration page
+
 ![](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Step/A4-01-03.PNG)
+
+
 ### Test status : [ Fail ]
