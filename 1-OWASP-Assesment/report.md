@@ -210,7 +210,7 @@ Scripts are accepted but not executed.
 
 ### Test status : [ Pass ]
 
-#[ A3 - 02 - XSS ] [ Detecting Stored XSS ]
+# [ A3 - 02 - XSS ] [ Detecting Stored XSS ]
 `DESIGNER : [Xiangqing Ding]`
 `UPDATED ON : [09/09/2017]`
 
