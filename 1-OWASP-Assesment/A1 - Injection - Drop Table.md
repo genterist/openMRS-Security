@@ -27,7 +27,7 @@ Injection attacks occur when unvalidated input is embedded in an instruction str
 2. Click “Find Patient Record” in the main page
 3. Input a'; Drop Table Patients;" in the search field
 
-![alt text](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A1_001.png?raw=true）
+![alt text](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A1_001.png?raw=true)
 
 ### * Expected results
 1. No result will be shown
