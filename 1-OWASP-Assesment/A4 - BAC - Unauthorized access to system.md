@@ -18,18 +18,17 @@ This test case is designed to test whether someone could access to the system wi
 ### * Assumption
 1. OpenMRS with demo database runs normally
 
-### * Test Data
-N/A
-
 ### * Test steps
 1. Start local openMRS
+![](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Step/A4-02-01.PNG)
 2. Without logging in, put `http://localhost:8081/openmrs-standalone/referenceapplication/home.page` in the URL of browser.
+![](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Step/A4-02-02.PNG)
 3. Direct the URL to see if it can access to the system.
 
 ### * Expected results
 User cannot access to the main page without logging in
 
 ### * Actual results
-User cannot access to the main page without logging in
+No response from the page. User cannot access to the main page without logging in
 
 ### Test status : [ pass ]
