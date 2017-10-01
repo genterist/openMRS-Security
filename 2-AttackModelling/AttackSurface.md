@@ -125,10 +125,21 @@ We assume the host OS is one of the most common OS'es such as Windows, Ubuntu, O
 ## HUMAN BASED
 Human based attack surface
 
-### * Precondition
-Pre-cond
-
-### * Dependencies
-Determine any dependencies on test requirements or other test cases
+### * Assumptions
+We assume OpenMRS is installed on a "public" computer where at least medical staff will take turn using the machine (if not by the hours, it will be by the shift). We also assume the host computer will be exposed to a moderate level of traffic including both medical staff and non-medical staff.
 
 ### * Attack surface
+1. Medical staff
+      * Clerk
+      * Nurses and doctors
+      * Emergency response team
+2. Non-medical staff
+      * Patient
+      * Patient's family members
+      * Technical worker
+      * Regular worker
+      * Visitors
+3. Remote members
+      * Medical affiliates
+      * Medical members not currently at the location
+      * Traveling non-medical staff
