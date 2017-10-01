@@ -19,24 +19,24 @@ Software based attack surface. By "Software", we mean all codes associated with 
       * angular-resource.min.js
       * ui-bootstrap-tpls-0.6.0.min.js
    2. Jquerry
-            jquery-ui-1.9.2.custon.min.js
-            jquery-1.12.4.min.js
-            jquery.toastmessage.js
-            jquery.simplemodal.1.4.4.min.js
+      * jquery-ui-1.9.2.custon.min.js
+      * jquery-1.12.4.min.js
+      * jquery.toastmessage.js
+      * jquery.simplemodal.1.4.4.min.js
    3. UIcommons
-            handlebars.min.js
-            underscore-min.js
-            knockout-2.2.1.js
-            emr.js
-            validator.js
-            navigator.js
-            navigatorHandlers.js
-            navigatorModels.js
-            navigatorTemplates.js
-            exitHandlers.js
-            typeahead.js
-            personService.js
-            personRelationship.js
+      * handlebars.min.js
+      * underscore-min.js
+      * knockout-2.2.1.js
+      * emr.js
+      * validator.js
+      * navigator.js
+      * navigatorHandlers.js
+      * navigatorModels.js
+      * navigatorTemplates.js
+      * exitHandlers.js
+      * typeahead.js
+      * personService.js
+      * personRelationship.js
    4. AppUI
 
 2. Registration App
@@ -51,8 +51,8 @@ Directly affected page:
       * Web-2.0 (https://github.com/openmrs/openmrs-module-registrationapp/tree/master/web-2.0/src/main/java/org/openmrs/module/registrationapp)
 
 3. Page source codes
-https://github.com/openmrs/openmrs-module-registrationapp/blob/master/omod/src/main/webapp/pages/registerPatient.gsp
-https://github.com/openmrs/openmrs-module-registrationapp/blob/master/omod/src/main/webapp/pages/findPatient.gsp
+      * https://github.com/openmrs/openmrs-module-registrationapp/blob/master/omod/src/main/webapp/pages/registerPatient.gsp
+      * https://github.com/openmrs/openmrs-module-registrationapp/blob/master/omod/src/main/webapp/pages/findPatient.gsp
 
 
 
