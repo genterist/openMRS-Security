@@ -1,3 +1,4 @@
+Welcome to the openMRS-Security wiki!
 # ATTACK SURFACE ANALYSIS OF "FIND/CREATE PATIENT" MODULE
 
 `AUTHOR : TAM N. NGUYEN` <br/>
@@ -12,31 +13,31 @@ This report is based on OpenMRS docummentations and its live demo at https://dem
 Software based attack surface. By "Software", we mean all codes associated with the mentioned module, including API. We assume the software was installed locally, using proper default settings.
 
 1. UIFramework
-..* Angular
-....angular.js
-....angular-common.js
-....angular-resource.min.js
-....ui-bootstrap-tpls-0.6.0.min.js
-..* Jquerry
-....jquery-ui-1.9.2.custon.min.js
-....jquery-1.12.4.min.js
-....jquery.toastmessage.js
-....jquery.simplemodal.1.4.4.min.js
-..* UIcommons
-....handlebars.min.js
-....underscore-min.js
-....knockout-2.2.1.js
-....emr.js
-....validator.js
-....navigator.js
-....navigatorHandlers.js
-....navigatorModels.js
-....navigatorTemplates.js
-....exitHandlers.js
-....typeahead.js
-....personService.js
-....personRelationship.js
-..* AppUI
+   1. Angular
+      * angular.js
+      * angular-common.js
+      * angular-resource.min.js
+      * ui-bootstrap-tpls-0.6.0.min.js
+      * Jquerry
+            jquery-ui-1.9.2.custon.min.js
+            jquery-1.12.4.min.js
+            jquery.toastmessage.js
+            jquery.simplemodal.1.4.4.min.js
+      * UIcommons
+            handlebars.min.js
+            underscore-min.js
+            knockout-2.2.1.js
+            emr.js
+            validator.js
+            navigator.js
+            navigatorHandlers.js
+            navigatorModels.js
+            navigatorTemplates.js
+            exitHandlers.js
+            typeahead.js
+            personService.js
+            personRelationship.js
+      * AppUI
 
 2. Registration App
 Source code :
@@ -44,11 +45,10 @@ https://github.com/openmrs/openmrs-module-registrationapp
 Directly affected page:
 /openmrs/registrationapp/registerPatient.page
 /openmrs/registrationapp/personName/getSimilarNames.action
-
-..* API (https://github.com/openmrs/openmrs-module-registrationapp/tree/master/api/src/main/java/org/openmrs/module/registrationapp)
-..* OMOD (https://github.com/openmrs/openmrs-module-registrationapp/tree/master/omod/src/main/webapp/pages)
-..* Web-1.9 (https://github.com/openmrs/openmrs-module-registrationapp/tree/master/omod/src/main/webapp/pages)
-..* Web-2.0 (https://github.com/openmrs/openmrs-module-registrationapp/tree/master/web-2.0/src/main/java/org/openmrs/module/registrationapp)
+      * API (https://github.com/openmrs/openmrs-module-registrationapp/tree/master/api/src/main/java/org/openmrs/module/registrationapp)
+      * OMOD (https://github.com/openmrs/openmrs-module-registrationapp/tree/master/omod/src/main/webapp/pages)
+      * Web-1.9 (https://github.com/openmrs/openmrs-module-registrationapp/tree/master/omod/src/main/webapp/pages)
+      * Web-2.0 (https://github.com/openmrs/openmrs-module-registrationapp/tree/master/web-2.0/src/main/java/org/openmrs/module/registrationapp)
 
 3. Page source codes
 https://github.com/openmrs/openmrs-module-registrationapp/blob/master/omod/src/main/webapp/pages/registerPatient.gsp
