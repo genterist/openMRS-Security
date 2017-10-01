@@ -1,4 +1,3 @@
-Welcome to the openMRS-Security wiki!
 # ATTACK SURFACE ANALYSIS OF "FIND/CREATE PATIENT" MODULE
 
 `AUTHOR : TAM N. NGUYEN` <br/>
@@ -38,6 +37,7 @@ Software based attack surface. By "Software", we mean all codes associated with 
       * personService.js
       * personRelationship.js
    4. AppUI
+   5. Maven
 
 2. Registration App
 Source code :
@@ -89,19 +89,37 @@ While this is analysis is focused on the localized version of OpenMRS, we assume
 
 ## LOCAL-HOST BASED
 
-### * Precondition
-Pre-cond
-
-### * Dependencies
-Determine any dependencies on test requirements or other test cases
+### * Assumption
+We assume the host OS is one of the most common OS'es such as Windows, Ubuntu, OS X, ... We also assume that most logged on sessions are regular user sessions and administrators sometimes log on to do system maintenance.
 
 ### * Attack surface
 1. OS
+      * Secret and security certificate stores
+      * Settings
+      * User stores
+      * Regular file system
+      * Memory, stacks, execution flows
+      * Update mechanism
+      * Policy stores
 2. Browser
-3. Javascript
-4. SQL server
-5. OpenMRS server
-
+      * Cookies, saved passwords, cached files
+      * Plugins
+      * Script engines (Java, Javascript, ActiveX, VBScript, native client )
+      * Browser access to devices (camera, microphone, printers, ...)
+3. MySQL server
+      * Server files
+      * Command line interface
+      * Admin tools (if installed)
+      * Data values and structures
+4. OpenMRS server
+      * Serfer files
+      * Github repo
+      * Plugins
+      * In-memory codes
+5. Java
+6. Machine
+      * I/O devices
+      * memory
 
 
 ## HUMAN BASED
