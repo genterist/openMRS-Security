@@ -18,12 +18,12 @@ Software based attack surface. By "Software", we mean all codes associated with 
       * angular-common.js
       * angular-resource.min.js
       * ui-bootstrap-tpls-0.6.0.min.js
-      * Jquerry
+   2. Jquerry
             jquery-ui-1.9.2.custon.min.js
             jquery-1.12.4.min.js
             jquery.toastmessage.js
             jquery.simplemodal.1.4.4.min.js
-      * UIcommons
+   3. UIcommons
             handlebars.min.js
             underscore-min.js
             knockout-2.2.1.js
@@ -37,7 +37,7 @@ Software based attack surface. By "Software", we mean all codes associated with 
             typeahead.js
             personService.js
             personRelationship.js
-      * AppUI
+   4. AppUI
 
 2. Registration App
 Source code :
@@ -59,15 +59,33 @@ https://github.com/openmrs/openmrs-module-registrationapp/blob/master/omod/src/m
 ## NETWORK BASED
 Network based attack surface
 
-### * Precondition
-Pre-cond
-
-### * Dependencies
-Determine any dependencies on test requirements or other test cases
+### * Assumptions
+While this is analysis is focused on the localized version of OpenMRS, we assume networking interfaces and default ports are opened. It is a reasonable assumption because the computer might be used for purposes other than hosting OpenMRS and those purposes may require internet connections. Even when there is absolutely no networked environment, it is still safe to assume network interfaces (ethernet and/or wifi) together with associated default ports (DNS, http,...) are open.
 
 ### * Attack surface
-
-
+1. Ethernet ports
+2. Wifi
+3. Bluetooth
+4. Common ports
+      * TCP 20 and 21 (File Transfer Protocol, FTP)
+      * TCP 22 (Secure Shell, SSH)
+      * TCP 23 (Telnet)
+      * TCP 25 (Simple Mail Transfer Protocol, SMTP)
+      * TCP and UDP 53 (Domain Name System, DNS)
+      * UDP 69 (Trivial File Transfer Protocol, tftp)
+      * TCP 79 (finger)
+      * TCP 80 (Hypertext Transfer Protocol, HTTP)
+      * TCP 110 (Post Office Protocol v3, POP3)
+      * TCP 119 (Network News Protocol, NNTP)
+      * UDP 161 and 162 (Simple Network Management Protocol, SNMP)
+      * UDP 443 (Secure Sockets Layer over HTTP, https)
+5. OpenMRS ports
+      * 8081
+      * 8080
+6. System service ports
+      * Apache port
+      * MySQL port
+      * Java server port
 
 ## LOCAL-HOST BASED
 
