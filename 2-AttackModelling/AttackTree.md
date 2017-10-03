@@ -25,103 +25,193 @@ Based on the above assumptions, we will use CVSS 3.0 calculator (https://www.fir
 We based our cost on W.H.O recommended cost for health care center cost in Kenya (http://www.who.int/choice/country/ken/cost/en/). We will go with the least cost, per 20 minutes for LCU which is $139. For each type of threat, we will calculate the time needed for us ourselves to mitigate the threat. We then add 20% more time and use the final time value together with the above mentioned 20-min unit cost to calculate the final cost.
 
 1. SQL Injection
-   1. Descriptions : with no account, attackers perform SQL injection attacks on login page and was able to extract all patient record
-   2. Tools : SQLmap, SQLninja, SQLsus, Mole...
-   3. Estimates
+   
+   a. Descriptions : with no account, attackers perform SQL injection attacks on login page and was able to extract all patient record
+   
+   b. Tools : SQLmap, SQLninja, SQLsus, Mole...
+   
+   c. Estimates
       * Probability
       * Cost
 2. Java zero day
-   1. Descriptions
-   2. Tools
-   3. Estimates
-      * a
+   
+   a. Descriptions
+   
+   b. Tools
+   
+   c. Estimates
+      * Probability
+      * Cost
 3. SQL zero day
-   1. Descriptions
-   2. Tools
-   3. Estimates
-      * a
+   
+   a. Descriptions
+   
+   b. Tools
+   
+   c. Estimates
+      * Probability
+      * Cost
 4. Session hijacking
-   1. Descriptions
-   2. Tools
-   3. Estimates
-      * a
+   
+   a. Descriptions
+   
+   b. Tools
+   
+   c. Estimates
+      * Probability
+      * Cost
 5. Man in the middle
-   1. Descriptions
-   2. Tools
-   3. Estimates
-      * a
+   
+   a. Descriptions
+   
+   b. Tools
+   
+   c. Estimates
+      * Probability
+      * Cost
 6. Cross-site request forgery
-   1. Descriptions
-   2. Tools
-   3. Estimates
-      * a
+   
+   a. Descriptions
+   
+   b. Tools
+   
+   c. Estimates
+      * Probability
+      * Cost
 7. Broken authentication
-   1. Descriptions
-   2. Tools
-   3. Estimates
-      * a
+   
+   a. Descriptions
+   
+   b. Tools
+   
+   c. Estimates
+      * Probability
+      * Cost
 8. SQL injection
-   1. Descriptions
-   2. Tools
-   3. Estimates
-      * a
+   
+   a. Descriptions
+   
+   b. Tools
+   
+   c. Estimates
+      * Probability
+      * Cost
 9. Underprotected API
-   1. Descriptions
-   2. Tools
-   3. Estimates
-      * a
-10.Key logger
-   1. Descriptions
-   2. Tools
-   3. Estimates
-      * a
-11.Send content to printer
-   1. Descriptions
-   2. Tools
-   3. Estimates
-      * a
-12.Mirroring HDD
-   1. Descriptions
-   2. Tools
-   3. Estimates
-      * a
-13.Memory dump
-   1. Descriptions
-   2. Tools
-   3. Estimates
-      * a
-14.Buffer overflow
-   1. Descriptions
-   2. Tools
-   3. Estimates
-      * a
-15.Direct copy of SQL files
-   1. Descriptions
-   2. Tools
-   3. Estimates
-      * a
-16.Cache attack
-   1. Descriptions
-   2. Tools
-   3. Estimates
-      * a
-17.Spyware/Trojan
-   1. Descriptions
-   2. Tools
-   3. Estimates
-      * a
-18.Whaling
-   1. Descriptions
-   2. Tools
-   3. Estimates
-      * a
-19.Shoulder surfing
-   1. Descriptions
-   2. Tools
-   3. Estimates
-      * a
-20.Impersonation
-   1. Descriptions
-   2. Tools
-   3. Estimates
-      * a
+   
+   a. Descriptions
+   
+   b. Tools
+   
+   c. Estimates
+      * Probability
+      * Cost
+      
+10. Key logger
+   
+    a. Descriptions
+   
+    b. Tools
+   
+    c. Estimates
+      * Probability
+      * Cost
+      
+11. Send content to printer
+   
+    a. Descriptions
+   
+    b. Tools
+   
+    c. Estimates
+      * Probability
+      * Cost
+      
+12. Mirroring HDD
+   
+    a. Descriptions
+   
+    b. Tools
+   
+    c. Estimates
+      * Probability
+      * Cost
+      
+13. Memory dump
+   
+    a. Descriptions
+   
+    b. Tools
+   
+    c. Estimates
+      * Probability
+      * Cost
+      
+14. Buffer overflow
+   
+    a. Descriptions
+   
+    b. Tools
+   
+    c. Estimates
+      * Probability
+      * Cost
+      
+15. Direct copy of SQL files
+   
+    a. Descriptions
+   
+    b. Tools
+   
+    c. Estimates
+      * Probability
+      * Cost
+      
+16. Cache attack
+   
+    a. Descriptions
+   
+    b. Tools
+   
+    c. Estimates
+      * Probability
+      * Cost
+      
+17. Spyware/Trojan
+   
+    a. Descriptions
+   
+    b. Tools
+   
+    c. Estimates
+      * Probability
+      * Cost
+      
+18. Whaling
+   
+    a. Descriptions
+   
+    b. Tools
+   
+    c. Estimates
+      * Probability
+      * Cost
+      
+19. Shoulder surfing
+   
+    a. Descriptions
+   
+    b. Tools
+   
+    c. Estimates
+      * Probability
+      * Cost
+      
+20. Impersonation
+   
+    a. Descriptions
+   
+    b. Tools
+   
+    c. Estimates
+      * Probability
+      * Cost
