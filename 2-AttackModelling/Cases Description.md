@@ -2,7 +2,7 @@
 
 ## Diagram ##
 
-
+![](https://github.com/genterist/openMRS-Security/blob/master/2-AttackModelling/Diagram.png)
 
 ## Abuse Case 1 ##
 
