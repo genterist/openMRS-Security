@@ -77,147 +77,150 @@ Based on the above assumptions, we will use CVSS 3.0 calculator (https://www.fir
       
 6. Cross-site request forgery
    
-   a. Descriptions
+   a. Descriptions: attacker crafted a mallicious website that will query the database for full patient list under logged on OpenMRS admin session. Since we assume the Desktop is rarely connected to the internet and uses are strictly for the local clinic, the probability for this kind of attack is low. Network firewall log inspection will reveal the mallicious http requests and can be permanently fixed by whitelisting rules at gateway.
    
-   b. Tools
+   b. Tools: OWASP scanner, BurpSuite, any html editor
    
    c. Estimates
-      * Probability
-      * Cost ( *1.2)/20 *139 = 
+      * Probability: 35%
+      * Cost ( 60*1.2)/20 *139 = $500
+      
 7. Broken authentication
    
-   a. Descriptions
+   a. Descriptions: a mallicious indider was able to predict the session ID generation rules and adjusted his/her regular session (with no read patient privilege) to a session with higher privilege. Inspecting login sessions and network logs may reveal inconsistencies in sessions. 
    
-   b. Tools
+   b. Tools: any http header sniff and analyzer, built-in browser developer tool, some cryptography cracking tools, ...
    
    c. Estimates
-      * Probability
-      * Cost ( *1.2)/20 *139 = 
+      * Probability: 44%
+      * Cost ( 120*1.2)/20 *139 = $1000
+      
 8. SQL injection
    
-   a. Descriptions
+   a. Descriptions: a mallicious indider with no patient record read privilege was able to perform SQL injection on other forms and gained access to full list of patients. Inspecting network logs may reveal suspicious http requests.
    
-   b. Tools
+   b. Tools : SQLmap, SQLninja, SQLsus, Mole...
    
    c. Estimates
-      * Probability
-      * Cost ( *1.2)/20 *139 = 
+      * Probability : 70%
+      * Cost: (60*1.2)/20 * 139 = $500
+      
 9. Underprotected API
    
-   a. Descriptions
+   a. Descriptions: a mallicious insider with no patient record read privilege was able to exploit bugs in API (either native or third party) and made the API to display full list of patients. Inspecting network logs may reveal suspicious http requests.
    
-   b. Tools
+   b. Tools: any http header sniff and analyzer, built-in browser developer tool, portable fuzzer tools ...
    
    c. Estimates
-      * Probability
-      * Cost ( *1.2)/20 *139 = 
+      * Probability: 50%
+      * Cost ( 60*1.2)/20 *139 = $500
       
 10. Key logger
    
-    a. Descriptions
+    a. Descriptions: attacker was able to install a keylogger on the local machine and record all key strokes including new patient data input and login credentials of all users using the workstation. Inspecting running processes and performing comprehensive scan may help identify and resolving the problem (2 hours)
    
-    b. Tools
+    b. Tools: keylogger hardwares, keylogger software
    
     c. Estimates
-      * Probability
-      * Cost ( *1.2)/20 *139 = 
+      * Probability: 90%
+      * Cost (120 *1.2)/20 *139 = $1000
       
 11. Send content to printer
    
-    a. Descriptions
+    a. Descriptions: attacker was able to install a script that will secretly send the content of a target page (patient list page) to a local network printer whenever a legitimate user browses to those certain pages. Over the time, attacker will have a decent list of all patients in the system. Inspecting print spooler requests will revleal the exploit.
    
-    b. Tools
+    b. Tools: vbscript, shell script, batch script
    
     c. Estimates
-      * Probability
-      * Cost ( *1.2)/20 *139 = 
+      * Probability: 55%
+      * Cost ( 60*1.2)/20 *139 = $500
       
 12. Mirroring HDD
    
-    a. Descriptions
+    a. Descriptions: attacker was able to use built in Raid mirroring functionality supported by the workstation and secretly installed additional HDDs, able to get the mirror of all main HDDs data and secretly harvest the mallicious HDD at a later time. Inspecting raid settings, physical inspection of hardware, physical security will help identify and mitigate the problem.
    
-    b. Tools ( *1.2)/20 *139 = 
+    b. Tools: existing hardware raid supports, existing software raid support
    
     c. Estimates
-      * Probability
-      * Cost ( *1.2)/20 *139 = 
+      * Probability: 45%
+      * Cost (60*1.2)/20 *139 = $500
       
 13. Memory dump
    
-    a. Descriptions
+    a. Descriptions: attacker was able to secretly dump contents in memory into local disk or a local network location. Over the time, attacker can get login credentials, and browser contents including patient records. Process analysis, system call monitoring, antivirus scan may help identify and mitigate the problem.
    
-    b. Tools
+    b. Tools: Live RAM Caputer, WindowsScope, Memoryze, trojans,...
    
     c. Estimates
-      * Probability
-      * Cost ( *1.2)/20 *139 = 
+      * Probability: 42%
+      * Cost ( 100*1.2)/20 *139 = $834
       
 14. Buffer overflow
    
-    a. Descriptions
+    a. Descriptions: attacker caused a buffer overflow to execute payloads that affect OpenMRS, JDK, MySQL, browser, or flash and other plugins, leading to total exposure of patient info. System may or may not record the buffer overflow. Checking application log may reveal attempts.
    
-    b. Tools
+    b. Tools: binary reverse engineering tools, payload preparation platforms, ROP tools, ...
    
     c. Estimates
-      * Probability
-      * Cost ( *1.2)/20 *139 = 
+      * Probability: 49%
+      * Cost ( 400 *1.2)/20 *139 = $3336
       
-15. Direct copy of SQL files
+15. Rootkit
    
-    a. Descriptions
+    a. Descriptions: Attacker was able to install RootKit on the workstation that host the OpenMRS server and has total control. Identify and re-imaging the workstation will cost 3 hours at minimum.
    
-    b. Tools
+    b. Tools: DerStarke, QuarkMatter, ...
    
     c. Estimates
-      * Probability
-      * Cost ( *1.2)/20 *139 = 
+      * Probability: 66%
+      * Cost ( 180*1.2)/20 *139 = $1501
       
 16. Cache attack
    
-    a. Descriptions
+    a. Descriptions: Attacker was able to grab cached files produce by the system, or by OpenMRS and extract patient information from it. Under-protected SQL backups are also succeptible to this kind of attack.
    
-    b. Tools
+    b. Tools: thumb drive to copy files, cryptanalysis tool, text extract tool, etc.
    
     c. Estimates
-      * Probability
-      * Cost ( *1.2)/20 *139 = 
+      * Probability: 37%
+      * Cost ( 60*1.2)/20 *139 = $500
       
 17. Spyware/Trojan
    
-    a. Descriptions
+    a. Descriptions: attacker was able to plant a trojan or spyware on the computer and able to harvest all information, regarding login credentials
    
-    b. Tools
+    b. Tools: Frog Prince, Grasshopper, CandyMountain, Assasin, ...
    
     c. Estimates
-      * Probability
-      * Cost ( *1.2)/20 *139 = 
+      * Probability: 61%
+      * Cost ( 120*1.2)/20 *139 = $1000
       
 18. Whaling
    
-    a. Descriptions
+    a. Descriptions: attacker target key personel with high privilege and persuaded such people to execute a mallicious payload leading to attacker's total access to patient info.
    
-    b. Tools
+    b. Tools: email with payload, social engineering over the phone, ...
    
     c. Estimates
-      * Probability
-      * Cost ( *1.2)/20 *139 = 
+      * Probability: 85%
+      * Cost ( 60*1.2)/20 *139 = $500
       
 19. Shoulder surfing
    
-    a. Descriptions
+    a. Descriptions: attacker look over the shoulder or found a way to record an admin typing a password. This is a huge possibility considering the clinic is small, with low level of physical security.
    
-    b. Tools
+    b. Tools: human eyes, secret cameras
    
     c. Estimates
-      * Probability
-      * Cost ( *1.2)/20 *139 = 
+      * Probability: 90%
+      * Cost ( 180*1.2)/20 *139 = $1501
       
 20. Impersonation
    
-    a. Descriptions
+    a. Descriptions: attacker calls in or physically present and pretend to be soneone important and demand full list of patient.
    
-    b. Tools
+    b. Tools: phone, physical appearance, social engineering
    
     c. Estimates
-      * Probability
-      * Cost ( *1.2)/20 *139 = 
+      * Probability: 65%
+      * Cost ( 180*1.2)/20 *139 = $1501
