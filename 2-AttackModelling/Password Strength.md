@@ -16,5 +16,5 @@ Since my browser is Chinese, I translate the chinese reminding message into Engl
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/2-AttackModelling/picture/5.PNG)
 ## Password reuse policy: You can reuse the old password, no specific policy.
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/2-AttackModelling/picture/6.PNG)
-## Account lock out : Locked the 9th failed log in.
+## Account lock out : Locked the 8th failed log in.
  
