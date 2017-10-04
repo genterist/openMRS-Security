@@ -53,4 +53,48 @@
 
 
 ## Misuse Case 1 ##
+
+| Column                	| Content |
+| :---						| :---    |
+| Abuse Case ID 			| Registration-A3 |
+| Abuse Case Name 			| Interpolating Patients' Information |
+| Author					| Fuxing Luan |
+| Date						| 10/03/2017 |
+| Actors					| (Careless) Registration Clerk |
+| Summary					| A registration clerk unintentionally inputs wrong information for a patient  |
+| Basic Path				| BP0-1. The clerk logs into the openMRS system <br> BP0-2. The clerk goes into the page for creating new patient <br> BP0-3. The clerk, e.g. makes a typo on the patient's name <br> BP0-4. After completing the form, the clerk clicks the confirmation button to confirm the registration <br> BP0-5.The patient information has been created |
+| Alternative Paths			| N/A |
+| Capture Points			| CP0-1: (For BP0-4) The clerk needs permission to change the information of patients	|
+| Extension Points			| N/A	|
+| Preconditions				| 1. The system and registration module run well  |
+| Assumptions				| N/A	|
+| Worst case threat			| The real patient is hard to find in the system 	|
+| Capture Guaranteed		| The clerk should double check the information that he inputs |
+| Potential Misuse Profile 	| Common. Typo is easy to make for every one |
+| Stakeholder and Threats	| SH1: Patient <br> T1-1: Patient will meet troubles for unmatched information <br> 	SH2:Hospital using this system <br> T2-1: The reputation of the hospital will be damaged	|
+| Scope 					| Whole system |
+| Abstraction Level 		| misuse goal  |
+
+
 ## Misuse Case 2 ##
+
+| Column                	| Content |
+| :---						| :---    |
+| Abuse Case ID 			| Registration-A4 |
+| Abuse Case Name 			| Wrong information provided by a forgetful patient  |
+| Author					| Fuxing Luan |
+| Date						| 10/03/2017 |
+| Actors					| (Forgetful) Patient |
+| Summary					| A registration clerk unintentionally inputs wrong information for a patient  |
+| Basic Path				| BP0-1. The clerk logs into the openMRS system <br> BP0-2. The clerk goes into the page for creating new patient <br> BP0-3. The patient, e.g. provides a wrong phone number to the clerk <br> BP0-4. After completing the form, the clerk clicks the confirmation button to confirm the registration <br> BP0-5.The patient information has been created |
+| Alternative Paths			| N/A |
+| Capture Points			| CP0-1: (For BP0-4) The clerk should double check the information provided by the patient |
+| Extension Points			| N/A	|
+| Preconditions				| 1. The system and registration module run well  |
+| Assumptions				| N/A	|
+| Worst case threat			| Cannot contact the patient |
+| Capture Guaranteed		| The clerk should double check the information that he input |
+| Potential Misuse Profile 	| Common. It's easy to mess up the order of a phone number |
+| Stakeholder and Threats	| SH1: Patient <br> T1-1: Patient will meet troubles for unmatched information <br> 	SH2:Hospital using this system <br> T2-1: The reputation of the hospital will be damaged	|
+| Scope 					| Whole system |
+| Abstraction Level 		| misuse goal  |
