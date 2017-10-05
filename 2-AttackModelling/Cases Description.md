@@ -101,7 +101,7 @@
 | Worst case threat			| The wrong patient information is created and used |
 | Capture Guaranteed		| The wrong information is corrected during or after the registration, and not be used by anyone |
 | Potential Misuse Profile 	| Common |
-| Related Business Rules	| BR1. System should support functions of correcting operation error |
+| Related Business Rules	| BR1. System should support functions of changing incorrect data <br> BR2. Employee should validate the data being recorded into the system  |
 | Stakeholder and Threats	| SH1: Employees who use the wrong patient information may cause some problem and thus be punished <br> SH2: Hospital using this system: The reputation of the hospital will be damaged <br> SH3: Patient: With incorrect information, the patient may meet some problems like being unable to be contacted	|
 | Scope 					| Whole system |
 | Abstraction Level 		| Misuser goal  |
