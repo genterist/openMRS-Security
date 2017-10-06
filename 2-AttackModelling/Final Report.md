@@ -4,6 +4,8 @@
 
 Registration Module
 
+<br>
+
 ## 1. Password Strength ##
 
 Since some of the content contains Chinese, we translated the Chinese reminding message into English using the translator( which is also showed in the picture).
@@ -149,7 +151,7 @@ Since some of the content contains Chinese, we translated the Chinese reminding 
 
 <br><br>
 
-##  4. Vulnerability history ##
+##  4. Vulnerability History ##
 
 ### Description
 OpenMrs used to have XSS, CSRF and XXE Injection.
