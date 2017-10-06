@@ -27,9 +27,13 @@ Based on the above assumptions, we will use CVSS 3.0 calculator (https://www.fir
 
 ### Impact calculate
 We calculate impact based on these ranges
+
 1-3 : Minor
+
 4-6 : Moderate
+
 7-9 : Significant
+
 10 : Total impact
 
 ### Risk calculation
