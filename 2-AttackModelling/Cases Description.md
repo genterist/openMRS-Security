@@ -71,7 +71,7 @@
 | Capture Points			| CP1: (For BP0-4) The system will found out duplicate patient information and prevents the registration or sends check notice with the clerk <br> CP2: Anyone found the error and reported it to the administrator. The administrator manually deletes the duplicate information entry	|
 | Extension Points			| N/A	|
 | Preconditions				| 1. The system including registration module run well <br> 2. No other connection problems like network or database connection  |
-| Assumptions				| N/A	|
+| Assumptions				| The process will not be interrupted by environment, like being found and stopped by other stuff	|
 | Worst case threat			| The real patient is hard to find in the system 	|
 | Capture Guaranteed		| The clerk should double check the information that he inputs |
 | Potential Misuse Profile 	| Common |
@@ -91,18 +91,18 @@
 | Author					| Tam Nguyen |
 | Date						| 10/01/2017 |
 | Actor						| (Forgetful) Patient |
-| Summary					| A patient unintentionally provides wrong information to the registration clerk during registration  |
-| Basic Path				| BP0-1. The patient requests for being registered to the system <br> BP0-2. During the registration, for poor memory, the patient provides some wrong information like phone number to the clerk <br> BP0-3.The patient is registered with wrong information |
+| Summary					| A patient provides wrong information to the registration clerk during registration  |
+| Basic Path				| BP0-1. The patient requests for being registered to the system <br> BP0-2. During the registration, the patient provides some wrong information, like wrong phone number, to the clerk <br> BP0-3.The patient is registered with wrong information |
 | Alternative Paths			| N/A |
-| Capture Points			| CP1: (For BP0-2) The clerk double checks the information provided by the patient and corrects the error CP2: The patient recalls the correct information and asks clerks to correct it |
+| Capture Points			| CP1: (For BP0-2) The clerk double checks the information provided by the patient and corrects the error <br> CP2: (For BP0-2)The patient recalls the correct information and gives clerk the right one <br> CP3: After registration, the patient recalls the correct information and asks clerks to correct it |
 | Extension Points			| N/A	|
 | Preconditions				| 1. The system including registration module run well <br> 2. No other connection problems like network or database connection  |
-| Assumptions				| N/A	|
+| Assumptions				| The process will not be interrupted by environment, like being found and stopped by other stuff	|
 | Worst case threat			| The wrong patient information is created and used |
 | Capture Guaranteed		| The wrong information is corrected during or after the registration, and not be used by anyone |
 | Potential Misuse Profile 	| Common |
 | Related Business Rules	| BR1. System should support functions of changing incorrect data <br> BR2. Employee should validate the data being recorded into the system  |
-| Stakeholder and Threats	| SH1: Employees who use the wrong patient information may cause some problem and thus be punished <br> SH2: Hospital using this system: The reputation of the hospital will be damaged <br> SH3: Patient: With incorrect information, the patient may meet some problems like being unable to be contacted	|
+| Stakeholder and Threats	| SH1: Employees who use the wrong patient information may cause some problem and thus be punished <br> SH2: Hospital using this system: The hospital may suffer accident caused by wrong patient information <br> SH3: Patient: With incorrect information, the patient may meet some problems like being unable to be contacted	|
 | Scope 					| Whole system |
 | Abstraction Level 		| Misuser goal  |
 | Precision level 			| Focused |
