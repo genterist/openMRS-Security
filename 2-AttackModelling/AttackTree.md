@@ -1,4 +1,4 @@
-# ATTACK TREE ANALYSIS OF REGISTRATION MODULE
+# ATTACK TREE ANALYSIS OF OPENMRS REGISTRATION MODULE
 
 `AUTHOR : TAM N. NGUYEN` <br/>
 `UPDATED ON : 01OCT2017` <br/>
@@ -21,9 +21,23 @@ This attack tree analysis focuses on the  OpenMRS' "Register a patient" (/openmr
 ### Probability calculation
 Based on the above assumptions, we will use CVSS 3.0 calculator (https://www.first.org/cvss/calculator/3.0) to calculate the base probability. For example, if CVSS 3.0 score is 5, we will assume that the probability that the incident will happen is 50%. While CVSS score does not directly translate to threat probability in real life, for this project, we believe it is strong enough to be based on since it involves 11 groups of parameters (parameter groups in base score and temporal score)
 
-### Cost calculation
-* We based our cost on W.H.O recommended cost for health care center cost in Kenya (http://www.who.int/choice/country/ken/cost/en/). We will go with the least cost, per 20 minutes for LCU which is $139. For each type of threat, we will calculate the time needed for us ourselves to mitigate the threat. We then add 20% more time and use the final time value together with the above mentioned 20-min unit cost to calculate the final cost.
-* All of the costs at tree nodes do not include the actual cost of patient record leak itself. In the case of Kenya, the cost for patient data leak may not be that high compared to that of the US. It is due to the legal obligations, laws, or even the nature of the clinic. If this is a non-profit clinic ran by W.H.O, there may be a clause saying that patients waive the rights in all legal cases before they are admitted to the clinic.
+### Cost calculation for attack tree
+* We based our base cost on W.H.O recommended cost for health care center cost in Kenya (http://www.who.int/choice/country/ken/cost/en/). We will go with the least cost, per 20 minutes for LCU which is $139. For each type of threat, we will calculate the time needed for us ourselves to mitigate the threat. We then add 20% more time and use the final time value together with the above mentioned 20-min unit cost to calculate the final base cost. All money values in the tree are base costs 
+* On top of the base costs, the actual money benefited from exploiting the patient records can be added. For example, if the attackers think they can "sell" the patient records to someone for $20000 then a reasonable amount of total cost for an exploit should be 50% of $20000 plus the base cost. Because it is extremely hard to predict how a particular group of attackers will benefit from their hacking works, we do not attempt to calculate the final cost. The idea is the attacker should not invest more on an exploit than the ROI (return of investment) from an exploit.
+
+### Impact calculate
+We calculate impact based on these ranges
+1-3 : Minor
+4-6 : Moderate
+7-9 : Significant
+10 : Total impact
+
+### Risk calculation
+We calculate risks on leaf nodes based on this equation
+risk = (probability/cost) * impact
+
+### Propogation of metrics
+[figure]
 
 1. SQL Injection
    
