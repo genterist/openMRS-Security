@@ -7,8 +7,11 @@
 `EXECUTED ON : 20OCT17` <br/>
 
 ### * Description
-#### Name of module : OpenMRS Patient registration page at http://localhost:8081/openmrs-standalone/registrationapp/registerPatient.page
-(to be developed)
+#### Name of module : OpenMRS Patient registration 
++ Page location : http://localhost:8081/openmrs-standalone/registrationapp/registerPatient.page
++ Fuzz string : http://localhost:8081/openmrs-standalone/registrationapp/registerPatient/submit.action?appId=referenceapplication.registrationapp.registerPatient&&givenName=Jennifer&middleName=&familyName=Lawren&preferred=true&gender=F&unknown=false&birthdateDay=&birthdateMonth=&birthdateYear=&birthdateYears=25&birthdateMonths=1&birthdate=&address1=[fuzzdata]&address2=bogus&cityVillage=Hollywood&stateProvince=CA&country=usA&postalCode=00000&phoneNumber=408+804+4488&relationship_type=8d919b58-c2cc-11de-8d13-0010c6dffd0f-A&other_person_uuid=
++ Fuzz data : jbrofuzz pre-installed rules in OWASP scanner
+Fuzzer will deploy 223 Cross-site scripting attack strings on the variable "address1" in form of POST requests. Server HttpResponses will be analyzed and be decided if the attacks were successful or not.
 
 ### * Precondition
 1. A local computer with administrator privilege
