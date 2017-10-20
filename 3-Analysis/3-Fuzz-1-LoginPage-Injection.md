@@ -1,17 +1,17 @@
 # Fuzz -1- LOGIN PAGE INJECTION
 ### Priority : HIGH
-### Test status : PASSED
+### Test status : FAILED
 `DESIGNER : TAM N NGUYEN` <br/>
 `EXECUTED BY : TAM N NGUYEN` <br/>
-`UPDATED ON : 20SEP17` <br/>
-`EXECUTED ON : 20SEP17` <br/>
+`UPDATED ON : 20OCT17` <br/>
+`EXECUTED ON : 20OCT17` <br/>
 
 ### * Description
 #### Name of module : OpenMRS login
 + Page location : http://localhost:8081/openmrs-standalone/login.htm
 + Fuzz string : username=admin&password=<<fuzz data>>&sessionLocation=2&redirectUrl=
 + Fuzz data : jbrofuzz pre-installed rules in OWASP scanner
-Fuzzer will deploy 199 injection attack strings on the variable "password" in form of POST requests. Server HttpResponses will be analyzed to decided if the attacks were successful or not.
+Fuzzer will deploy 199 injection attack strings on the variable "password" in form of POST requests. Server HttpResponses will be analyzed and be decided if the attacks were successful or not.
 
 
 ### * Precondition
@@ -64,7 +64,8 @@ jbrofuzz rules came standard with OWASP Zap
 ![](https://github.com/genterist/openMRS-Security/blob/master/3-Analysis/images/fuzz-InjectionResults.png)
 
 ### * Expected results
-OpenMRS should redirect invalid logins back to the login page.
++ OpenMRS should redirect invalid logins back to the login page.
++ System has to be able to fail securely.
 
 ### * Post-condition
 OpenMRS should still be operating normally
@@ -73,16 +74,20 @@ OpenMRS should still be operating normally
 + 199 fuzz were done on the "password" variable
 + 197 of the entries have 302 code and zero size of Response html body. Confirmed by inspection of html header, noticing that system redirects invalid login to previous page - the login page.
 + 002 of the fuzz entries were able to force system to leak some debugging informations which can be used for further attacks (to be discussed further in the Notes section)
-+ We decided that the test is a "PASSED" because no exploit directly linked to Injection was successful.
++ We decided that the test is a "FAILED". Even though no exploit directly linked to Injection was successful, the fuzzer was able to leak some important debugging data. 
 
 ### * NOTES:
 
-FUZZ STRING
+FUZZ STRING USED
 > ' union (select NULL, (select @@version)) --&sessionLocation=2&redirectUrl=
+
 or
+
 > username=admin&password=' union (select NULL, NULL, (select @@version)) --&sessionLocation=2&redirectUrl=
 
 LEAKED SYSTEM INFO
+
+Originally harvested by OWASP fuzzer in HttpResponse and may not be able to reproduce using the regular browser/view source method.
 ```
 <h1>UI Framework Error</h1>
 
