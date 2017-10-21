@@ -1,4 +1,4 @@
-# Client Bypass -1- LOGIN PAGE BUFFER OVER FLOW
+# Client Bypass -1- LOGIN PAGE INTEGER BUFFER OVER FLOW
 ### Priority : HIGH
 ### Test status : FAILED
 `DESIGNER : TAM N NGUYEN` <br/>
