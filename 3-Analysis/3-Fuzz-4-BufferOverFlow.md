@@ -1,4 +1,4 @@
-# Fuzz -1- LOGIN PAGE SQL INJECTION
+# Fuzz -4- LOGIN PAGE BUFFER OVER FLOW
 ### Priority : HIGH
 ### Test status : PASSED
 `DESIGNER : TAM N NGUYEN` <br/>
@@ -75,5 +75,4 @@ OpenMRS should still be operating normally
 + All of the entries have 302 code and zero size of Response html body. Confirmed by inspection of html header, noticing that system redirects invalid login to previous page - the login page. 
 
 ### * NOTES:
-
-n/a
+In the future, we would create more fuzz cases with higher amount of characters 

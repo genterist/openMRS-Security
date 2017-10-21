@@ -1,4 +1,4 @@
-# Fuzz -1- LOGIN PAGE SQL INJECTION
+# Fuzz -3- LOGIN PAGE SQL INJECTION
 ### Priority : HIGH
 ### Test status : FAILED
 `DESIGNER : TAM N NGUYEN` <br/>
