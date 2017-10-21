@@ -1,6 +1,6 @@
-# Client Bypass -2- LOGIN PAGE SESSION HIJACK
+# Client Bypass -3- LOGIN PAGE REDIRECT
 ### Priority : HIGH
-### Test status : PASSED
+### Test status : FAILED
 `DESIGNER : TAM N NGUYEN` <br/>
 `EXECUTED BY : TAM N NGUYEN` <br/>
 `UPDATED ON : 20OCT17` <br/>
@@ -9,9 +9,10 @@
 ### * Description
 #### Name of module : OpenMRS login
 + Page location : http://localhost:8081/openmrs-standalone/login.htm
-+ Attack type : Session hijacking
-+ Attack value : the JSESSIONID value of a user's session
-This attack will try to swith the sessions between a clerk with limitted privilege and an administrator. Action is simple and based on modification of http header value.
++ Attack type : unauthorized redirect after login
++ Attack value : %2Fopenmrs-standalone%2Fappui%2Fheader%2Flogout.action%3FsuccessUrl%3Dopenmrs-standalone
+In this test, we will redirect logged in user to a logout page, aiming for an illusion that user's credential was not correct. The exploit is simple yet can cause a massive confusion as well as effective denial of service
+
 
 ### * Precondition
 1. A local computer with administrator privilege
@@ -51,35 +52,22 @@ This attack will try to swith the sessions between a clerk with limitted privile
 10. Close "Settings" tab, and refresh the OpenMRS login page. Type in username: admin, and password: Admin123, choose "Pharmacy" location and click "Login"
 10. You will not be able to login right away and OWASP Zap proxy may issue you an alert saying it is interupting the request. In such case, you can acknowledge the alert. Your screen should look similar to this
 
-![](https://github.com/genterist/openMRS-Security/blob/master/3-Analysis/images/interup1.png)
+![](https://github.com/genterist/openMRS-Security/blob/master/3-Analysis/images/interup4.png)
 
-11. Notice that by the end of the header, we have a value set of 
-> Cookie: JSESSIONID=D1392D7F2D37E5208D57E0F677CBC686; referenceapplication.lastSessionLocation=2
-Copy the value of JSESSIONID. Your value may be different and for our test at this time, that value is D1392D7F2D37E5208D57E0F677CBC686
-12. Click the "play" button several more times until the browser finishes loading and you should be able to logged into the dashboard.
-13. Keep the current browser window and open another Google Chrome browser window in ICOGNITO mode and go to the login page. You may have to click the play button several times for the page to load. Once the page is load, login with the clerk credential (Username: clerk, password: Clerk123) and location is "Registration Desk"
-14. Notice that after you click "Login", you will be brought to OWASP Zap proxy and see something like this
+11. Notice that in the request body, there is a variable "redirectUrl" (the highlighted section). We will replace the value of that variable with "%2Fopenmrs-standalone%2Fappui%2Fheader%2Flogout.action%3FsuccessUrl%3Dopenmrs-standalone" (no double quotes) and then click the "play" symbol right above the "request" tab
 
-![](https://github.com/genterist/openMRS-Security/blob/master/3-Analysis/images/interup2.png)
+12. Click the "play" button several more times until the browser finishes loading and we will find that we are at the login page (as if our login credential used was not correct)
 
-15. Replace the current value of JSESSIONID (highlighted in the screenshot) with the value of the other JSESSIONID which is in our case, the value in step 11. Click the play button after you're done.
-16. Click play two more times and you will see another header with the variable JSESSIONID again.
-
-![](https://github.com/genterist/openMRS-Security/blob/master/3-Analysis/images/interup3.png)
-
-Replace it again with the value you recorded in step 11 and then click play button.
-17. The server will refuse and force the original sessionID value of clerk. If we keep changing the clerk's sessionID to the admin's sessionID, we will run into step 16 and loop in it again and again. If we accept the server's value of sessionID, after clicking the play button, we will return back to the login page with no account logged in. Note that this is within the Icognito browser. Admin is still logged in in the regular browser
-18. Close the incognito browser. Log out of admin account in the regular browser (once again, you may to click the play button several times to log out)
 
 ### * Expected results
-+ OpenMRS should fail securely either by issuing an error message or redirecting user to login page
-+ Error should not reveal too much information about the system
++ OpenMRS should recognize the erronous flow and correct it by defaulting it to a page other than the logout page and still log user in correctly.
 
 ### * Post-condition
 OpenMRS should still be operating normally
 
 ### * Actual results
-System silently redirect user to login page without any error or announcement.
+
+User was returned to the login page as if the login credential was not correct
 
 ### * NOTES:
 n/a
