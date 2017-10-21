@@ -11,7 +11,7 @@
 + Page location : http://localhost:8081/openmrs-standalone/login.htm
 + Attack type : Buffer overflow
 + Attack value : 99999999999999999999
-In this test, we will interup browser requests and try to overflow the value of working "location"
+In this test, we will interup browser requests and try to overflow the value of working "location".
 
 
 ### * Precondition
@@ -70,7 +70,7 @@ OpenMRS should still be operating normally
 
 ### * Actual results
 
-![](https://github.com/genterist/openMRS-Security/blob/master/3-Analysis/images/interup1.png)
+![](https://github.com/genterist/openMRS-Security/blob/master/3-Analysis/images/BOFerror.png)
 
 ### * NOTES:
 A very detailed stack trace was given which is a violation of "Fail securely" principle. Defaulting user to a default location should be a good way to mitigate this bug.
