@@ -1,4 +1,4 @@
-## Name of module : [Registration] ##
+Name of module : [Registration]
 Test Description
 When someone registers a new patient, the username, IP address, and time should be logged
 * Precondition
@@ -71,4 +71,3 @@ Test status : [ Pass ]
 Test status adequacy:
 
 	For registering a user, it is enough to log these information so that the log will not expose sensitive data.
-
