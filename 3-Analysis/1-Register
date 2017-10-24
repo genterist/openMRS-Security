@@ -1,4 +1,4 @@
-Name of module : [Registration]
+## Name of module : [Registration] ##
 Test Description
 When someone registers a new patient, the username, IP address, and time should be logged
 * Precondition
