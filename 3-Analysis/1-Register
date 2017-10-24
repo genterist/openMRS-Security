@@ -1,0 +1,74 @@
+Name of module : [Registration]
+Test Description
+When someone registers a new patient, the username, IP address, and time should be logged
+* Precondition
+1.	A local computer with administrator privilege
+2.	Java environment installed
+3.	OpenMRS Standalone Version 2.6.0 downloaded and unzipped
+4.	Latest Chrome browser
+* Assumption
+1.	OpenMRS with demo database runs normally
+* Test Data
+1.	Username: Admin	
+2.	Password: Admin123
+* Test steps
+1.	Start local openMRS and log in with the username and account
+2.	Click “Register a patient” in the main page
+3.	Input Kobe in Given field and Bryant in Family Name field
+4.	Choose Male as gender
+5.	Let the birthday be 8/23/1978
+6.	Address as Staples Center, Los Angeles, CA, Los Angeles, 90001
+7.	Tel 5555555555
+8.	No relatives
+* Expected logged information
+1.	Username
+2.	IP address
+3.	Time
+* Actual results
+INFO - LoggingAdvice.invoke(115) |2017-10-24 14:17:28,252| In method PatientService.savePatient. Arguments: Patient=Patient#null, 
+INFO - LoggingAdvice.invoke(155) |2017-10-24 14:17:28,279| Exiting method savePatient
+INFO - LoggingAdvice.invoke(115) |2017-10-24 14:17:28,738| In method UserService.saveUser. Arguments: User=admin, 
+INFO - LoggingAdvice.invoke(155) |2017-10-24 14:17:28,745| Exiting method saveUser
+ 
+Test status : [ Fail ]
+No IP Address is logged
+
+
+
+Name of module : [Registration]
+Test Description
+When someone registers a new patient, his password and session id should not be logged
+* Precondition
+5.	A local computer with administrator privilege
+6.	Java environment installed
+7.	OpenMRS Standalone Version 2.6.0 downloaded and unzipped
+8.	Latest Chrome browser
+* Assumption
+2.	OpenMRS with demo database runs normally
+* Test Data
+3.	Username: Admin	
+4.	Password: Admin123
+* Test steps
+9.	Start local openMRS and log in with the username and account
+10.	Click “Register a patient” in the main page
+11.	Input Kobe in Given field and Bryant in Family Name field
+12.	Choose Male as gender
+13.	Let the birthday be 8/23/1978
+14.	Address as Staples Center, Los Angeles, CA, Los Angeles, 90001
+15.	Tel 5555555555
+16.	No relatives
+* Expected logged information
+4.	Username
+5.	IP address
+6.	Time
+* Actual results
+INFO - LoggingAdvice.invoke(115) |2017-10-24 14:17:28,252| In method PatientService.savePatient. Arguments: Patient=Patient#null, 
+INFO - LoggingAdvice.invoke(155) |2017-10-24 14:17:28,279| Exiting method savePatient
+INFO - LoggingAdvice.invoke(115) |2017-10-24 14:17:28,738| In method UserService.saveUser. Arguments: User=admin, 
+INFO - LoggingAdvice.invoke(155) |2017-10-24 14:17:28,745| Exiting method saveUser
+ 
+Test status : [ Pass ]
+Test status adequacy:
+
+	For registering a user, it is enough to log these information so that the log will not expose sensitive data.
+
