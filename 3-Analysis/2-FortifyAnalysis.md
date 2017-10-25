@@ -1,27 +1,22 @@
+
+
 ## Overview ##
 
-In this part we list 10 security vulnerabilities in OpenMRS and suggest potential fix for each. The prioritization is based on the impact and severity of each vulnerability.
+In this part we list 10 security vulnerabilities in OpenMRS and suggest potential fix for each. The prioritization is based on the impact and severity of each vulnerability. The vulnerabilities is prioritized based on its risk, which is **Risk = Impact · Likelihood**.
 
 ## Static Analysis ##
 
 ### 1. Command Injection ###
 
-**Vulnerability Description**:The method *execMysqlCmd()* in MigrateDataSet.java:187 calls *exec()* with a command built from untrusted data. This call can cause the program to execute malicious commands on behalf of an attacker.
-
-**Potential Fix**:
-
-1. A number of modern web frameworks provide mechanisms for performing validation of user input. Struts and Spring MVC are among them. To highlight the unvalidated sources of input, the Fortify Secure Coding Rulepacks dynamically re-prioritize the issues reported by Fortify Static Code Analyzer by lowering their probability of exploit and providing pointers to the supporting evidence whenever the framework validation mechanism is in use. We refer to this feature as Context-Sensitive Ranking. To further assist the Fortify user with the auditing process, the Fortify Software Security Research group makes available the Data Validation project template that groups the issues into folders based on the validation mechanism applied to their source of input.
-
-2. Fortify RTA adds protection against this category.
-
-	
-**IMPACT**: 5.0
-
-**LIKELIHOOD**: 3.2
-	
-**SEVERITY**: 4.0
-
-**CONFIDENCE**: 5.0
+| Component 				| Content 		|
+| :---                   	| :---         	|
+| **Vulnerability Description** |The method *execMysqlCmd()* in MigrateDataSet.java:187 calls *exec()* with a command built from untrusted data. This call can cause the program to execute malicious commands on behalf of an attacker. |
+| **Potential Fix** | 1. A number of modern web frameworks provide mechanisms for performing validation of user input. Struts and Spring MVC are among them. To highlight the unvalidated sources of input, the Fortify Secure Coding Rulepacks dynamically re-prioritize the issues reported by Fortify Static Code Analyzer by lowering their probability of exploit and providing pointers to the supporting evidence whenever the framework validation mechanism is in use. We refer to this feature as Context-Sensitive Ranking. To further assist the Fortify user with the auditing process, the Fortify Software Security Research group makes available the Data Validation project template that groups the issues into folders based on the validation mechanism applied to their source of input. 2. Fortify RTA adds protection against this category. | 
+| **SEVERITY**: | 4.0 |
+| **CONFIDENCE** | 5.0 |
+| **IMPACT** | 5.0 |
+| **LIKELIHOOD** | 3.2 |
+| **Risk** | 16.0 |
 
 
 ### 2. SQL Injection ###
