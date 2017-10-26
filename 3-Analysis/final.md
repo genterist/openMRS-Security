@@ -1407,7 +1407,9 @@ OpenMRS should still be operating normally
 + All of the entries have 302 code and zero size of Response html body. Confirmed by inspection of html header, noticing that system redirects invalid login to previous page - the login page. 
 
 ### * NOTES:
-In the future, we would create more fuzz cases with higher amount of characters # Client Bypass -1- LOGIN PAGE INTEGER BUFFER OVER FLOW
+In the future, we would create more fuzz cases with higher amount of characters
+
+# Client Bypass -1- LOGIN PAGE INTEGER BUFFER OVER FLOW
 ### Priority : HIGH
 ### Test status : FAILED
 `DESIGNER : TAM N NGUYEN` <br/>
@@ -1482,7 +1484,9 @@ OpenMRS should still be operating normally
 ![](https://github.com/genterist/openMRS-Security/blob/master/3-Analysis/images/BOFerror.png)
 
 ### * NOTES:
-A very detailed stack trace was given which is a violation of "Fail securely" principle. Defaulting user to a default location should be a good way to mitigate this bug.# Client Bypass -2- LOGIN PAGE SESSION HIJACK
+A very detailed stack trace was given which is a violation of "Fail securely" principle. Defaulting user to a default location should be a good way to mitigate this bug.
+
+# Client Bypass -2- LOGIN PAGE SESSION HIJACK
 ### Priority : HIGH
 ### Test status : PASSED
 `DESIGNER : TAM N NGUYEN` <br/>
@@ -1566,7 +1570,9 @@ OpenMRS should still be operating normally
 System silently redirect user to login page without any error or announcement.
 
 ### * NOTES:
-n/a# Client Bypass -3- LOGIN PAGE REDIRECT
+n/a
+
+# Client Bypass -3- LOGIN PAGE REDIRECT
 ### Priority : HIGH
 ### Test status : FAILED
 `DESIGNER : TAM N NGUYEN` <br/>
@@ -1638,7 +1644,9 @@ OpenMRS should still be operating normally
 User was returned to the login page as if the login credential was not correct
 
 ### * NOTES:
-n/a# Client Bypass -4- LOGIN PAGE DELETTE
+n/a
+
+# Client Bypass -4- LOGIN PAGE DELETTE
 ### Priority : HIGH
 ### Test status : FAILED
 `DESIGNER : TAM N NGUYEN` <br/>
@@ -1795,7 +1803,9 @@ OpenMRS should still be operating normally
 ![](https://github.com/genterist/openMRS-Security/blob/master/3-Analysis/images/proof1.png)
 
 ### * NOTES:
-n/a# Security Requirements
+n/a
+
+# Security Requirements
 `DESIGNER : Zhuo Li` <br/>
 `EXECUTED BY : Zhuo Li` <br/>
 `UPDATED ON : 22OCT17` <br/>
