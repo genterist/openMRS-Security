@@ -1,4 +1,6 @@
-# Test 1
+# Audit/Logging Ismplementation #
+
+## Test case: U-1
 
 `DESIGNER : [Fuxing Luan]`
 `UPDATED ON : [10/24/2017]`
@@ -6,7 +8,7 @@
 ### Name of module : [ Update ]
 
 ### Test Description
-When someone update a patient’s information, the username, IP address, and time should be logged.
+When someone adds a patient’s information, the username, IP address, and time should be logged.
 
 ### * Precondition
 1. A local computer with administrator privilege
@@ -45,12 +47,12 @@ INFO - LoggingAdvice.invoke(155) |2017-10-24 14:17:28,745| Exiting method saveUs
 
 ### Test status : [ fail ]
 
-No IP address or computer ID is tracking. 
+No IP address or computer ID is tracked. 
 It is inadequate because you cannot tell whether it was operated by the person.
 
 
 
-# Test 2
+# Test case: U-2
 
 `DESIGNER : [Fuxing Luan]`
 `UPDATED ON : [10/24/2017]`
@@ -94,12 +96,12 @@ INFO - LoggingAdvice.invoke(155) |2017-10-24 14:17:28,745| Exiting method saveUs
 
 ### Test status : [ fail ]
 
-No IP address or computer ID is tracking. 
+The password and session id is not be logged 
 
 
 
 
-# Test 3
+# Test case: U-3
 
 `DESIGNER : [Fuxing Luan]`
 `UPDATED ON : [10/24/2017]`
@@ -150,7 +152,7 @@ It is inadequate because you cannot tell whether it was operated by the person.
 
 
 
-# Test 4
+# Test case: U-4
 
 `DESIGNER : [Fuxing Luan]`
 `UPDATED ON : [10/24/2017]`
@@ -197,7 +199,7 @@ No private information is exposed
 
 
 
-# Test 5
+# Test case: U-5
 
 `DESIGNER : [Fuxing Luan]`
 `UPDATED ON : [10/24/2017]`
@@ -247,12 +249,12 @@ It is inadequate because you cannot tell whether it was operated by the person.
 
 
 
-# Test 6
+# Test case: D-1
 
 `DESIGNER : [Fuxing Luan]`
 `UPDATED ON : [10/24/2017]`
 
-### Name of module : [ Deletion ]
+### Name of module : [ Delete ]
 
 ### Test Description
 When someone deletes a new patient, his password and session id should not be logged
@@ -292,10 +294,7 @@ No private information is exposed
 
 
 
-
-
-
-# Test 7
+# Test case: V-1
 
 `DESIGNER : [Fuxing Luan]`
 `UPDATED ON : [10/24/2017]`
@@ -341,7 +340,7 @@ It is inadequate because you cannot tell whether it was operated by the person.
 
 
 
-# Test 8
+# Test case: V-2
 
 `DESIGNER : [Fuxing Luan]`
 `UPDATED ON : [10/24/2017]`
@@ -381,7 +380,7 @@ INFO - LoggingAdvice.invoke(155) |2017-10-24 17:01:36,098| Exiting method saveUs
 No private information is exposed.
 
 
-# Test 9
+# Test case: V-3
 
 `DESIGNER : [Fuxing Luan]`
 `UPDATED ON : [10/24/2017]`
@@ -429,7 +428,7 @@ It is inadequate because you cannot tell whether it was operated by the person.
 
 
 
-# Test 10
+# Test case: V-4
 
 `DESIGNER : [Fuxing Luan]`
 `UPDATED ON : [10/24/2017]`
