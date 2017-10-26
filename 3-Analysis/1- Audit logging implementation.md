@@ -46,6 +46,7 @@ INFO - LoggingAdvice.invoke(155) |2017-10-24 14:17:28,745| Exiting method saveUs
 ### Test status : [ fail ]
 
 No IP address or computer ID is tracking. 
+It is inadequate because you cannot tell whether it was operated by the person.
 
 
 
@@ -144,6 +145,7 @@ INFO - LoggingAdvice.invoke(155) |2017-10-24 16:01:46,301| Exiting method saveUs
 ### Test status : [ fail ]
 
 No IP address or computer ID is tracking. 
+It is inadequate because you cannot tell whether it was operated by the person.
 
 
 
@@ -240,6 +242,7 @@ INFO - LoggingAdvice.invoke(155) |2017-10-24 16:46:59,086| Exiting method voidPa
 ### Test status : [ fail ]
 
 No IP address or computer ID is tracking. 
+It is inadequate because you cannot tell whether it was operated by the person.
 
 
 
@@ -334,10 +337,11 @@ INFO - LoggingAdvice.invoke(155) |2017-10-24 17:01:36,098| Exiting method saveUs
 ### Test status : [ fail ]
 
 No IP address or computer ID is tracking. 
+It is inadequate because you cannot tell whether it was operated by the person.
 
 
 
-# Test 7
+# Test 8
 
 `DESIGNER : [Fuxing Luan]`
 `UPDATED ON : [10/24/2017]`
@@ -376,4 +380,92 @@ INFO - LoggingAdvice.invoke(155) |2017-10-24 17:01:36,098| Exiting method saveUs
 
 No private information is exposed.
 
+
+# Test 9
+
+`DESIGNER : [Fuxing Luan]`
+`UPDATED ON : [10/24/2017]`
+
+### Name of module : [ View ]
+
+### Test Description
+When someone views a patient’s information, the username, IP address, and time should be logged
+
+### * Precondition
+1. A local computer with administrator privilege
+2. Java environment installed
+3. OpenMRS Standalone Version 2.6.0 downloaded and unzipped
+4. Latest Chrome browser
+
+### * Assumption
+3. OpenMRS with demo database runs normally
+
+### * Test Data
+1. Username: `Admin`
+2. Password: `Admin123`
+
+### * Test steps
+1. Start local openMRS and log in with the username and account
+2. Click “Appointment Scheduling” in the main page
+3. Click “Manage Appointment”
+4. Input “Kobe Bryant” and search
+
+
+### * Expected logged info
+1. username
+2. time
+3. ip address
+4. computer id
+
+### * Actual results
+INFO - LoggingAdvice.invoke(115) |2017-10-24 17:01:36,095| In method UserService.saveUser. Arguments: User=nurse, 
+INFO - LoggingAdvice.invoke(155) |2017-10-24 17:01:36,098| Exiting method saveUser
+
+### Test status : [ fail ]
+
+
+No IP address or computer ID is tracking. 
+It is inadequate because you cannot tell whether it was operated by the person.
+
+
+
+# Test 10
+
+`DESIGNER : [Fuxing Luan]`
+`UPDATED ON : [10/24/2017]`
+
+### Name of module : [ View ]
+
+### Test Description
+When someone views a new patient's appointment, his password and session id should not be logged
+
+### * Precondition
+1. A local computer with administrator privilege
+2. Java environment installed
+3. OpenMRS Standalone Version 2.6.0 downloaded and unzipped
+4. Latest Chrome browser
+
+### * Assumption
+3. OpenMRS with demo database runs normally
+
+### * Test Data
+1. Username: `Nurse`
+2. Password: `Nurse123`
+
+### * Test steps
+1. Start local openMRS and log in with the username and account
+2. Click “Appointment Scheduling” in the main page
+3. Click “Manage Appointment”
+4. Input “Kobe Bryant” and search
+
+### * Expected logged info
+user password or session id should not be logged
+
+### * Actual results
+INFO - LoggingAdvice.invoke(115) |2017-10-24 17:01:36,095| In method UserService.saveUser. Arguments: User=nurse, 
+INFO - LoggingAdvice.invoke(155) |2017-10-24 17:01:36,098| Exiting method saveUser
+
+### Test status : [ pass ]
+
+No private information is exposed.
 
