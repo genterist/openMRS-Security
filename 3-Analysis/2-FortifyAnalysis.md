@@ -11,7 +11,7 @@ In this part we list 10 security vulnerabilities in OpenMRS and suggest potentia
 | Component 				| Content 		|
 | :---                   	| :---         	|
 | Vulnerability Description | On line 164 of *MigrateAllergiesChangeSet.java*, the method *getConceptByGlobalProperty()* invokes a SQL query built using input coming from an untrusted source. This call could allow an attacker to modify the statement's meaning or to execute arbitrary SQL commands. |
-| Potential Fix | 1. A common mistake is to use parameterized SQL statements that are constructed by concatenating user-controlled strings. Of course, this defeats the purpose of using parameterized SQL statements. If you are not certain that the strings used to form parameterized statements are constants controlled by the application, do not assume that they are safe because they are not being executed directly as SQL strings. Thoroughly investigate all uses of user-controlled strings in SQL statements and verify that none can be used to modify the meaning of the query. <br>2. Another potential fix is adopting modern web framework. A number of modern web frameworks provide mechanisms for performing validation of user input, like Struts and Spring MVC. But the cost of changing design or architecture of current application may be very high. | 
+| Potential Fix | 1. Replacing the query execution statement with parameterized SQL statements can enforce this behavior by disallowing data-directed context changes and avoiding nearly all SQL injection attacks. <br>2. Another potential fix is adopting modern web framework. A number of modern web frameworks provide mechanisms for performing validation of user input, like Struts and Spring MVC. But the cost of changing design or architecture of current application may be very high. | 
 | Impact | 5.0 |
 | Likelihood | 5.0 |
 | **Risk** | 25.0 |
@@ -22,7 +22,7 @@ In this part we list 10 security vulnerabilities in OpenMRS and suggest potentia
 | Component 				| Content 		|
 | :---                   	| :---         	|
 | Vulnerability Description | The method *execMysqlCmd()* in *MigrateDataSet.java*:187 calls *exec()* with a command built from untrusted data. This call can cause the program to execute malicious commands on behalf of an attacker. |
-| Potential Fix | 1. One potential fix is adopting modern web framework. A number of modern web frameworks provide mechanisms for performing validation of user input, like Struts and Spring MVC. But the cost of changing design or architecture of current application may be very high. <br>2. Fortify RTA adds protection against this category. | 
+| Potential Fix | 1.Building a filter / validation method that check the command before the command is executed by *execMysqlCmd()*. The input could be selected from a predetermined set of safe commands. <br>2. Another potential fix is adopting modern web framework. A number of modern web frameworks provide mechanisms for performing validation of user input, like Struts and Spring MVC. But the cost of changing design or architecture of current application may be very high. | 
 | Impact | 5.0 |
 | Likelihood | 3.2 |
 | **Risk** | 16.0 |
@@ -32,8 +32,8 @@ In this part we list 10 security vulnerabilities in OpenMRS and suggest potentia
 
 | Component 				| Content 		|
 | :---                   	| :---         	|
-| Vulnerability Description | The method *authenticate()* in *Context.java*:287 mishandles confidential information, which can compromise user privacy and is often illegal. More specifically, the statement `log.debug("Authenticating with username: " + username);` in *authenticate()* will display the username in log when debug is enabled. |
-| Potential Fix | 1. One potential fix for this problem is removing the code.  <br>2. The Fortify Java Annotations FortifyPassword, FortifyNotPassword, FortifyPrivate and FortifyNotPrivate can be used to indicate which fields and variables represent passwords and private data. | 
+| Vulnerability Description | The method *authenticate()* in *Context.java*:287 mishandles confidential information, which can compromise user privacy and is often illegal. More specifically, the password enters the program, and the statement `log.debug("Authenticating with username: " + username);` in *authenticate()* will display the username in log when debug is enabled. |
+| Potential Fix | 1. One potential fix for this problem is minimizing the exposure of sensitive data and encrypting them if they are needed. <br>2. Making sure the source code of the application cannot be decompiled and interpolated by others. | 
 | Impact | 4.0 |
 | Likelihood | 2.8 |
 | **Risk** | 11.2 |
