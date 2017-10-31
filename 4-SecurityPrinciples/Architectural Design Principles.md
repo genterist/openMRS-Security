@@ -18,7 +18,8 @@ Result: Failed. As we can see, the privilege of a clerk only include manage appo
 
 Solution: The system should manage the access control using something like Role Based Access Control instead of url access. The system should check the role on both client and server side.
 
-![alt text](https://github.com/genterist/openMRS-Security/blob/master/3-Analysis/images/SecReq01.PNG)
+![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/ADP0101.PNG)
+![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/ADP0102.PNG)
 
 ### ADP02
 Securing the Weakest Link : Attackers are more likely to attack a weak spot in a software system than to penetrate a heavily fortified component.
@@ -46,6 +47,6 @@ Result: Failed. There are detailed error message about the source code. The hack
 
 Solution: The system should only return a simple error message without showing any detail about the code. E.g. 404 Error.
 
-![alt text](https://github.com/genterist/openMRS-Security/blob/master/3-Analysis/images/SecReq03.PNG)
+![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/ADP03.PNG)
 
 
