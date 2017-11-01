@@ -22,17 +22,19 @@ Solution: The system should manage the access control using something like Role 
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/ADP0102.PNG)
 
 ### ADP02
-Securing the Weakest Link : Attackers are more likely to attack a weak spot in a software system than to penetrate a heavily fortified component.
+Don’t allow modification or access without a trace : Users should not be able to add, edit or delete data without the action being logged. Moreover, the log file should log who takes the action.
 
 Test Step:
 * Step 1: Login as admin(admin).
-* Step 2: Then click register a patient.
+* Step 2: Then click Find Patient Record.
+* Step 3: Click on an existing Patient Record.
+* Step 4: Delete this patient.
+* Step 5: Check if there are log files which has monitored who delete this patient.
 
-Result: Failed. Web application show session id, Fail the test. Hacker can hijack this session and get
-full access of the system.
+Result: Failed. The log file only records the delete reason and fail to record who delete this patient. Moreover, the log file use seperate log lines to record one delete action. This would make mistakes when multiple user are using the system. The system doesn't recognize who delete the patient.
 
-Solution : Apply the filter function to the whole system, not only the search part.
-![alt text](https://github.com/genterist/openMRS-Security/blob/master/3-Analysis/images/SecReq02.PNG)
+Solution : Log files should remember the user who click on every add, delete or other changes on the database. The delete function should be the same with add or save in the log files regards the Argument. So the log files related to delete function should be In method PatientService.voidPatient(this is better to be deletePatient). Argument: user = "", Patient = "", String = "".
+![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/ADP02.PNG)
 
 ### ADP03
 Quiet Your Error Messages : Attackers can cause system errors intentionally to gather information about the system. Error messages should be minimalistic, without giving details on the failure.
