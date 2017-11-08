@@ -2,7 +2,7 @@
 
 ### A. Visibility: ###
 
-The administrative interface should allow the user to easily review any active authority relationships that would affect security-relevant decisions. However OpenMRS don’t have this function all the log information is stored with server information, It’s hard to find out the active authority relationships.
+The administrative interface should allow the user to easily review any active authority relationships that would affect security-relevant decisions. However OpenMRS don’t have this function. All the log information is stored with server information, It’s hard to find out the active authority relationships.
 
 **Static Analysis**
 
@@ -14,7 +14,7 @@ The administrative interface should allow the user to easily review any active a
 |4. Make any change and click save|||
 |5. Go back to Advance Administration and click Server Log||You should able to your operation is stored in many other server errors, which is very hard to find|
 
-**Expect Result:** OpenMRS should have a function to allow the user to easily review any active authority relationships that would affect security-relevant decisions.
+**Expect Result:** OpenMRS should have a function allowing the user to easily review any active authority relationships that would affect security-relevant decisions.
 
 **Actual Result:** Fail
 
@@ -23,7 +23,7 @@ The administrative interface should allow the user to easily review any active a
 
 
 ### B. Clarity: ###
-The administrative interface should not be misleading, ambiguous. However OpenMrs have some ambiguous when register new user. Admin user need to check the Log information to know what is wrong during register process.
+The administrative interface should not be misleading, ambiguous. However OpenMRS have some ambiguous when registering new user. Admin user need to check the log information to know what is wrong during register process.
 
 **Static Analysis**
 
@@ -62,7 +62,7 @@ The administrative The interface must not generate the impression that it is pos
 
 **Result:**True
 
-**Solution:** OpenMRS should not redirect user to any page that they should not access and implement the full authentication function in the backend
+**Solution:** OpenMRS should not redirect user to any page that they should not access and implement the full authentication function in the backend.
 
 
 
