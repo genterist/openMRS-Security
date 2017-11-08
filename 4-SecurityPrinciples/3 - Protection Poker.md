@@ -3,13 +3,14 @@
 
 ### Requirements ###
 
-#### Requirement 1 ####
+#### Requirement 1: Adding Message of Failing Logging in ####
+To improve user experience, when user fails logging in and is redirected back to the logging page, there should be a failure message displayed on the logging page. To be visible enough to users, the font of the message should be larger than common text. In addition, the message should not be placed in the corner of the page and should be displayed in red. To be unambiguous to users, the message should be written in human language and contain the reason why logging in fails (e.g. "Wrong Username or Password").
 
+#### Requirement 2: Adding Field of Driver License Number ####
+To achieve better identification of patient, when registering new patient, the user could ask patient for his/her driver license number and input it to the system. Correspondingly, a new field for driver license number should be added to the Registering Page. This field should not be a necessary field.
 
-#### Requirement 2 ####
-
-
-#### Requirement 3 ####
+#### Requirement 3: Better System Error Message ####
+To prevent sensitive information being leaked, once the user meets a system error, the user interface should show the user appropriate error message instead of a stack/error trace which contain useful information about the application’s internal design, like java classes, libraries used or database table names. The message should be a summary of the error in human language without containing any sensitive information.
 
 
 #### Requirement 4 ####
@@ -30,7 +31,7 @@
 | User | Basic information about the people that use this system | |
 | Person | Basic information about person in the system | |
 | Business | Non medical data used to administrate openmrs | |
-| Groups/Workflow| Workflows and Cohort data | |
+| Groups/Workflow | Workflows and Cohort data | |
 
 Reference:  [https://wiki.openmrs.org/display/docs/Data+Model](https://wiki.openmrs.org/display/docs/Data+Model)
 
