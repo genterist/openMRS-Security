@@ -1,23 +1,23 @@
-# Protection Poker #
+## Protection Poker ##
 
 
-## Requirements ##
+### Requirements ###
 
-### Requirement 1 ###
-
-
-### Requirement 2 ###
+#### Requirement 1 ####
 
 
-### Requirement 3 ###
+#### Requirement 2 ####
 
 
-### Requirement 4 ###
+#### Requirement 3 ####
 
 
-### Requirement 5 ###
+#### Requirement 4 ####
 
-## Database Table Value Points ##
+
+#### Requirement 5 ####
+
+### Database Table Value Points ###
 
 | Table				| Description		| Value		|
 | :---              | :---      		| :--- 		|
@@ -30,11 +30,11 @@
 | User | Basic information about the people that use this system | |
 | Person | Basic information about person in the system | |
 | Business | Non medical data used to administrate openmrs | |
-| Groups/Workflow: Workflows and Cohort data | |
+| Groups/Workflow| Workflows and Cohort data | |
 
 Reference:  [https://wiki.openmrs.org/display/docs/Data+Model](https://wiki.openmrs.org/display/docs/Data+Model)
 
-## Database Tables Used by Requirement ##
+### Database Tables Used by Requirement ###
 
 | Requirement		| Table Used	| Value Points of Table | Max Value |
 | :---              | :---      	| :--- 					| :---		| 
@@ -46,17 +46,17 @@ Reference:  [https://wiki.openmrs.org/display/docs/Data+Model](https://wiki.open
 
 
 
-## Security Ranking ##
+### Security Ranking ###
 
 | Requirement | Ease of Attack Points | Value of Asset Points | Security Risk | Rank of Security Risk |
 | :---      | :---      			  | :--- 				  | :---			| :---		| 
-| R1        | :---      			  | :--- 				  | :---			| :---		| 
-| R2       	| :---      			  | :--- 				  | :---			| :---		|   
-| R3      	| :--- 					  | :--- 				  | :---			| :---		| 
-| R4       	| :---      			  | :--- 				  | :---			| :---		| 
-| R5       	| :---      			  | :--- 				  | :---			| :---		| 
+| R1        | 	     			  	| 					  | 				| 			| 
+| R2       	| 	     			  	| 	 				  | 				| 			|   
+| R3      	| 	 					| 	 				  | 				| 			| 
+| R4       	| 	      			  	| 	 				  | 				| 			| 
+| R5       	| 	      			  	| 	 				  | 				| 			| 
 
 
 
-## Explanation ##
+### Explanation ###
 
