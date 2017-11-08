@@ -13,10 +13,12 @@ To achieve better identification of patient, when registering new patient, the u
 To prevent sensitive information being leaked, once the user meets a system error, the user interface should show the user appropriate error message instead of a stack/error trace which contain useful information about the application’s internal design, like java classes, libraries used or database table names. The message should be a summary of the error in human language without containing any sensitive information.
 
 
-#### Requirement 4 ####
+#### Requirement 4: Registering only at Registration Desk ####
+To achieve better management, common users (e.g. clerk) with the ability of registering new patient could only register patients when logging in with location as "Registration Desk". Correspondingly, without logging in with selecting location as "Registration Desk", the "Register new Patient" button should not be accessible to users. However, the admin user could register a new patient everywhere.
 
 
-#### Requirement 5 ####
+#### Requirement 5: Removing Data Management Function ####
+Since user could merge patients in the patient's page, the is no need of keeping "Data Management" module (The only function in this module is merging patients). The "Data Management" button should be no longer accessible to users in the main page.  
 
 ### Database Table Value Points ###
 
@@ -30,7 +32,7 @@ To prevent sensitive information being leaked, once the user meets a system erro
 | Patient | Basic information about patients in this system | |
 | User | Basic information about the people that use this system | |
 | Person | Basic information about person in the system | |
-| Business | Non medical data used to administrate openmrs | |
+| Business | Non medical data used to administrate openMRS | |
 | Groups/Workflow | Workflows and Cohort data | |
 
 Reference:  [https://wiki.openmrs.org/display/docs/Data+Model](https://wiki.openmrs.org/display/docs/Data+Model)
