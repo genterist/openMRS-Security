@@ -1,3 +1,0 @@
-# Protection Poker #
-
-
