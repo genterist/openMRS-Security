@@ -3,6 +3,9 @@
 
 ### Requirements ###
 
+#### Overview ####
+In this part we proposed five functional requirements. Those requirements may not be completely reasonable and necessary. They are designed for playing protection poker.
+
 #### Requirement 1: Adding Message of Failing Logging in ####
 To improve user experience, when user fails logging in and is redirected back to the logging page, there should be a failure message displayed on the logging page. To be visible enough to users, the font of the message should be larger than common text. In addition, the message should not be placed in the corner of the page and should be displayed in red. To be unambiguous to users, the message should be written in human language and contain the reason why logging in fails (e.g. "Wrong Username or Password").
 
@@ -18,11 +21,13 @@ To achieve better management, common users (e.g. clerk) with the ability of regi
 
 
 #### Requirement 5: Removing Data Management Function ####
-Since user could merge patients in the patient's page, the is no need of keeping "Data Management" module (The only function in this module is merging patients). The "Data Management" button should be no longer accessible to users in the main page.  
+Since user could merge patients in the patient's page, the is no need of keeping "Data Management" module (The only function in this module is merging patients). The "Data Management" button should be no longer accessible to users in the main page. The ""Data Management" page should be removed.
 
 ### Database Table Value Points ###
 
-| Table				| Description		| Value		|
+Instead of using tables in this part, we used domains which organize the database tables in terms of the various information and also usage of the system.
+
+| Domain			| Description		| Value		|
 | :---              | :---      		| :--- 		|
 | Concept | Concepts are defined and used to support strongly coded data throughout the system | |
 | Encounter | Contains the meta-data regarding health care providers interventions with a patient | |
