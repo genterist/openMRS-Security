@@ -27,30 +27,30 @@ Since user could merge patients in the patient's page, the is no need of keeping
 
 Instead of using tables in this part, we used domains which organize the database tables in terms of the various information and also usage of the system. The points to choose from: **[ 1, 2, 3, 5, 8, 13, 20, 40, 100 ]**.
 
-| Domain			| Description		| Value		| Explanation |
-| :---              | :---      		| :--- 		| :--- 		  | 
-| Concept | Concepts are defined and used to support strongly coded data throughout the system | |
-| Encounter | Contains the meta-data regarding health care providers interventions with a patient | |
-| Form | Essentially, the user interface description for the various components | |
-| Observation | This is where the actual health care information is stored. There are many observations per Encounter | |
-| Order | Things/actions that have been requested to occur | |
-| Patient | Basic information about patients in this system | 100 |
-| User | Basic information about the people that use this system | 100 |
-| Person | Basic information about person in the system | |
-| Business | Non medical data used to administrate openMRS | |
-| Groups/Workflow | Workflows and Cohort data | |
+| Domain			| Description		| Value		| 
+| :---              | :---      		| :--- 		|
+| Concept | Concepts are defined and used to support strongly coded data throughout the system | 40 |
+| Encounter | Contains the meta-data regarding health care providers interventions with a patient. Some data like location are stored in this domain | 13 |
+| Form | The user interface description for the various components. Not important but may contain some information could be used by attacker. | 13 |
+| Observation | This is where the actual health care information is stored. This domain contains some private medical information like drug usage. | 20 |
+| Order | Things/actions that have been requested to occur | 20 |
+| Patient | Basic information about patients in this system | 40 |
+| User | Basic information about the people that use this system. Username and password of system account are stored in this domain. | 100 |
+| Person | Basic information about person in the system. Many private information such as address, mobile are stored in this domain. | 100 |
+| Business | Non medical data used to administrate openMRS. This domain contains some data like report, which may contain sensitive data  | 20 |
+| Groups/Workflow | Workflows and Cohort data | 8 |
 
 Reference:  [https://wiki.openmrs.org/display/docs/Data+Model](https://wiki.openmrs.org/display/docs/Data+Model)
 
 ### Database Domains Used by Requirement ###
 
-| Requirement		| Domain Used	| Value Points of Table | Max Value |
-| :---              | :---      	| :--- 					| :---		| 
-| R1             	|       	| 				| 		| 
-| R2             	|       	| 				| 		| 
-| R3             	|      		| 				| 		| 
-| R4             	|       	|  				| 		| 
-| R5             	|       	|  				| 		| 
+| Requirement		| Domain Used	| Value Sum |
+| :---              | :---      	| :--- 	|
+| R1             	| Form, Workflow 		| 26		|
+| R2             	| Form, Patient, Person	| 156		| 
+| R3             	| Form, Workflow 		| 21		| 
+| R4             	| Form, Encounter 		| 26 		| 
+| R5             	| Form		 			| 13 		| 
 
 
 
@@ -58,29 +58,24 @@ Reference:  [https://wiki.openmrs.org/display/docs/Data+Model](https://wiki.open
 
 | Requirement | Ease of Attack Points | Value of Asset Points | Security Risk | Rank of Security Risk |
 | :---      | :---      			| :--- 				  | :---			| :---		| 
-| R1        | 	     	2		  	| 					  | 				| 			| 
-| R2       	| 	     	8		  	| 	 				  | 				| 			|   
-| R3      	| 	 		1			| 	 				  | 				| 			| 
-| R4       	| 	      	2		  	| 	 				  | 				| 			| 
-| R5       	| 	      	5		  	| 	 				  | 				| 			| 
+| R1        | 	     	3		  	| 	26				  | 78				| 3			| 
+| R2       	| 	     	13		  	| 	156				  | 2028			| 1			|   
+| R3      	| 	 		1			| 	21 				  | 21				| 5			| 
+| R4       	| 	      	2		  	| 	26				  | 52				| 4			| 
+| R5       	| 	      	8		  	| 	13				  | 94				| 2			| 
 
 
 
 ### Explanation ###
 
-To evaluate security risk of each requirement, the first step is evaluating values of different domains. How each domains is assigned is described in the **Explanation** column in the table of **Database Domains Value Points**. The value of asset points of each requirement is the sum of values of the domain it used. 
+To evaluate security risk of each requirement, the first step is evaluating values of different domains. How each domains is assigned is described in the **Description** column in the table of **Database Domains Value Points**. The value of asset points of each requirement is the sum of values of the domain it used. 
 
-The ease of attack points of each requirement is decided by protection poker and discussions among group members. The points are also chosen from **[ 1, 2, 3, 5, 8, 13, 20, 40, 100 ]**.
+The ease of attack points of each requirement is decided by protection poker and discussions among group members. The points are also chosen from **[ 1, 2, 3, 5, 8, 13, 20, 40, 100 ]**. Among the five requirements, the 3rd requirement is selected as the hardest to attack. It removes detailed stack trace and uses appropriate error message. As a result, sensitive information contained in the stack trace could be avoided from being leaked. Thus it is assigned with 1 ease of attack point.
 
-Among the five requirements, the 3rd requirement is selected as the hardest to attack. It removes detailed stack trace and uses appropriate error message. As a result, sensitive information contained in the stack trace could be avoided from being leaked. Thus it is assigned with 1 ease of attack point.
-
-Starting from the 1st requirement, it adds UI elements in client side which could be integrated with malicious script. However, the content of the message is usually fixed and not related with user input. As a result, the ease of attack points should be about 2.
-
-The 2nd requirement adds a new field (attack surface) of driver license number in registration page. Especially for the new field may not validate input as old fields, the attacker could easily inject malicious scripts via client side. However, considering the input validation in server side and Hibernate framework, the ease of attack point of this requirement is assigned with 8.
-
-The 4th requirement doesn't increase or reduce attack surface. But considering the implementation of 
-
-The 5th requirement (Removing Data Management Function) reduces redundant pages (attack surfaces).  However, removing current functionality and page may cause new vulnerability. Thus the ease of attack points is estimated to be 5.
+Starting from the 1st requirement, it adds UI elements in client side which could be integrated with malicious script. However, the content of the message is usually fixed and not related with user input. As a result, the ease of attack point should be about 3.
+The 2nd requirement adds a new field (attack surface) of driver license number in registration page. Especially for the new field may not validate input as old fields, the attacker could easily inject malicious scripts via client side. However, considering the input validation in server side and Hibernate framework, the ease of attack point of this requirement is assigned with 13.
+The 4th requirement doesn't increase or reduce attack surface. But considering that the implementation of the requirement may add some condition checking, breaking the condition checking may be one attack method. The ease of attack point of this requirement is assigned with 2.
+The 5th requirement (Removing Data Management Function) reduces redundant pages (attack surfaces).  However, removing existing functionality and page may cause new vulnerability (e.g. exposed interface). Thus the ease of attack points is estimated to be 8.
 
 In the end, the security risk can be calculated by **Security Risk = (Ease of Attack Points) * (Value of Asset Points)**. And the rank of security risk is assigned based on the security points.
 
