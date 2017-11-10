@@ -34,9 +34,9 @@ Instead of using tables in this part, we used domains which organize the databas
 | Form | The user interface description for the various components. Not important but may contain some information could be used by attacker. | 13 |
 | Observation | This is where the actual health care information is stored. This domain contains some private medical information like drug usage. | 20 |
 | Order | Things/actions that have been requested to occur | 20 |
-| Patient | Basic information about patients in this system | 40 |
+| Patient | Basic information about patients in this system. This domain does not contain much private information (which is actually stored in Person domain). So it may not be the most valuable one. | 40 |
 | User | Basic information about the people that use this system. Username and password of system account are stored in this domain. | 100 |
-| Person | Basic information about person in the system. Many private information such as address, mobile are stored in this domain. | 100 |
+| Person | Basic information about person in the system. Most private information such as address, mobile are stored in this domain. | 100 |
 | Business | Non medical data used to administrate openMRS. This domain contains some data like report, which may contain sensitive data  | 20 |
 | Groups/Workflow | Workflows and Cohort data | 8 |
 
