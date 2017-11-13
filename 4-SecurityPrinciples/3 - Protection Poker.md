@@ -4,7 +4,7 @@
 ### Requirements ###
 
 #### Overview ####
-In this part we proposed five functional requirements for protection poker evaluation. Those requirements may not be completely reasonable and necessary.
+In this part we proposed five functional requirements to be evaluated by protection poker . 
 
 #### Requirement 1: Adding Message of Failing Logging in ####
 To improve user experience, when user fails logging in and is redirected back to the logging page, there should be a failure message displayed on the logging page. To be visible enough to users, the font of the message should be larger than common text. In addition, the message should not be placed in the corner of the page and should be displayed in red. To be unambiguous to users, the message should be written in human language and contain the reason why logging in fails (e.g. "Wrong Username or Password").
@@ -29,16 +29,16 @@ Instead of using tables in this part, we used domains which organize the databas
 
 | Domain			| Description		| Value		| 
 | :---              | :---      		| :--- 		|
-| Concept | Concepts are defined and used to support strongly coded data throughout the system | 40 |
-| Encounter | Contains the meta-data regarding health care providers interventions with a patient. Some data like location are stored in this domain | 13 |
+| Concept | Concepts are defined and used to support strongly coded data throughout the system. Drug data are stored in this domain | 40 |
+| Encounter | Contains the meta-data regarding health care providers interventions with a patient. Some data like location and provider are stored in this domain | 20 |
 | Form | The user interface description for the various components. Not important but may contain some information could be used by attacker. | 13 |
 | Observation | This is where the actual health care information is stored. This domain contains some private medical information like drug usage. | 20 |
 | Order | Things/actions that have been requested to occur | 20 |
-| Patient | Basic information about patients in this system. This domain does not contain much private information (which is actually stored in Person domain). So it may not be the most valuable one. | 40 |
+| Patient | Basic information about patients in this system. This domain does not contain much private information (which is actually stored in Person domain). So it is not set as the most valuable one. | 40 |
 | User | Basic information about the people that use this system. Username and password of system account are stored in this domain. | 100 |
 | Person | Basic information about person in the system. Most private information such as address, mobile are stored in this domain. | 100 |
 | Business | Non medical data used to administrate openMRS. This domain contains some data like report, which may contain sensitive data  | 20 |
-| Groups/Workflow | Workflows and Cohort data | 8 |
+| Groups/Workflow | Workflows and Cohort data. Patient program and patient state are stored in this domain | 20 |
 
 Reference:  [https://wiki.openmrs.org/display/docs/Data+Model](https://wiki.openmrs.org/display/docs/Data+Model)
 
@@ -46,10 +46,10 @@ Reference:  [https://wiki.openmrs.org/display/docs/Data+Model](https://wiki.open
 
 | Requirement		| Domain Used	| Value Sum |
 | :---              | :---      	| :--- 	|
-| R1             	| Form, Workflow 		| 26		|
-| R2             	| Form, Patient, Person	| 156		| 
-| R3             	| Form, Workflow 		| 21		| 
-| R4             	| Form, Encounter 		| 26 		| 
+| R1             	| Form			 		| 13		|
+| R2             	| Form, Person			| 113		| 
+| R3             	| Form 					| 13		| 
+| R4             	| Form, Encounter 		| 33 		| 
 | R5             	| Form		 			| 13 		| 
 
 
@@ -58,11 +58,11 @@ Reference:  [https://wiki.openmrs.org/display/docs/Data+Model](https://wiki.open
 
 | Requirement | Ease of Attack Points | Value of Asset Points | Security Risk | Rank of Security Risk |
 | :---      | :---      			| :--- 				  | :---			| :---		| 
-| R1        | 	     	3		  	| 	26				  | 78				| 3			| 
-| R2       	| 	     	13		  	| 	156				  | 2028			| 1			|   
-| R3      	| 	 		1			| 	21 				  | 21				| 5			| 
-| R4       	| 	      	2		  	| 	26				  | 52				| 4			| 
-| R5       	| 	      	8		  	| 	13				  | 94				| 2			| 
+| R1        | 	     	3		  	| 	13				  | 39				| 4			| 
+| R2       	| 	     	13		  	| 	113				  | 1469			| 1			|   
+| R3      	| 	 		1			| 	13 				  | 13				| 5			| 
+| R4       	| 	      	2		  	| 	33				  | 66				| 3			| 
+| R5       	| 	      	8		  	| 	13				  | 104				| 2			| 
 
 
 
