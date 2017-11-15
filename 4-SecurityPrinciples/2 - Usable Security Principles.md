@@ -16,7 +16,8 @@ The administrative interface should allow the user to easily review any active a
 
 **Expect Result:** OpenMRS should have a function allowing the user to easily review any active authority relationships that would affect security-relevant decisions.
 
-**Actual Result:** Fail
+**Actual Result:** 
+![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/Screen%20Shot%202017-11-07%20at%203.31.42%20PM.png?raw=true)
 
 **Solution:** OpenMRS should implement a function to only show the active authority relationships that would affect security-relevant decisions.
 
