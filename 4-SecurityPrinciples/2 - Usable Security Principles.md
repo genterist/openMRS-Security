@@ -8,10 +8,10 @@ The administrative interface should allow the user to easily review any active a
 
 | Test step         | Test data     | States  |
 | :---              | :---           | :---        |
-|1. Login as Admin| | You should see System Administration   |
-|2. Click System Administration||You should see Advance Administration|
-|3. Click Advance Administration||You should able to Manage Roles|
-|4. Make any change and click save|||
+|1. Login as Admin	| | You should see System Administration   |
+|2. Click System Administration | | You should see Advance Administration|
+|3. Click Advance Administration | | You should able to Manage Roles |
+|4. Make any change and click save | | |
 |5. Go back to Advance Administration and click Server Log||You should able to your operation is stored in many other server errors, which is very hard to find|
 
 **Expect Result:** OpenMRS should have a function allowing the user to easily review any active authority relationships that would affect security-relevant decisions.
