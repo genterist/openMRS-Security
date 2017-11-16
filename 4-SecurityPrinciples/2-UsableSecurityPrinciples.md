@@ -40,21 +40,22 @@ The administrative interface should not be misleading, ambiguous. However OpenMR
 |1. Log in the system with wrong password | account: admin <br> password: wrong <br> location: Pharmacy  | You should see **System Administration**   |
 |2. Click **System Administration** | | You should see **Manage Account** |
 |3. Click **Manage Account** | | You should be able to **Add New Account**.|
-|5. Add a new account with any name, username and other setting, but with password as abcd1234 and click **save** | password: abcd1234 | You should able to see a message showing " Validation Error" |
+|5. Add a new account with any name, username and other setting, but with password as abcd1234 and click **save** | password: abcd1234 | |
 
 **Assumption:** OpenMRS runs normally through the whole test process.
 
-**Expected Result:** OpenMRS should give user a clear error message about which part is wrong instead of just save them in the log file.
+**Expected Result:** OpenMRS should give user a clear error message about which part is wrong instead of just saving them in the log file.
 
 **Actual Result:** 
+The error message only shows it is a "Validation Error" without specifying which part goes wrong.
 
 
-**Solution:** OpenMRS could summarize the error from the log and change the error message displayed into a more detailed one. 
+**Solution:** OpenMRS could summarize the error from the log and change the error message displayed into a more specific one. 
 
 
 
 ### C. Expected ability: ###
-The administrative interface must not generate the impression that it is possible to do something that cannot actually be done. But OpenMRS sometimes give user a feeling that they can do what they can’t do.
+The administrative interface must not generate the impression that it is possible to do something that cannot actually be done. But OpenMRS sometimes gives user a feeling that they can do what they can’t do.
 
 **Static Analysis**
 
@@ -66,18 +67,19 @@ The administrative interface must not generate the impression that it is possibl
 |2. Click **System Administration** | | You should see **Manage Account** |
 |3. Click **Manage Account** | | You should be able to **Add New Account**.|
 |4. Add a new account with only **Requests Appointments** privilege. Other fields are any personal choices that pass the validation |||
-|5. Log out from admin account and Log in as the new user created||You should see the Manage Users again|
-|6. Edit any account information||You should see your operation is successfully saved|
-|7. Log in with admin and check the Log information||You should see your save operation is not successful because lack of the authority|
+|5. Log out from admin account and Log in as the new user created|| No button in the main Page |
+|6. Put URL *http://localhost:8080/openmrs-standalone/coreapps/systemadministration/systemAdministration.page* into browser and go to the page ||  |
 
-**Assumption:** OpenMRS runs normally through the whole test process.
 
-**Expected Result:** OpenMRS should not display any page that is above current user’s privilege
+**Assumption:** OpenMRS runs normally through the whole test process on port 8080.
+
+**Expected Result:** User still could not see any options or buttons in the that page. And OpenMRS should not display any page that is above current user’s privilege.
 
 **Actual Result:**
+**Manage Global Properties** and **Manage Account** functions are now accessible to users
 
 
-**Solution:** OpenMRS should not redirect user to any page that they should not access and implement the full authentication function in the backend.
+**Solution:** OpenMRS should not redirect user to any page that they should not access. Full authentication function in the backend needs to be implemented.
 
 
 
