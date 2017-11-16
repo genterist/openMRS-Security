@@ -1,17 +1,15 @@
-# Architectural Design Principles
-`DESIGNER : Zhuo Li` <br/>
-`EXECUTED BY : Zhuo Li` <br/>
-`UPDATED ON : 31OCT17` <br/>
-`EXECUTED ON : 31OCT17` <br/>
+# CSC 515 - Milestone 4 #
+
+## 1 - Architectural Design Principles
 
 ### ADP01
 Least Privilege : A subject (user/other system) should be given only those privileges it needs to complete its task.
 
 Test Step:
-* Step 1: Login as System admin(sysadmin).
+* Step 1: Log in as System admin(sysadmin).
 * Step 2: Then enter Appointment Scheduling and click Manage Service Types.
 * Step 3: Click New Service Type then copy the url.http://localhost:8082/openmrs-standalone/appointmentschedulingui/appointmentType.page
-* Step 4: Log out and Login as an clerk.
+* Step 4: Log out and Log in as an clerk.
 * Step 5: Paste the url and then you will find you can manage the service type as a clerk.
 
 Result: Failed. As we can see, the privilege of a clerk only include manage appointments, daily appointments and appointments required. Service type is not a function that the clerk can manage.
@@ -25,22 +23,22 @@ Solution: The system should manage the access control using something like Role 
 Don’t allow modification or access without a trace : Users should not be able to add, edit or delete data without the action being logged. Moreover, the log file should log who takes the action.
 
 Test Step:
-* Step 1: Login as admin(admin).
+* Step 1: Log in as admin(admin).
 * Step 2: Then click Find Patient Record.
 * Step 3: Click on an existing Patient Record.
 * Step 4: Delete this patient.
 * Step 5: Check if there are log files which has monitored who delete this patient.
 
-Result: Failed. The log file only records the delete reason and fail to record who delete this patient. Moreover, the log file use seperate log lines to record one delete action. This would make mistakes when multiple user are using the system. The system doesn't recognize who delete the patient.
+Result: Failed. The log file only records the delete reason and fail to record who delete this patient. Moreover, the log file use separate log lines to record one delete action. This would make mistakes when multiple user are using the system. The system doesn't recognize who delete the patient.
 
 Solution : Log files should remember the user who click on every add, delete or other changes on the database. The delete function should be the same with add or save in the log files regards the Argument. So the log files related to delete function should be In method PatientService.voidPatient(this is better to be deletePatient). Argument: user = "", Patient = "", String = "".
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/ADP02.PNG)
 
 ### ADP03
-Quiet Your Error Messages : Attackers can cause system errors intentionally to gather information about the system. Error messages should be minimalistic, without giving details on the failure.
+Quiet Your Error Messages : Attackers can cause system errors intentionally to gather information about the system. Error messages should be minimalist, without giving details on the failure.
 
 Test Step:
-* Step 1: Login as admin(admin).
+* Step 1: Log in as admin(admin).
 * Step 2: Click register a patient.
 * Step 3: Delete the appId part of the url. http://localhost:8082/openmrs-standalone/registrationapp/registerPatient.page
 * Step 4: See if there are some detailed error message.
@@ -52,79 +50,96 @@ Solution: The system should only return a simple error message without showing a
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/ADP03.PNG)
 
 
-## Usable Security Principles ##
+## 2 - Usable Security Principles ##
 
 ### A. Visibility: ###
 
-The administrative interface should allow the user to easily review any active authority relationships that would affect security-relevant decisions. However OpenMRS don’t have this function. All the log information is stored with server information, It’s hard to find out the active authority relationships.
+The administrative interface should allow users to easily review any active authority relationships that would affect security-relevant decisions. However OpenMRS don’t have this function. All the log information is stored within server information, and it is hard to find out the active authority relationships.
 
 **Static Analysis**
 
+**Test ID**: V-1
+
 | Test step         | Test data     | States  |
 | :---              | :---           | :---        |
-|1. Login as Admin| | You should see System Administration   |
-|2. Click System Administration||You should see Advance Administration|
-|3. Click Advance Administration||You should able to Manage Roles|
-|4. Make any change and click save|||
-|5. Go back to Advance Administration and click Server Log||You should able to your operation is stored in many other server errors, which is very hard to find|
+|1. Log in as Admin	| account: admin <br> password: Admin123 <br> location: Pharmacy | You should see **System Administration**   |
+|2. Click **System Administration** | | You could find **Advance Administration** option |
+|2. Click **Advance Administration** | | You could find **Manage Roles** option |
+|3. Click **Manage Roles** | |  |
+|4. Make any change (like adding a role) and click save | | |
+|5. Go back to **Advance Administration** and click **View Server Log** | | You should able to see that your operation is stored in the log with many other server logs |
 
-**Expect Result:** OpenMRS should have a function allowing the user to easily review any active authority relationships that would affect security-relevant decisions.
+**Assumption:** OpenMRS runs normally through the whole test process.
+
+**Expected Result:** OpenMRS should have a function or UI allowing the user to easily review any active authority relationships that would affect security-relevant decisions.
 
 **Actual Result:** 
-![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/Screen%20Shot%202017-11-15%20at%2012.58.40%20PM.png?raw=true)
-
+The operation is stored in the log with many other server logs.
+![](./images/V-1.PNG)
 
 **Solution:** OpenMRS should implement a function to only show the active authority relationships that would affect security-relevant decisions.
 
 
 
 ### B. Clarity: ###
-The administrative interface should not be misleading, ambiguous. However OpenMRS have some ambiguous when registering new user. Admin user need to check the log information to know what is wrong during register process.
+The administrative interface should not be misleading, ambiguous. However OpenMRS has some ambiguous error messages when registering a new user. Admin user needs to check the log information to know what is wrong during registration process.
 
 **Static Analysis**
 
+**Test ID**: C-1
+
 | Test step         | Test data     | States  |
 | :---              | :---           | :---        |
-|1. Login as Admin| | You should see System Administration   |
-|2. Click System Administration||You should see manage account|
-|3. Click Manage Account||You should able to Add a new user.|
-|4. Regist a new user with any username but password with abcd1234 and click save|abcd1234|You should see a error massage “validation error found”|
+|1. Log in the system with wrong password | account: admin <br> password: wrong <br> location: Pharmacy  | You should see **System Administration**   |
+|2. Click **System Administration** | | You should see **Manage Account** |
+|3. Click **Manage Account** | | You should be able to **Add New Account**.|
+|5. Add a new account with any name, username and other setting, but with password as abcd1234 and click **save** | password: abcd1234 | |
 
-**Expect Result:** OpenMRS should give user a specific error message about which part is wrong.
+**Assumption:** OpenMRS runs normally through the whole test process.
 
-**Result:** 
-![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/Screen%20Shot%202017-11-07%20at%203.31.42%20PM.png?raw=true)
+**Expected Result:** OpenMRS should give user a clear error message about which part is wrong instead of just saving them in the log file.
 
-**Solution:** OpenMRS should specify every error message in the user interface instead of just save in the log file.
+**Actual Result:** 
+The error message only shows it is a "Validation Error" without specifying which part goes wrong.
+![](./images/C-1.PNG)
+
+
+**Solution:** OpenMRS could summarize the error from the log and change the error message displayed into a more specific one. 
 
 
 
 ### C. Expected ability: ###
-The administrative The interface must not generate the impression that it is possible to do something that cannot actually be done. But OpenMRS will give user a sense that they can do what they can’t do.
+The administrative interface must not generate the impression that it is possible to do something that cannot actually be done. But OpenMRS sometimes gives user a feeling that they can do what they can’t do.
 
 **Static Analysis**
 
+**Test ID**: E-1
+
 | Test step         | Test data     | States  |
 | :---              | :---           | :---        |
-|1. Login as Admin| | You should see System Administration   |
-|2. Click System Administration||You should see manage account|
-|3. Click Manage Account||You should able to Add a new user.|
-|4. Regist a new user with only only Requests Appointments privilege|||
-|5. Log out and Log in with the new user||You should see the Manage Accounts again|
-|6. Edit any account information||You should see your operation is successfully saved|
-|7. Log in with admin and check the Log information||You should see your save operation is not successful because lack of the authority|
+|1. Log in the system with wrong password | account: admin <br> password: wrong <br> location: Pharmacy  | You should see **System Administration**   |
+|2. Click **System Administration** | | You should see **Manage Account** |
+|3. Click **Manage Account** | | You should be able to **Add New Account**.|
+|4. Add a new account with only **Requests Appointments** privilege. Other fields are any personal choices that pass the validation |||
+|5. Log out from admin account and Log in as the new user created|| No button in the main Page |
+|6. Put URL *http://localhost:8080/openmrs-standalone/coreapps/systemadministration/systemAdministration.page* into browser and go to the page ||  |
 
 
-**Expect Result: **OpenMRS should not display any page that is above current user’s privilege
+**Assumption:** OpenMRS runs normally through the whole test process on port 8080.
 
-**Result:**
-![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/Screen%20Shot%202017-11-15%20at%2012.59.16%20PM.png?raw=true)
+**Expected Result:** The new user still could not see any options or buttons in the that page. And OpenMRS should not display any page that is above current user’s privilege.
 
-**Solution:** OpenMRS should not redirect user to any page that they should not access and implement the full authentication function in the backend.
+**Actual Result:**
+*Manage Global Properties* and *Manage Account* functions are now accessible to the new user.
+![](./images/E-1.PNG)
+
+
+**Solution:** OpenMRS should not redirect user to any page that they should not access. Full authentication function in the backend needs to be implemented.
 
 
 
-## Protection Poker ##
+
+## 3 - Protection Poker ##
 
 
 ### Requirements ###
@@ -205,17 +220,21 @@ The 5th requirement (Removing Data Management Function) reduces redundant pages 
 
 In the end, the security risk can be calculated by **Security Risk = (Ease of Attack Points) * (Value of Asset Points)**. And the rank of security risk is assigned based on the security points.
 
-# Client Bypass -1- LOGIN PAGE INTEGER BUFFER OVER FLOW
 
-### * Description
-#### Name of module : OpenMRS login
+## 4 - Bug Fixes ##
+
+
+
+### Client Bypass -1- LOGIN PAGE INTEGER BUFFER OVER FLOW
+
+##### * Description
+##### Name of module : OpenMRS login
 + Page location : http://localhost:8081/openmrs-standalone/login.htm
 + Attack type : Buffer overflow
 + Attack value : 99999999999999999999
 + Location value was overflow leading to exposure of stack trace info
 
-
-### * Bug Fix
+#### * Bug Fix
 #### Original code
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix1.png)
 <br/>
@@ -224,8 +243,9 @@ In the end, the security risk can be calculated by **Security Risk = (Ease of At
 <br/>
 We trim the raw location session string into 3 characters in length to avoid the overflow error when the program tries to cast the string into integer.
 
+----------
 
-# Client Bypass -3- LOGIN PAGE REDIRECT
+### Client Bypass -3- LOGIN PAGE REDIRECT
 
 ### * Description
 #### Name of module : OpenMRS login
@@ -241,10 +261,11 @@ In this test, we will redirect logged in user to a logout page, aiming for an il
 #### Modified code
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix4.png)
 <br/>
-We replace all referral URL value that containts "logout.page" and turn it into "home.page"
+We replace all referral URL value that contains "logout.page" and turn it into "home.page"
 
+----------
 
-# Fortify analysis -2- COMMAND LINE INJECTION
+### Fortify analysis -2- COMMAND LINE INJECTION
 
 ### * Description
 #### Name of module : OpenMRS login
@@ -257,10 +278,11 @@ The method execMysqlCmd() in MigrateDataSet.java:187 calls exec() with a command
 #### Modified code
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix6.png)
 <br/>
-Make the variable private and use a maping table to map certain whitelisted inputs to certain relevant database paramaters (table names, etc). The case in the screenshot is done by explicitly assign the database name to the variable. This warning is common in many files so it has to be up to each developer to do his/her own whitelisting
+Make the variable private and use a maping table to map certain whitelisted inputs to certain relevant database parameters (table names, etc). The case in the screenshot is done by explicitly assign the database name to the variable. This warning is common in many files so it has to be up to each developer to do his/her own whitelisting
 
+----------
 
-# Fortify analysis -3- PRIVACY VIOLATION
+#### Fortify analysis -3- PRIVACY VIOLATION
 
 ### * Description
 #### Name of module : OpenMRS login
@@ -275,7 +297,9 @@ The method authenticate() in Context.java:287 mishandles confidential informatio
 <br/>
 Follow recommendations at https://wiki.openmrs.org/display/docs/Security+and+Encryption we encode the plain password using the built-in "encodeString" function. This change has to be made accross all authentication functions that use plain password as input.
 
-# Fortify analysis -4- PASSWORD IN CONFIGURATION FILE
+----------
+
+### Fortify analysis -4- PASSWORD IN CONFIGURATION FILE
 
 ### * Description
 #### Name of module : OpenMRS login
