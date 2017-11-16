@@ -22,7 +22,8 @@ The administrative interface should allow users to easily review any active auth
 **Expected Result:** OpenMRS should have a function or UI allowing the user to easily review any active authority relationships that would affect security-relevant decisions.
 
 **Actual Result:** 
-
+The operation is stored in the log with many other server logs.
+![](./images/V-1.PNG)
 
 **Solution:** OpenMRS should implement a function to only show the active authority relationships that would affect security-relevant decisions.
 
@@ -48,6 +49,7 @@ The administrative interface should not be misleading, ambiguous. However OpenMR
 
 **Actual Result:** 
 The error message only shows it is a "Validation Error" without specifying which part goes wrong.
+![](./images/C-1.PNG)
 
 
 **Solution:** OpenMRS could summarize the error from the log and change the error message displayed into a more specific one. 
@@ -73,10 +75,11 @@ The administrative interface must not generate the impression that it is possibl
 
 **Assumption:** OpenMRS runs normally through the whole test process on port 8080.
 
-**Expected Result:** User still could not see any options or buttons in the that page. And OpenMRS should not display any page that is above current user’s privilege.
+**Expected Result:** The new user still could not see any options or buttons in the that page. And OpenMRS should not display any page that is above current user’s privilege.
 
 **Actual Result:**
-**Manage Global Properties** and **Manage Account** functions are now accessible to users
+*Manage Global Properties* and *Manage Account* functions are now accessible to the new user.
+![](./images/E-1.PNG)
 
 
 **Solution:** OpenMRS should not redirect user to any page that they should not access. Full authentication function in the backend needs to be implemented.
