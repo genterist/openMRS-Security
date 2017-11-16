@@ -29,7 +29,7 @@ The administrative interface should allow users to easily review any active auth
 
 
 ### B. Clarity: ###
-The administrative interface should not be misleading, ambiguous. However OpenMRS have some ambiguous error messages when registering a new user. Admin user need to check the log information to know what is wrong during registration process.
+The administrative interface should not be misleading, ambiguous. However OpenMRS has some ambiguous error messages when registering a new user. Admin user needs to check the log information to know what is wrong during registration process.
 
 **Static Analysis**
 
@@ -54,7 +54,7 @@ The administrative interface should not be misleading, ambiguous. However OpenMR
 
 
 ### C. Expected ability: ###
-The administrative interface must not generate the impression that it is possible to do something that cannot actually be done. But OpenMRS will give user a feeling that they can do what they can’t do.
+The administrative interface must not generate the impression that it is possible to do something that cannot actually be done. But OpenMRS sometimes give user a feeling that they can do what they can’t do.
 
 **Static Analysis**
 
@@ -63,16 +63,10 @@ The administrative interface must not generate the impression that it is possibl
 | Test step         | Test data     | States  |
 | :---              | :---           | :---        |
 |1. Log in the system with wrong password | account: admin <br> password: wrong <br> location: Pharmacy  | You should see **System Administration**   |
-|2. Click **System Administration** | | You should see **Manage User** |
-|3. Click **Manage User** | | You should be able to **Add** a new user.|
-|4. Before adding a new user, a person should be chosen and click **Next** | person: John Smith | You should be create a user now |
-|5. Register a new user with any username and setting, but password with abcd1234 and click save | password: abcd1234 | You should able to see a message showing error |
-|1. Log in as Admin | account: admin <br> password: Admin123 <br> location: Pharmacy | You should see **System Administration**   |
-|2. Click **System Administration** | | You should see **Manage User** |
-|3. Click **Manage User** | | You should be able to **Add** a new user.|
-|4. Before adding a new user, a person should be chosen and click **Next** | person: John Smith | You should be create a user now |
-|4. Register a new user with only Requests Appointments privilege|||
-|5. Log out and Log in with the new user||You should see the Manage Users again|
+|2. Click **System Administration** | | You should see **Manage Account** |
+|3. Click **Manage Account** | | You should be able to **Add New Account**.|
+|4. Add a new account with only **Requests Appointments** privilege. Other fields are any personal choices that pass the validation |||
+|5. Log out from admin account and Log in as the new user created||You should see the Manage Users again|
 |6. Edit any account information||You should see your operation is successfully saved|
 |7. Log in with admin and check the Log information||You should see your save operation is not successful because lack of the authority|
 
