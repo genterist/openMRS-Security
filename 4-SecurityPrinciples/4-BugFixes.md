@@ -9,10 +9,10 @@
 
 
 ### * Bug Fix
-####Original code
+#### Original code
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix1.png)
 <br/>
-####Modified code
+#### Modified code
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix2.png)
 <br/>
 We trim the raw location session string into 3 characters in length to avoid the overflow error when the program tries to cast the string into integer.
@@ -28,10 +28,10 @@ We trim the raw location session string into 3 characters in length to avoid the
 In this test, we will redirect logged in user to a logout page, aiming for an illusion that user's credential was not correct. The exploit is simple yet can cause a massive confusion as well as effective denial of service
 
 ### * Bug Fix
-####Original code
+#### Original code
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix3.png)
 <br/>
-####Modified code
+#### Modified code
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix4.png)
 <br/>
 We replace all referral URL value that containts "logout.page" and turn it into "home.page"
@@ -44,10 +44,10 @@ We replace all referral URL value that containts "logout.page" and turn it into 
 The method execMysqlCmd() in MigrateDataSet.java:187 calls exec() with a command built from untrusted data. This call can cause the program to execute malicious commands on behalf of an attacker.
 
 ### * Bug Fix
-####Original code
+#### Original code
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix5.png)
 <br/>
-####Modified code
+#### Modified code
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix6.png)
 <br/>
 Make the variable private and use a maping table to map certain whitelisted inputs to certain relevant database paramaters (table names, etc). The case in the screenshot is done by explicitly assign the database name to the variable. This warning is common in many files so it has to be up to each developer to do his/her own whitelisting
@@ -60,10 +60,10 @@ Make the variable private and use a maping table to map certain whitelisted inpu
 The method authenticate() in Context.java:287 mishandles confidential information, which can compromise user privacy and is often illegal. More specifically, the password enters the program, and the statement log.debug("Authenticating with username: " + username); in authenticate() will display the username in log when debug is enabled.
 
 ### * Bug Fix
-####Original code
+#### Original code
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix7.png)
 <br/>
-####Modified code
+#### Modified code
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix8.png)
 <br/>
 Follow recommendations at https://wiki.openmrs.org/display/docs/Security+and+Encryption we encode the plain password using the built-in "encodeString" function. This change has to be made accross all authentication functions that use plain password as input.
@@ -75,10 +75,10 @@ Follow recommendations at https://wiki.openmrs.org/display/docs/Security+and+Enc
 In liquibase-core-data.xml:5, the password is stored as plaintext in the configuration file. Storing a plaintext password in a configuration file may result in a system compromise.
 
 ### * Bug Fix
-####Original code
+#### Original code
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix7.png)
 <br/>
-####Modified code
+#### Modified code
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix8.png)
 <br/>
 Follow recommendations at https://wiki.openmrs.org/display/docs/Security+and+Encryption we encode the plain password using the built-in "encodeString" function. This change has to be made accross all authentication functions that output password into XML files.
