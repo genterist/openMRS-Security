@@ -225,25 +225,6 @@ In the end, the security risk can be calculated by **Security Risk = (Ease of At
 
 
 
-### Client Bypass -1- LOGIN PAGE INTEGER BUFFER OVER FLOW
-
-##### * Description
-##### Name of module : OpenMRS login
-+ Page location : http://localhost:8081/openmrs-standalone/login.htm
-+ Attack type : Buffer overflow
-+ Attack value : 99999999999999999999
-+ Location value was overflow leading to exposure of stack trace info
-
-#### * Bug Fix
-#### Original code
-![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix1.png)
-<br/>
-#### Modified code
-![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix2.png)
-<br/>
-We trim the raw location session string into 3 characters in length to avoid the overflow error when the program tries to cast the string into integer.
-
-----------
 
 ### Client Bypass -3- LOGIN PAGE REDIRECT
 
