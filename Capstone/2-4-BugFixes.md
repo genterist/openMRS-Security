@@ -223,29 +223,6 @@ In the end, the security risk can be calculated by **Security Risk = (Ease of At
 
 ## 4 - Bug Fixes ##
 
-
-
-
-### Client Bypass -3- LOGIN PAGE REDIRECT
-
-### * Description
-#### Name of module : OpenMRS login
-+ Page location : http://localhost:8081/openmrs-standalone/login.htm
-+ Attack type : unauthorized redirect after login
-+ Attack value : %2Fopenmrs-standalone%2Fappui%2Fheader%2Flogout.action%3FsuccessUrl%3Dopenmrs-standalone
-In this test, we will redirect logged in user to a logout page, aiming for an illusion that user's credential was not correct. The exploit is simple yet can cause a massive confusion as well as effective denial of service
-
-### * Bug Fix
-#### Original code
-![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix3.png)
-<br/>
-#### Modified code
-![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix4.png)
-<br/>
-We replace all referral URL value that contains "logout.page" and turn it into "home.page"
-
-----------
-
 ### Fortify analysis -2- COMMAND LINE INJECTION
 
 ### * Description
