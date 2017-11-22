@@ -1,4 +1,4 @@
-# 1-2 LOGIN PAGE REDIRECT TO LOGOUT
+## 1-2 LOGIN PAGE REDIRECT TO LOGOUT 
 
 ### Affected module : OpenMRS login
 + Page location : http://localhost:8081/openmrs-standalone/login.htm
@@ -6,7 +6,7 @@
 + Attack value : %2Fopenmrs-standalone%2Fappui%2Fheader%2Flogout.action%3FsuccessUrl%3Dopenmrs-standalone
 
 ### Bug Description
-Attackers can redirect logged in users immediately to a logout page upon users' successful logon, creating an illusion that user's credential was not correct. The exploit is simple yet can cause a massive confusion as well as effective denial of service. In another case, attackers may redirect users to a mallicious page upon login in order to steal session cookies and other important information.
+Attackers can redirect logged in users immediately to a logout page upon users' successful logon, creating an illusion that user's credential was not correct. The exploit is simple yet can cause a massive confusion as well as effective denial of service. In another case, attackers may redirect users to a malicious page upon login in order to steal session cookies and other important information.
 
 
 ### Business impact
@@ -14,7 +14,7 @@ Attackers can cause this buffer overflow leading to a complete denial of service
 
 
 ### Consequences
-Denial of service on system like OpenMRS can cause severe consequences to all steakholders. Patients will not be accepted as fast as the hospital can handle and it may be huge issues in emergency cases. Doctors unable to look up important patient information will further cause delays in treatments and might even lead to incorrect decisions. With sequencial integer as location ID, mallicious insiders can try and may succesfully login to locations s/he is not supposed to be in.
+Denial of service on system like OpenMRS can cause severe consequences to all stakeholders. Patients will not be accepted as fast as the hospital can handle and it may be huge issues in emergency cases. Doctors unable to look up important patient information will further cause delays in treatments and might even lead to incorrect decisions. With sequential integer as location ID, malicious insiders can try and may successfully login to locations s/he is not supposed to be in.
 
 ### Mitigation
 We propose two solutions, one for short term and the other one for long term.
