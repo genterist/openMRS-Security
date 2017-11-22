@@ -5,7 +5,7 @@
 + Attack type : Buffer overflow
 + Attack value : 99999999999999999999
 
-### Bug Description
+### Vulnerability Description
  When logging in, there was no safe failing mechanism for invalid selection of session location value. In this case, server prints out full stack trace of the error. One way to carry out this attack is through SQL injection and replace the values of all location IDs with values beyond the scope of integer. Sequential integer order of location ID is also vulnerable to location probing. For example, a clerk may not be able to see the locations accessible by the doctors from the UI but can try to manually probe the location by putting in the location ID. 
 
 ### Business impact

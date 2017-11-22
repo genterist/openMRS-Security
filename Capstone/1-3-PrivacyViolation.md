@@ -1,18 +1,22 @@
 ## 1-3 PRIVACY VIOLATION
 
-### Affected module : OpenMRS login
+### Affected module : Whole OpenMRS System
 
-### Bug Description
-The method *authenticate()* in *Context.java*:287 mishandles confidential information, which can compromise user privacy and is often illegal. More specifically, the password enters the program, and the statement `log.debug("Authenticating with username: " + username);` in *authenticate()* will display the username in log when debug is enabled.
+### Vulnerability Description
+Mishandling private information, such as user passwords or private information, can compromise user privacy, and is often illegal. Privacy violations occur when users' private information enters the program, or the data is written to an external location.
+
+In this vulnerability, the method *authenticate()* in *Context.java*:287 mishandles confidential information. More specifically, the password enters the program. And the statement `log.debug("Authenticating with username: " + username);` in *authenticate()* will display the username in log when debug is enabled.
 
 ### Business impact
-one paragraph on the negative consequences of the vulnerability to the organization using OpenMRS
+Once the attacker successfully take advantage of this vulnerability
 
-### Result
-one paragraph summarizing the consequences of the vulnerability
+### Consequences
+
 
 ### Mitigation
-One potential fix for this problem is minimizing the exposure of sensitive data and encrypting them if they are needed.  Making sure the source code of the application cannot be decompiled and interpolated by others.
+
+We proposed the short term fix and the long term fix.
+The short term fix is to truncate the raw location ID string before converting it to integer to be used by other functions. This is one example of a possible fix
 
 #### Original code
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix7.png)
@@ -20,5 +24,5 @@ One potential fix for this problem is minimizing the exposure of sensitive data 
 
 #### Modified code
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix8.png)
-<br/>
-Follow recommendations at https://wiki.openmrs.org/display/docs/Security+and+Encryption we encode the plain password using the built-in "encodeString" function. This change has to be made accross all authentication functions that use plain password as input.
+
+One potential fix for this problem is minimizing the exposure of sensitive data and encrypting them if they are needed.  Making sure the source code of the application cannot be decompiled and interpolated by others.

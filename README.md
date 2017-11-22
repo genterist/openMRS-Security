@@ -11,3 +11,6 @@
 
 ## M4 ##
 [https://github.com/genterist/openMRS-Security/tree/master/4-SecurityPrinciples](https://github.com/genterist/openMRS-Security/tree/master/4-SecurityPrinciples)
+
+## Final ##
+[https://github.com/genterist/openMRS-Security/tree/master/Capstone](https://github.com/genterist/openMRS-Security/tree/master/Capstone)
