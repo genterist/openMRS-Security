@@ -5,8 +5,8 @@
 + Attack type : unauthorized redirect after login
 + Attack value : %2Fopenmrs-standalone%2Fappui%2Fheader%2Flogout.action%3FsuccessUrl%3Dopenmrs-standalone
 
-### Bug Description
-Attackers can redirect logged in users immediately to a logout page upon users' successful logon, creating an illusion that user's credential was not correct. The exploit is simple yet can cause a massive confusion as well as effective denial of service. In another case, attackers may redirect users to a malicious page upon login in order to steal session cookies and other important information.
+### Vulnerability Description
+Attackers can redirect logged in users immediately to a logout page upon users' successful login, creating an illusion that user's credential was not correct. The exploit is simple yet can cause a massive confusion as well as effective denial of service. In another case, attackers may redirect users to a malicious page upon login in order to steal session cookies and other important information.
 
 
 ### Business impact
