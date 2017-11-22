@@ -19,9 +19,11 @@ Denial of service on system like OpenMRS can cause severe consequences to all st
 ### Mitigation
 We propose two solutions, one for short term and the other one for long term.
 For the short term, the solution is to spot and replace any "logout" string with a "home" string so that even when attackers found a way to force the logout page (to accomplish denial of service), the server codes will change that and redirect user back to home.
+
 #### Original code
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix3.png)
 <br/>
+
 #### Modified code
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix4.png)
 <br/>

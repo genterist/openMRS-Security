@@ -17,9 +17,11 @@ Denial of service on system like OpenMRS can cause severe consequences to all st
 ### Mitigation
 We proposed the short term fix and the long term fix.
 The short term fix is to truncate the raw location ID string before converting it to integer to be used by other functions. This is one example of a possible fix
+
 #### Original code
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix1.png)
 <br/>
+
 #### Modified code
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix2.png)
 <br/>
