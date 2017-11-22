@@ -3,8 +3,9 @@
 ### Affected module : Whole OpenMRS System
 
 ### Vulnerability Description
+Storing a password in plaintext may result in a system compromise. Password management issues occur when a password is stored in plaintext in an application's properties or configuration file. Storing a plaintext password in a configuration file allows anyone who can read the file access to the password-protected resource.
 
-In *liquibase-core-data.xml*:5, the password is stored as plaintext in the configuration file.  Storing a password in plaintext may result in a system compromise. Password management issues occur when a password is stored in plaintext in an application's properties or configuration file. Storing a plaintext password in a configuration file allows anyone who can read the file access to the password-protected resource. 
+For this vulnerability, in *liquibase-core-data.xml*:5, the password is stored as plaintext in the configuration file.  
 
 ### Business impact
 
