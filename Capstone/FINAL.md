@@ -1,8 +1,11 @@
 # NCSU CSC515 2017 - Project Capstone #
-## TEAM 8 : ZLI36, XDING3, FLUAN, TNNGUYE6
+### TEAM 8 : ZLI36, XDING3, FLUAN, TNNGUYE6
 
+***
 
-***## 1-1 LOGIN LOCATION OVERFLOW
+## 1- OUTSTANDING VULNERABILITIES
+
+## 1-1 LOGIN LOCATION OVERFLOW
 
 ### Affected module : OpenMRS login / Registration
 + Page location : http://localhost:8081/openmrs-standalone/login.htm
@@ -70,6 +73,7 @@ For the short term, the solution is to spot and replace any "logout" string with
 
 
 For the long term solution, we recommend encryption of URL information. Before sending the responses to clients, the server encrypts the redirection URL using a private key. Later on, when receiving back the URL redirection data from client's request, server will decrypt and perform redirection. Due to encryption mechanism, it will be impossible for attackers to guess or forge redirection data. The private key can be deprived from the session key so we will have a new key for each user session.
+
 ## 1-3 PRIVACY VIOLATION
 
 ### Affected module : Whole OpenMRS System
@@ -131,19 +135,11 @@ For this vulnerability, we proposed a code fix shown below:
 
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix8.png)
 
-
-
-
-# TEAM 8 MEMBERS IDS:
-## ZLI36, XDING3, FLUAN, TNNGUYE6
-
-
 ***
 
+## 2- TEST CASES
 
-# [A1 - 01 - Injection] [ Drop Table ]
-`DESIGNER : [Fuxing Luan]`
-`UPDATED ON : [09/09/2017]`
+## [A1 - 01 - Injection] [ Drop Table ]
 
 ### Name of module : [ Search ]
 
@@ -183,9 +179,7 @@ Injection attacks occur when unvalidated input is embedded in an instruction str
 
 ***
 
-# [A1 - 02 - Injection] [ Tautology ]
-`DESIGNER : [Fuxing Luan]`
-`UPDATED ON : [09/09/2017]`
+## [A1 - 02 - Injection] [ Tautology ]
 
 ### Name of module : [ Login ]
 
@@ -222,9 +216,7 @@ Login Failed
 
 ***
 
-# [A2 - 01 - BAC] [ Exposed Session IDs ]
-`DESIGNER : [Fuxing Luan]`
-`UPDATED ON : [09/09/2017]`
+## [A2 - 01 - BAC] [ Exposed Session IDs ]
 
 ### Name of module : [ Session ]
 
@@ -260,9 +252,7 @@ No session information exposed
 
 ***
 
-# [A2 - 02 - BAC] [ Session Time Outs ]
-`DESIGNER : [Fuxing Luan]`
-`UPDATED ON : [09/09/2017]`
+## [A2 - 02 - BAC] [ Session Time Outs ]
 
 ### Name of module : [ Session ]
 
@@ -299,9 +289,7 @@ Login is required
 
 ***
 
-# [A3 - 01 - XSS] [ Detecting Reflected XSS ]
-`DESIGNER : [Xiangqing Ding]`
-`UPDATED ON : [09/12/2017]`
+## [A3 - 01 - XSS] [ Detecting Reflected XSS ]
 
 ### Name of module : [ Search field in Find Patient Record ]
 
@@ -356,9 +344,7 @@ Scripts are accepted but not executed.
 ***
 
 
-# [ A3 - 02 - XSS ] [ Detecting Stored XSS ]
-`DESIGNER : [Xiangqing Ding]`
-`UPDATED ON : [09/09/2017]`
+## [ A3 - 02 - XSS ] [ Detecting Stored XSS ]
 
 ### Name of module : [ Allergy page ]
 
@@ -431,9 +417,7 @@ Scripts are accepted but not executed. No pop-up.
 ***
 
 
-# [ A4 - 01 - BAC ] [ Non-admin account access to admin function ]
-`DESIGNER : [Xiangqing Ding]`
-`UPDATED ON : [09/09/2017]`
+## [ A4 - 01 - BAC ] [ Non-admin account access to admin function ]
 
 ### Name of module : [ System Administration ]
 
@@ -478,9 +462,8 @@ The Nurse account can access to the administration page
 ***
 
 
-# [ A4 - 02 - BAC ] [ Unauthorized access to system ]
-`DESIGNER : [Xiangqing Ding]`
-`UPDATED ON : [09/09/2017]`
+## [ A4 - 02 - BAC ] [ Unauthorized access to system ]
+ 
 
 ### Name of module : [ Main Page ]
 
@@ -521,10 +504,9 @@ No response from the page. User cannot access to the main page without logging i
 ***
 
 
-# [A5 - 01 - Security Misconfiguration ] [ Default username and password]
+## [A5 - 01 - Security Misconfiguration ] [ Default username and password]
 ### Test status : [ pass ]
-`DESIGNER : [ZHUO LI]` <br/>
-`UPDATED ON : [05SEP2017]` <br/>
+ 
 
 ### * Description
 
@@ -562,10 +544,8 @@ Log in failed with test username and password.
 
 ***
 
-# [A5 - 02 - Security Misconfiguration ] [ DirectoryListing]
+## [A5 - 02 - Security Misconfiguration ] [ DirectoryListing]
 ### Test status : [ pass ]
-`DESIGNER : [ZHUO LI]` 
-`UPDATED ON : [05SEP2017]` 
 
 ### * Description
 
@@ -600,10 +580,8 @@ No directory was listed following the test steps.
 
 ***
 
-# [A6 - 01 - Sensitive Data Exposure ] [ Search History ]
+## [A6 - 01 - Sensitive Data Exposure ] [ Search History ]
 ### Test status : [ Failed ]
-`DESIGNER : [ZHUO LI]` 
-`UPDATED ON : [05SEP2017]` 
 
 ### * Description
 
@@ -642,10 +620,8 @@ When we check the source code of webpage for patient Fred, the visit patient his
 ***
 
 
-# [A6 - 02 - Sensitive Data Exposure ] [ Web Certification ]
+## [A6 - 02 - Sensitive Data Exposure ] [ Web Certification ]
 ### Test status : [ Failed ]
-`DESIGNER : [ZHUO LI]` <br/>
-`UPDATED ON : [05SEP2017]` <br/>
 
 ### * Description
 
@@ -682,13 +658,9 @@ The settings showed us that even the home page for this application is not secur
 ***
 
 
-# [A7 - 01 - IAP ] [ DETECTING LEADING SPACE ATTACKS ]
+## [A7 - 01 - IAP ] [ DETECTING LEADING SPACE ATTACKS ]
 ### Priority : medium
 ### Test status : FAILED
-`DESIGNER : TAM N NGUYEN` <br/>
-`EXECUTED BY : TAM N NGUYEN` <br/>
-`UPDATED ON : 09SEP2017` <br/>
-`EXECUTED ON : 09SEP2017` <br/>
 
 ### * Description
 #### Name of module : OpenMRS Login page
@@ -743,13 +715,9 @@ Contact tam.nguyen@ncsu.edu if you have problems following instructions in this 
 
 ***
 
-# [ A7 - 02 - IAP ] [ PROTECTION AGAINST AUTOMATIC SCAN ]
+## [ A7 - 02 - IAP ] [ PROTECTION AGAINST AUTOMATIC SCAN ]
 ### Priority : medium
 ### Test status : FAILED
-`DESIGNER : TAM N NGUYEN` <br/>
-`EXECUTED BY : TAM N NGUYEN` <br/>
-`UPDATED ON : 09SEP2017` <br/>
-`EXECUTED ON : 09SEP2017` <br/>
 
 ### * Description
 #### Name of module : OpenMRS Login page
@@ -798,13 +766,9 @@ Contact tam.nguyen@ncsu.edu if you have problems following instructions in this 
 
 ***
 
-# [ A8 - 01 - CSRF ] [ CHANGE DEFAULT LANGAUGE ATTACK ]
+## [ A8 - 01 - CSRF ] [ CHANGE DEFAULT LANGAUGE ATTACK ]
 ### Priority : HIGH
 ### Test status : PASSED
-`DESIGNER : TAM N NGUYEN` <br/>
-`EXECUTED BY : TAM N NGUYEN` <br/>
-`UPDATED ON : 09SEP2017` <br/>
-`EXECUTED ON : 09SEP2017` <br/>
 
 ### * Description
 #### Name of module : OpenMRS default setting page
@@ -847,13 +811,9 @@ Contact tam.nguyen@ncsu.edu if you have problems following instructions in this 
 ***
 
 
-# [ A8 - 02 - CSRF ] [ COMMAND EXECUTION ]
+## [ A8 - 02 - CSRF ] [ COMMAND EXECUTION ]
 ### Priority : HIGH
 ### Test status : PASSED
-`DESIGNER : TAM N NGUYEN` <br/>
-`EXECUTED BY : TAM N NGUYEN` <br/>
-`UPDATED ON : 09SEP2017` <br/>
-`EXECUTED ON : 09SEP2017` <br/>
 
 ### * Description
 #### Name of module : OpenMRS help page
@@ -899,9 +859,7 @@ Contact tam.nguyen@ncsu.edu if you have problems following instructions in this 
 ***
 
 
-# [A9 - UCKA] [ Finding Components with Known Vulnerabilities ]
-`DESIGNER : [Xiangqing Ding]`
-`UPDATED ON : [09/09/2017]`
+## [A9 - UCKA] [ Finding Components with Known Vulnerabilities ]
 
 ### Name of module : [ Third Party Libraries & Database ]
 
@@ -937,10 +895,9 @@ Link:[https://nvd.nist.gov/vuln/detail/CVE-2014-3558](https://nvd.nist.gov/vuln/
 
 ***
 
-# [ A10 - 01 - API ] [ User object - Unvalidated Redirects and Forwards ]
+## [ A10 - 01 - API ] [ User object - Unvalidated Redirects and Forwards ]
 ### Priority : medium
 ### Test status : PASSED
-`DESIGNER : Fuxing Luan` <br/>
 
 ### * Description
 #### Name of module : OpenMRS API - "User" object
@@ -972,13 +929,9 @@ http://localhost:8081/openmrs- standalone/coreapps/activeVisits.page?app=www.goo
 
 ***
 
-# [ A10 - 02 - API] [ User object - TEST FOR AUTHENTICATION ]
+## [ A10 - 02 - API] [ User object - TEST FOR AUTHENTICATION ]
 ### Priority : medium
 ### Test status : PASSED
-`DESIGNER : TAM N NGUYEN` <br/>
-`EXECUTED BY : TAM N NGUYEN` <br/>
-`UPDATED ON : 09SEP2017` <br/>
-`EXECUTED ON : 09SEP2017` <br/>
 
 ### * Description
 #### Name of module : OpenMRS API - "User" object
@@ -1026,13 +979,17 @@ You can expand the objects and click "try it out" to get sample codes.
 * Contact tam.nguyen@ncsu.edu if you have problems following instructions in this test case.
 # CSC 515 Project - Milestone 2 #
 
-## 0. Module Selection ##
+***
+
+## 3- ATTACK MODELING WITH ABUSE/MISUSE CASES, ATTACK TREES
+
+## 3.0. Module Selection ##
 
 Registration Module
 
 <br>
 
-## 1. Password Strength ##
+## 3.1. Password Strength ##
 
 Since some of the content contains Chinese, we translated the Chinese reminding message into English using the translator( which is also showed in the picture).
 
@@ -1056,7 +1013,7 @@ Since some of the content contains Chinese, we translated the Chinese reminding 
 
 <br><br>
 
-##  2. Abuse/Misuse Cases ##
+##  3.2. Abuse/Misuse Cases ##
 
 ### Diagram ###
 
@@ -1168,7 +1125,7 @@ Since some of the content contains Chinese, we translated the Chinese reminding 
 
 <br><br>
 
-##  3. Attack Trees and Protection Trees ##
+##  3.3. Attack Trees and Protection Trees ##
 
 
 ## Description
@@ -1625,7 +1582,7 @@ risk = (probability/cost) * impact
  ![The protection tree](https://github.com/genterist/openMRS-Security/blob/master/2-AttackModelling/OpenMRS-ProtectionTree.png?raw=true)
 <br><br>
 
-##  4. Vulnerability History ##
+##  3.4. Vulnerability History ##
 
 ### Description
 OpenMrs used to have XSS, CSRF and XXE Injection.
@@ -1657,18 +1614,11 @@ Also, most application contain XML entities, most of them only check the grammar
 ## How do you think OpenMRS had to fix the vulnerability?
 The application should not only focus on the log in part but also everywhere of the system. There should be filter and checking part before and after every options to hide useless data and protect changed data. Moreover, before starting the whole system, there also should be some checking part to see if every file is safe and authenticated.
 
-# CAC515 - Project Part 3: Audit/logging, Static Analysis, Fuzzing, and Requirements #
+***
 
-### Tam Nguyen
-### Xiangqing Ding	
-### Zhuo Li	
-### Fuxing Luan
-# Audit/Logging Ismplementation #
+## 4- AUDITING #
 
 ## Test case: U-1
-
-`DESIGNER : [Fuxing Luan]`
-`UPDATED ON : [10/24/2017]`
 
 ### Name of module : [ Update ]
 
@@ -1717,10 +1667,8 @@ It is inadequate because you cannot tell whether it was operated by the person.
 
 
 
-# Test case: U-2
+## Test case: U-2
 
-`DESIGNER : [Fuxing Luan]`
-`UPDATED ON : [10/24/2017]`
 
 ### Name of module : [ Update ]
 
@@ -1766,10 +1714,7 @@ The password and session id is not be logged
 
 
 
-# Test case: U-3
-
-`DESIGNER : [Fuxing Luan]`
-`UPDATED ON : [10/24/2017]`
+## Test case: U-3
 
 ### Name of module : [ Update ]
 
@@ -1817,10 +1762,8 @@ It is inadequate because you cannot tell whether it was operated by the person.
 
 
 
-# Test case: U-4
+## Test case: U-4
 
-`DESIGNER : [Fuxing Luan]`
-`UPDATED ON : [10/24/2017]`
 
 ### Name of module : [ Update ]
 
@@ -1864,10 +1807,8 @@ No private information is exposed
 
 
 
-# Test case: U-5
+## Test case: U-5
 
-`DESIGNER : [Fuxing Luan]`
-`UPDATED ON : [10/24/2017]`
 
 ### Name of module : [ Update ]
 
@@ -1914,10 +1855,7 @@ It is inadequate because you cannot tell whether it was operated by the person.
 
 
 
-# Test case: D-1
-
-`DESIGNER : [Fuxing Luan]`
-`UPDATED ON : [10/24/2017]`
+## Test case: D-1
 
 ### Name of module : [ Delete ]
 
@@ -1959,10 +1897,7 @@ No private information is exposed
 
 
 
-# Test case: V-1
-
-`DESIGNER : [Fuxing Luan]`
-`UPDATED ON : [10/24/2017]`
+## Test case: V-1
 
 ### Name of module : [ View ]
 
@@ -2005,10 +1940,7 @@ It is inadequate because you cannot tell whether it was operated by the person.
 
 
 
-# Test case: V-2
-
-`DESIGNER : [Fuxing Luan]`
-`UPDATED ON : [10/24/2017]`
+## Test case: V-2
 
 ### Name of module : [ View ]
 
@@ -2045,10 +1977,7 @@ INFO - LoggingAdvice.invoke(155) |2017-10-24 17:01:36,098| Exiting method saveUs
 No private information is exposed.
 
 
-# Test case: V-3
-
-`DESIGNER : [Fuxing Luan]`
-`UPDATED ON : [10/24/2017]`
+## Test case: V-3
 
 ### Name of module : [ View ]
 
@@ -2093,10 +2022,7 @@ It is inadequate because you cannot tell whether it was operated by the person.
 
 
 
-# Test case: V-4
-
-`DESIGNER : [Fuxing Luan]`
-`UPDATED ON : [10/24/2017]`
+## Test case: V-4
 
 ### Name of module : [ View ]
 
@@ -2133,7 +2059,9 @@ INFO - LoggingAdvice.invoke(155) |2017-10-24 17:01:36,098| Exiting method saveUs
 
 No private information is exposed.
 
-## Static analysis with Fortify ##
+***
+
+## 5- STATIC ANALYSIS WITH FORTIFY ##
 
 ### Overview ###
 
@@ -2141,7 +2069,7 @@ In this part we list 10 security vulnerabilities in OpenMRS and suggest potentia
 
 ### Static Analysis ###
 
-#### 1. SQL Injection ####
+#### 5.1. SQL Injection ####
 
 | Component 				| Content 		|
 | :---                   	| :---         	|
@@ -2152,7 +2080,7 @@ In this part we list 10 security vulnerabilities in OpenMRS and suggest potentia
 | **Risk** | 25.0 |
 
 
-#### 2. Command Injection ####
+#### 5.2. Command Injection ####
 
 | Component 				| Content 		|
 | :---                   	| :---         	|
@@ -2163,7 +2091,7 @@ In this part we list 10 security vulnerabilities in OpenMRS and suggest potentia
 | **Risk** | 16.0 |
 
 
-#### 3. Privacy Violation ####
+#### 5.3. Privacy Violation ####
 
 | Component 				| Content 		|
 | :---                   	| :---         	|
@@ -2174,7 +2102,7 @@ In this part we list 10 security vulnerabilities in OpenMRS and suggest potentia
 | **Risk** | 11.2 |
 
 
-#### 4. Password in Configuration File ####
+#### 5.4. Password in Configuration File ####
 
 | Component 				| Content 		|
 | :---                   	| :---         	|
@@ -2185,7 +2113,7 @@ In this part we list 10 security vulnerabilities in OpenMRS and suggest potentia
 | Risk | 9.6 |
 
 
-#### 5. Path Manipulation ####
+#### 5.5. Path Manipulation ####
 
 | Component 				| Content 		|
 | :---                   	| :---         	|
@@ -2196,7 +2124,7 @@ In this part we list 10 security vulnerabilities in OpenMRS and suggest potentia
 | **Risk** | 8.85 |
 
 
-#### 6.Singleton Member ####
+#### 5.6.Singleton Member ####
 
 | Component 				| Content 		|
 | :---                   	| :---         	|
@@ -2207,7 +2135,7 @@ In this part we list 10 security vulnerabilities in OpenMRS and suggest potentia
 | **Risk** | 8.0 |
 
 
-#### 7. Server-Side Request Forgery ####
+#### 5.7. Server-Side Request Forgery ####
 
 | Component 				| Content 		|
 | :---                   	| :---         	|
@@ -2218,7 +2146,7 @@ In this part we list 10 security vulnerabilities in OpenMRS and suggest potentia
 | **Risk** | 7.2 |
 
 
-#### 8. Hardcoded Encryption Key ####
+#### 5.8. Hardcoded Encryption Key ####
 
 | Component 				| Content 		|
 | :---                   	| :---         	|
@@ -2229,7 +2157,7 @@ In this part we list 10 security vulnerabilities in OpenMRS and suggest potentia
 | **Risk** | 7.2 |
 
 
-#### 9. Denial of Service: Regular Expression ####
+#### 5.9. Denial of Service: Regular Expression ####
 
 | Component 				| Content 		|
 | :---                   	| :---         	|
@@ -2240,7 +2168,7 @@ In this part we list 10 security vulnerabilities in OpenMRS and suggest potentia
 | **Risk** | 6.39 |
 
 
-#### 10. Log Forging ####
+#### 5.10. Log Forging ####
 
 | Component 				| Content 		|
 | :---                   	| :---         	|
@@ -2249,13 +2177,13 @@ In this part we list 10 security vulnerabilities in OpenMRS and suggest potentia
 | Impact | 2.5 |
 | Likelihood | 2.21 |
 | **Risk** | 5.525 |
-# Fuzz -1- LOGIN PAGE INJECTION
+
+***
+
+## 6- FUZZING WITH OWASP ZAP
+## Fuzz -1- LOGIN PAGE INJECTION
 ### Priority : HIGH
 ### Test status : FAILED
-`DESIGNER : TAM N NGUYEN` <br/>
-`EXECUTED BY : TAM N NGUYEN` <br/>
-`UPDATED ON : 20OCT17` <br/>
-`EXECUTED ON : 20OCT17` <br/>
 
 ### * Description
 #### Name of module : OpenMRS login
@@ -2638,13 +2566,10 @@ Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationExce
 	... 122 more
 </pre>
 ```
-# Fuzz -2- PATIENT REGISTRATION PAGE XSS
+
+## Fuzz -2- PATIENT REGISTRATION PAGE XSS
 ### Priority : HIGH
 ### Test status : PASSED
-`DESIGNER : TAM N NGUYEN` <br/>
-`EXECUTED BY : TAM N NGUYEN` <br/>
-`UPDATED ON : 20OCT17` <br/>
-`EXECUTED ON : 20OCT17` <br/>
 
 ### * Description
 #### Name of module : OpenMRS Patient registration 
@@ -2754,13 +2679,10 @@ http://localhost:8081/openmrs-standalone/registrationapp/registerPatient/submit.
 
 http://localhost:8081/openmrs-standalone/registrationapp/registerPatient/submit.action?appId=referenceapplication.registrationapp.registerPatient&&givenName=Jennifer&middleName=&familyName=Lawren&preferred=true&gender=F&unknown=false&birthdateDay=&birthdateMonth=&birthdateYear=&birthdateYears=25&birthdateMonths=1&birthdate=&address1=res://c:%5C%5Cprogram%20files%5C%5Cadobe%5C%5Cacrobat%207.0%5C%5Cacrobat%5C%5Cacrobat.dll/%232/%23210&address2=bogus&cityVillage=Hollywood&stateProvince=CA&country=usA&postalCode=00000&phoneNumber=408+804+4488&relationship_type=8d919b58-c2cc-11de-8d13-0010c6dffd0f-A&other_person_uuid=
 ```
-# Fuzz -3- LOGIN PAGE SQL INJECTION
+
+## Fuzz -3- LOGIN PAGE SQL INJECTION
 ### Priority : HIGH
 ### Test status : FAILED
-`DESIGNER : TAM N NGUYEN` <br/>
-`EXECUTED BY : TAM N NGUYEN` <br/>
-`UPDATED ON : 20OCT17` <br/>
-`EXECUTED ON : 20OCT17` <br/>
 
 ### * Description
 #### Name of module : OpenMRS login
@@ -2989,13 +2911,10 @@ Originally harvested by OWASP fuzzer in HttpResponse and may not be able to repr
 </pre>
 
 ```
-# Fuzz -4- LOGIN PAGE BUFFER OVER FLOW
+
+## Fuzz -4- LOGIN PAGE BUFFER OVER FLOW
 ### Priority : HIGH
 ### Test status : PASSED
-`DESIGNER : TAM N NGUYEN` <br/>
-`EXECUTED BY : TAM N NGUYEN` <br/>
-`UPDATED ON : 20OCT17` <br/>
-`EXECUTED ON : 20OCT17` <br/>
 
 ### * Description
 #### Name of module : OpenMRS login
@@ -3068,13 +2987,10 @@ OpenMRS should still be operating normally
 ### * NOTES:
 In the future, we would create more fuzz cases with higher amount of characters
 
-# Client Bypass -1- LOGIN PAGE INTEGER BUFFER OVER FLOW
+## 7- CLIENT BYPASS WITH OWASP PROXY
+## Client Bypass -1- LOGIN PAGE INTEGER BUFFER OVER FLOW
 ### Priority : HIGH
 ### Test status : FAILED
-`DESIGNER : TAM N NGUYEN` <br/>
-`EXECUTED BY : TAM N NGUYEN` <br/>
-`UPDATED ON : 20OCT17` <br/>
-`EXECUTED ON : 20OCT17` <br/>
 
 ### * Description
 #### Name of module : OpenMRS login
@@ -3145,13 +3061,9 @@ OpenMRS should still be operating normally
 ### * NOTES:
 A very detailed stack trace was given which is a violation of "Fail securely" principle. Defaulting user to a default location should be a good way to mitigate this bug.
 
-# Client Bypass -2- LOGIN PAGE SESSION HIJACK
+## Client Bypass -2- LOGIN PAGE SESSION HIJACK
 ### Priority : HIGH
 ### Test status : PASSED
-`DESIGNER : TAM N NGUYEN` <br/>
-`EXECUTED BY : TAM N NGUYEN` <br/>
-`UPDATED ON : 20OCT17` <br/>
-`EXECUTED ON : 20OCT17` <br/>
 
 ### * Description
 #### Name of module : OpenMRS login
@@ -3231,13 +3143,9 @@ System silently redirect user to login page without any error or announcement.
 ### * NOTES:
 n/a
 
-# Client Bypass -3- LOGIN PAGE REDIRECT
+## Client Bypass -3- LOGIN PAGE REDIRECT
 ### Priority : HIGH
 ### Test status : FAILED
-`DESIGNER : TAM N NGUYEN` <br/>
-`EXECUTED BY : TAM N NGUYEN` <br/>
-`UPDATED ON : 20OCT17` <br/>
-`EXECUTED ON : 20OCT17` <br/>
 
 ### * Description
 #### Name of module : OpenMRS login
@@ -3305,13 +3213,9 @@ User was returned to the login page as if the login credential was not correct
 ### * NOTES:
 n/a
 
-# Client Bypass -4- LOGIN PAGE DELETTE
+## Client Bypass -4- LOGIN PAGE DELETTE
 ### Priority : HIGH
 ### Test status : FAILED
-`DESIGNER : TAM N NGUYEN` <br/>
-`EXECUTED BY : TAM N NGUYEN` <br/>
-`UPDATED ON : 20OCT17` <br/>
-`EXECUTED ON : 20OCT17` <br/>
 
 ### * Description
 #### Name of module : OpenMRS login
@@ -3383,13 +3287,12 @@ OpenMRS should still be operating normally
 Login page is still intacted (verified by visiting the login page)
 
 ### * NOTES:
-A very detailed stack trace was given which is a violation of "Fail securely" principle. Defaulting user to a default location should be a good way to mitigate this bug.# Client Bypass -4- SQL INJECTION
+A very detailed stack trace was given which is a violation of "Fail securely" principle. Defaulting user to a default location should be a good way to mitigate this bug.
+
+## Client Bypass -4- SQL INJECTION
 ### Priority : HIGH
 ### Test status : PASSED
-`DESIGNER : TAM N NGUYEN` <br/>
-`EXECUTED BY : TAM N NGUYEN` <br/>
-`UPDATED ON : 20OCT17` <br/>
-`EXECUTED ON : 20OCT17` <br/>
+
 
 ### * Description
 #### Name of module : OpenMRS login
@@ -3464,11 +3367,9 @@ OpenMRS should still be operating normally
 ### * NOTES:
 n/a
 
-# Security Requirements
-`DESIGNER : Zhuo Li` <br/>
-`EXECUTED BY : Zhuo Li` <br/>
-`UPDATED ON : 22OCT17` <br/>
-`EXECUTED ON : 22OCT17` <br/>
+***
+
+## 8- RECOMMENDED SECURITY REQUIREMENTS
 
 ### SecReq01
 Module:Manage Service Types
@@ -3565,20 +3466,8 @@ Result: Pass
 
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/3-Analysis/images/SecReq10.PNG)
 
-In this folder, there are:
 
-1.  Abuse/Misuse Cases 
-We develop an abuse case diagram for one of the modules of OpenMRS (TBD) which involves the creation of a use case diagram with which the abuse cases interact with. We consider the various types of malicious actors that would like to abuse the chosen module and what they would want to do.
-For four (4) of the abuse cases in our diagram, we write a detailed abuse case description.
-
-2.  Attack Trees and Protection Trees
-We develop an attack tree and a protection tree for our targeted module. We also include information on the tools required for each step in both process (no tool required, etc.), and a projected cost for each attack/protection scheme. These are estimates based on citations, evidence, etc.
-
-3.  Security Requirements
-We develop 10 security requirements for OpenMRS spreading over several modules
-# CSC 515 - Milestone 4 #
-
-## 1 - Architectural Design Principles
+## 9- EVALUATING DESIGN PRINCIPLE COMPLIANCE
 
 ### ADP01
 Least Privilege : A subject (user/other system) should be given only those privileges it needs to complete its task.
@@ -3628,7 +3517,7 @@ Solution: The system should only return a simple error message without showing a
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/ADP03.PNG)
 
 
-## 2 - Usable Security Principles ##
+## 10- EVALUATING USABILITY COMPLIANCE
 
 ### A. Visibility: ###
 
@@ -3717,7 +3606,7 @@ The administrative interface must not generate the impression that it is possibl
 
 
 
-## 3 - Protection Poker ##
+## 11- RISK EVALUATION VIA PROTECTION POKER ##
 
 
 ### Requirements ###
@@ -3799,7 +3688,7 @@ The 5th requirement (Removing Data Management Function) reduces redundant pages 
 In the end, the security risk can be calculated by **Security Risk = (Ease of Attack Points) * (Value of Asset Points)**. And the rank of security risk is assigned based on the security points.
 
 
-## 4 - Bug Fixes ##
+## 12- RECOMMENDED BUG FIXES ##
 
 ### Fortify analysis -2- COMMAND LINE INJECTION
 
@@ -3850,14 +3739,14 @@ In liquibase-core-data.xml:5, the password is stored as plaintext in the configu
 <br/>
 Follow recommendations at https://wiki.openmrs.org/display/docs/Security+and+Encryption we encode the plain password using the built-in "encodeString" function. This change has to be made accross all authentication functions that output password into XML files.
 
-## PROPOSED PULL REQUEST FOR 1-2 LOGIN PAGE REDIRECT TO LOGOUT 
+## IMMEDIATE PULL REQUEST RECOMMENDATION
 
 ### Affected module : OpenMRS login
 + Page location : http://localhost:8081/openmrs-standalone/login.htm
 + Attack type : unauthorized redirect after login
 + Attack value : %2Fopenmrs-standalone%2Fappui%2Fheader%2Flogout.action%3FsuccessUrl%3Dopenmrs-standalone
 
-We propose the following bug fixe - replacing any "logout" string with a "home" string so that even when attackers found a way to force the logout page (to accomplish denial of service), the server codes will change that and redirect user back to home.
+We propose the following bug fix - replacing any "logout" string with a "home" string so that even when attackers found a way to force the logout page (to accomplish denial of service), the server codes will change that and redirect user back to home.
 
 #### Original code
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix3.png)
