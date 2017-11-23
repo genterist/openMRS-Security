@@ -20,11 +20,14 @@ Denial of service on system like OpenMRS can cause severe consequences to all st
 We propose two solutions, one for short term and the other one for long term.
 For the short term, the solution is to spot and replace any "logout" string with a "home" string so that even when attackers found a way to force the logout page (to accomplish denial of service), the server codes will change that and redirect user back to home.
 
-#### Original code
-![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix3.png)
-<br/>
+**Original code**
 
-#### Modified code
+![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix3.png)
+
+
+**Modified code**
+
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix4.png)
-<br/>
+
+
 For the long term solution, we recommend encryption of URL information. Before sending the responses to clients, the server encrypts the redirection URL using a private key. Later on, when receiving back the URL redirection data from client's request, server will decrypt and perform redirection. Due to encryption mechanism, it will be impossible for attackers to guess or forge redirection data. The private key can be deprived from the session key so we will have a new key for each user session.

@@ -14,17 +14,21 @@ Attackers can cause this buffer overflow leading to a complete denial of service
 ### Consequences
 Denial of service on system like OpenMRS can cause severe consequences to all stakeholders. Patients will not be accepted as fast as the hospital can handle and it may be huge issues in emergency cases. Doctors unable to look up important patient information will further cause delays in treatments and might even lead to incorrect decisions. With sequential integer as location ID, malicious insiders can try and may successfully login to locations s/he is not supposed to be in.
 
-### Mitigation
+**Mitigation**
+
 We proposed the short term fix and the long term fix.
 The short term fix is to truncate the raw location ID string before converting it to integer to be used by other functions. This is one example of a possible fix
 
-#### Original code
-![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix1.png)
-<br/>
+**Original code**
 
-#### Modified code
+![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix1.png)
+
+
+**Modified code**
+
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix2.png)
-<br/>
+
+
 The long term fix is to establish a hash table, mapping hashed values with true location IDs and only the hash values are made viewable by the users. This reduces the chance of location hijacking and improves the security of all components that use location data. For example, there are some modules or some programs made available to some certain locations. Making location data harder to guess will also help security administrator spot issues quicker. For example, a particular user was logged in into 2 locations at the same time.
 
 
