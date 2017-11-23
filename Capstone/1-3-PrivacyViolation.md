@@ -15,7 +15,7 @@ The application may reveal system data, personal information or debugging inform
 
 ### Mitigation
 
-One potential fix for this problem is minimizing the exposure of sensitive data and encrypting them if they are needed. Make sure the source code of the application cannot be decompiled and interpolated by others.  Sanitize all messages, removing any unnecessary sensitive information. Ensure that debugging, error messages, and exceptions are only visible to developer.
+One potential fix for this problem is minimizing the exposure of sensitive data and encrypting them if they are needed. Make sure the source code of the application cannot be decompiled and interpolated by others. Sanitize all messages, removing any unnecessary sensitive information. Ensure that debugging, error messages, and exceptions are only visible to developer.
 
 For this vulnerability, we proposed a code fix shown below:
 
