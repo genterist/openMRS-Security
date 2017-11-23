@@ -1162,7 +1162,7 @@ risk = (probability/cost) * impact
 
 ### Propogation of metrics
 
-![Propagation](https://github.com/genterist/openMRS-Security/blob/master/2-AttackModelling/picture/Propagation.png?raw=true)
+![Propagation](https://github.com/genterist/openMRS-Security/blob/master/Capstone/picture/Propagation.png)
 
 ### Attack tree leaf description
 
@@ -1368,7 +1368,7 @@ risk = (probability/cost) * impact
       
  ### The attack tree
       
-![Attack tree](https://github.com/genterist/openMRS-Security/blob/master/2-AttackModelling/OpenMRS-AttackTree.png?raw=true)
+![Attack tree](https://github.com/genterist/openMRS-Security/blob/master/2-AttackModelling/OpenMRS-AttackTree.png)
 
 ### Protection tree leaf descriptions
 
@@ -1570,7 +1570,7 @@ risk = (probability/cost) * impact
       
  ### The protection tree
  
- ![The protection tree](https://github.com/genterist/openMRS-Security/blob/master/2-AttackModelling/OpenMRS-ProtectionTree.png?raw=true)
+ ![The protection tree](https://github.com/genterist/openMRS-Security/blob/master/2-AttackModelling/OpenMRS-ProtectionTree.png)
 <br><br>
 
 ##  3.4. Vulnerability History ##
