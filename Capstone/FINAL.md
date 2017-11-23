@@ -1,9 +1,10 @@
 # NCSU CSC515 2017 - Project Capstone #
 ### TEAM 8 : ZLI36, XDING3, FLUAN, TNNGUYE6
 
-***
+----------
 
-## 1- OUTSTANDING VULNERABILITIES
+
+# 1 - OUTSTANDING VULNERABILITIES
 
 ## 1-1 LOGIN LOCATION OVERFLOW
 
@@ -135,9 +136,9 @@ For this vulnerability, we proposed a code fix shown below:
 
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix8.png)
 
-***
+----------
 
-## 2- TEST CASES
+# 2 - TEST CASES (Milestone 1)
 
 ## [A1 - 01 - Injection] [ Drop Table ]
 
@@ -710,8 +711,6 @@ Login page is still available to whoever was doing the attack.
 2. With pair 2, post login log in the service console is "Failed login attempt (login=admin) - Invalid usrname and/or password : admin". This meeans the system was not able to record the mallicious string after large enough leading spaces.
 3. There was no log in the service console after logging in with pair 3. This means with large enough trailing spaces, injection attacks on both username and password will go undetected
 
-### * NOTES:
-Contact tam.nguyen@ncsu.edu if you have problems following instructions in this test case.
 
 ***
 
@@ -761,8 +760,6 @@ Login page is made unavailable to whoever was doing the attack.
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A7-IAP-1.PNG)
 
 
-### * NOTES:
-Contact tam.nguyen@ncsu.edu if you have problems following instructions in this test case.
 
 ***
 
@@ -804,9 +801,6 @@ In the iframe, OpenMRS server gave an error message and the default language is 
 
 ![UI Framework Error - Root Error](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A8-CSRF-1.PNG)
 
-
-### * NOTES:
-Contact tam.nguyen@ncsu.edu if you have problems following instructions in this test case.
 
 ***
 
@@ -853,8 +847,6 @@ HTTP Status 500 - Request processing failed; nested exception is java.lang.Illeg
 ![java.lang.IllegalArgumentException](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A8-CSRF-CommandExec.PNG)
 
 
-### * NOTES:
-Contact tam.nguyen@ncsu.edu if you have problems following instructions in this test case.
 
 ***
 
@@ -976,12 +968,12 @@ Webservice API is still up, available to serve further requests.
 * OpenMRS API documentation together with examples can be found at http://localhost:8081/openmrs-standalone/module/webservices/rest/apiDocs.htm (logged in as admin first)
 You can expand the objects and click "try it out" to get sample codes.
 * You can install the OpenMRS webservice API by downloading it from https://modules.openmrs.org/#/show/153/webservices-rest and then move the downloaded file to [download folder]\referenceapplication-standalone-2.6.0\appdata\modules
-* Contact tam.nguyen@ncsu.edu if you have problems following instructions in this test case.
-# CSC 515 Project - Milestone 2 #
 
-***
 
-## 3- ATTACK MODELING WITH ABUSE/MISUSE CASES, ATTACK TREES
+----------
+
+
+## 3- ATTACK MODELING WITH ABUSE/MISUSE CASES, ATTACK TREES (Milestone 2)
 
 ## 3.0. Module Selection ##
 
@@ -1126,7 +1118,6 @@ Since some of the content contains Chinese, we translated the Chinese reminding 
 <br><br>
 
 ##  3.3. Attack Trees and Protection Trees ##
-
 
 ## Description
 This attack tree analysis focuses on the  OpenMRS' "Register a patient" (/openmrs/registrationapp/registerPatient.page?appId=referenceapplication.registrationapp.registerPatient) and "Find Patient Record" (/openmrs/coreapps/findpatient/findPatient.page?app=coreapps.findPatient). The purpose of this documentation is to evaluate briefly the probability and cost of some common attack paths. The tree creation was done from top down and evaluation was done from bottom up.
@@ -1614,9 +1605,9 @@ Also, most application contain XML entities, most of them only check the grammar
 ## How do you think OpenMRS had to fix the vulnerability?
 The application should not only focus on the log in part but also everywhere of the system. There should be filter and checking part before and after every options to hide useless data and protect changed data. Moreover, before starting the whole system, there also should be some checking part to see if every file is safe and authenticated.
 
-***
+----------
 
-## 4- AUDITING #
+# 4- AUDITING (Milestone 3)
 
 ## Test case: U-1
 
@@ -2059,9 +2050,9 @@ INFO - LoggingAdvice.invoke(155) |2017-10-24 17:01:36,098| Exiting method saveUs
 
 No private information is exposed.
 
-***
+----------
 
-## 5- STATIC ANALYSIS WITH FORTIFY ##
+# 5- STATIC ANALYSIS WITH FORTIFY (Milestone 4)
 
 ### Overview ###
 
@@ -2113,7 +2104,7 @@ In this part we list 10 security vulnerabilities in OpenMRS and suggest potentia
 | Risk | 9.6 |
 
 
-#### 5.5. Path Manipulation ####
+#### 5.5. Path Manipulation ####Contact tam.nguyen@ncsu.edu if you have problems following instructions in this test case.
 
 | Component 				| Content 		|
 | :---                   	| :---         	|
@@ -3707,39 +3698,8 @@ Make the variable private and use a maping table to map certain whitelisted inpu
 
 ----------
 
-#### Fortify analysis -3- PRIVACY VIOLATION
 
-### * Description
-#### Name of module : OpenMRS login
-The method authenticate() in Context.java:287 mishandles confidential information, which can compromise user privacy and is often illegal. More specifically, the password enters the program, and the statement log.debug("Authenticating with username: " + username); in authenticate() will display the username in log when debug is enabled.
-
-### * Bug Fix
-#### Original code
-![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix7.png)
-<br/>
-#### Modified code
-![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix8.png)
-<br/>
-Follow recommendations at https://wiki.openmrs.org/display/docs/Security+and+Encryption we encode the plain password using the built-in "encodeString" function. This change has to be made accross all authentication functions that use plain password as input.
-
-----------
-
-### Fortify analysis -4- PASSWORD IN CONFIGURATION FILE
-
-### * Description
-#### Name of module : OpenMRS login
-In liquibase-core-data.xml:5, the password is stored as plaintext in the configuration file. Storing a plaintext password in a configuration file may result in a system compromise.
-
-### * Bug Fix
-#### Original code
-![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix7.png)
-<br/>
-#### Modified code
-![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix8.png)
-<br/>
-Follow recommendations at https://wiki.openmrs.org/display/docs/Security+and+Encryption we encode the plain password using the built-in "encodeString" function. This change has to be made accross all authentication functions that output password into XML files.
-
-## IMMEDIATE PULL REQUEST RECOMMENDATION
+# IMMEDIATE PULL REQUEST RECOMMENDATION
 
 ### Affected module : OpenMRS login
 + Page location : http://localhost:8081/openmrs-standalone/login.htm
