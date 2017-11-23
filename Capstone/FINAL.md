@@ -1368,7 +1368,7 @@ risk = (probability/cost) * impact
       
  ### The attack tree
       
-![Attack tree](https://github.com/genterist/openMRS-Security/blob/master/2-AttackModelling/OpenMRS-AttackTree.png)
+![Attack tree](../2-AttackModeling/OpenMRS-AttackTree.png" alt="OpenMRS-AttackTree.png)
 
 ### Protection tree leaf descriptions
 
