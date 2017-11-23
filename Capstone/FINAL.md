@@ -9,7 +9,7 @@
 + Attack type : Buffer overflow
 + Attack value : 99999999999999999999
 
-### Bug Description
+### Vulnerability Description
  When logging in, there was no safe failing mechanism for invalid selection of session location value. In this case, server prints out full stack trace of the error. One way to carry out this attack is through SQL injection and replace the values of all location IDs with values beyond the scope of integer. Sequential integer order of location ID is also vulnerable to location probing. For example, a clerk may not be able to see the locations accessible by the doctors from the UI but can try to manually probe the location by putting in the location ID. 
 
 ### Business impact
@@ -18,17 +18,21 @@ Attackers can cause this buffer overflow leading to a complete denial of service
 ### Consequences
 Denial of service on system like OpenMRS can cause severe consequences to all stakeholders. Patients will not be accepted as fast as the hospital can handle and it may be huge issues in emergency cases. Doctors unable to look up important patient information will further cause delays in treatments and might even lead to incorrect decisions. With sequential integer as location ID, malicious insiders can try and may successfully login to locations s/he is not supposed to be in.
 
-### Mitigation
+**Mitigation**
+
 We proposed the short term fix and the long term fix.
 The short term fix is to truncate the raw location ID string before converting it to integer to be used by other functions. This is one example of a possible fix
 
-#### Original code
-![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix1.png)
-<br/>
+**Original code**
 
-#### Modified code
+![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix1.png)
+
+
+**Modified code**
+
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix2.png)
-<br/>
+
+
 The long term fix is to establish a hash table, mapping hashed values with true location IDs and only the hash values are made viewable by the users. This reduces the chance of location hijacking and improves the security of all components that use location data. For example, there are some modules or some programs made available to some certain locations. Making location data harder to guess will also help security administrator spot issues quicker. For example, a particular user was logged in into 2 locations at the same time.
 
 
@@ -40,8 +44,8 @@ The long term fix is to establish a hash table, mapping hashed values with true 
 + Attack type : unauthorized redirect after login
 + Attack value : %2Fopenmrs-standalone%2Fappui%2Fheader%2Flogout.action%3FsuccessUrl%3Dopenmrs-standalone
 
-### Bug Description
-Attackers can redirect logged in users immediately to a logout page upon users' successful logon, creating an illusion that user's credential was not correct. The exploit is simple yet can cause a massive confusion as well as effective denial of service. In another case, attackers may redirect users to a malicious page upon login in order to steal session cookies and other important information.
+### Vulnerability Description
+Attackers can redirect logged in users immediately to a logout page upon users' successful login, creating an illusion that user's credential was not correct. The exploit is simple yet can cause a massive confusion as well as effective denial of service. In another case, attackers may redirect users to a malicious page upon login in order to steal session cookies and other important information.
 
 
 ### Business impact
@@ -55,62 +59,81 @@ Denial of service on system like OpenMRS can cause severe consequences to all st
 We propose two solutions, one for short term and the other one for long term.
 For the short term, the solution is to spot and replace any "logout" string with a "home" string so that even when attackers found a way to force the logout page (to accomplish denial of service), the server codes will change that and redirect user back to home.
 
-#### Original code
-![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix3.png)
-<br/>
+**Original code**
 
-#### Modified code
+![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix3.png)
+
+
+**Modified code**
+
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix4.png)
-<br/>
+
+
 For the long term solution, we recommend encryption of URL information. Before sending the responses to clients, the server encrypts the redirection URL using a private key. Later on, when receiving back the URL redirection data from client's request, server will decrypt and perform redirection. Due to encryption mechanism, it will be impossible for attackers to guess or forge redirection data. The private key can be deprived from the session key so we will have a new key for each user session.
 ## 1-3 PRIVACY VIOLATION
 
-### Affected module : OpenMRS login
+### Affected module : Whole OpenMRS System
 
-### Bug Description
-The method *authenticate()* in *Context.java*:287 mishandles confidential information, which can compromise user privacy and is often illegal. More specifically, the password enters the program, and the statement `log.debug("Authenticating with username: " + username);` in *authenticate()* will display the username in log when debug is enabled.
+### Vulnerability Description
+Mishandling private information, such as user passwords or private information, can compromise user privacy, and is often illegal. Privacy violations occur when users' private information enters the program, or the data is written to an external location.
+
+For this vulnerability, the method *authenticate()* in *Context.java*:287 mishandles confidential information. More specifically, the password enters the program. Furthermore, the statement `log.debug("Authenticating with username: " + username);` in *authenticate()* will display the username in log when debug is enabled. From a security perspective, system should log all important operations so that any anomalous activity can later be identified. However, when private data is involved, this practice can in fact create risk.
 
 ### Business impact
-one paragraph on the negative consequences of the vulnerability to the organization using OpenMRS
+This vulnerability would allow attackers access to personal information, sensitive data and system functionabilities. The leakage of personal information will cause a financial loss to employee and patients of hospitals using openMRS system. As a consequence, the reputation of the hospital and openMRS team will also be heavily damaged. The hospital and the openMRS team may even face a charge or financial punishment to compensate the loss of patients and employees.
 
-### Result
-one paragraph summarizing the consequences of the vulnerability
+### Consequences
+The application may reveal system data, personal information or debugging information by raising exceptions or generating error messages. Leakage of sensitive data through an output stream or logging function can allow attackers to gain knowledge about the application and craft specialized attacks on the it. Once the attackers successfully take advantage of this vulnerability, they can get the username and password of users. After they log in as a user, they can do whatever they want, such as stealing personal information, or even breaking the system.
 
 ### Mitigation
-One potential fix for this problem is minimizing the exposure of sensitive data and encrypting them if they are needed.  Making sure the source code of the application cannot be decompiled and interpolated by others.
 
-#### Original code
+One potential fix for this problem is minimizing the exposure of sensitive data and encrypting them if they are needed. Make sure the source code of the application cannot be decompiled and interpolated by others. Sanitize all messages, removing any unnecessary sensitive information. Ensure that debugging, error messages, and exceptions are only visible to developer.
+
+For this vulnerability, we proposed a code fix shown below:
+
+**Original code**
+
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix7.png)
 <br/>
 
-#### Modified code
+**Modified code**
+
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix8.png)
-<br/>
-Follow recommendations at https://wiki.openmrs.org/display/docs/Security+and+Encryption we encode the plain password using the built-in "encodeString" function. This change has to be made accross all authentication functions that use plain password as input.## 1-4 PASSWORD IN CONFIGURATION FILE
 
-### Affected module : OpenMRS login
 
-### Bug Description
+## 1-4 PASSWORD IN CONFIGURATION FILE
 
-In *liquibase-core-data.xml*:5, the password is stored as plaintext in the configuration file. Storing a plaintext password in a configuration file may result in a system compromise.
+### Affected module : Whole OpenMRS System
+
+### Vulnerability Description
+Storing a password in plaintext may result in a system compromise. Password management issues occur when a password is stored in plaintext in an application's properties or configuration file. Storing a plaintext password in a configuration file allows anyone who can read the file access to the password-protected resource.
+
+For this vulnerability, in *liquibase-core-data.xml*:5, the password is stored as plaintext in the configuration file.  
 
 ### Business impact
-one paragraph on the negative consequences of the vulnerability to the organization using OpenMRS
+This vulnerability would allow attackers access to the password and the resources the password protects. There is possibility that the attacker could make the system out of service by some methods such as changing the password. As a consequence, this would cause a impediment for hospitals relying on the openMRS system. The hospitals would suffer a loss of money to ensure normal operations. The openMRS system would also suffer a loss of reputation.
 
-### Result
-one paragraph summarizing the consequences of the vulnerability
+### Consequences
+Once the attackers successfully take advantage of this vulnerability, the access control of openMRS system will be violated. This can result in compromise of the system for which the password is used. An attacker could gain access to this file and learn the stored password or even change the password to one of their choosing. Also, the attackers could access to the resources the password protects and then cause damage to the system. 
 
 ### Mitigation
-One potential fix for this problem is encrypting the password field or the whole configuration file, then the plaintext password will not be retrieved by attacker. Another potential fix is assigning access permission on the configuration file. So the plaintext password is not accessible to the attackers without permission.
 
-#### Original code
+To solve the problem, one efficient method is avoiding storing passwords in easily accessible locations. However, removing the fields in configuration file may need enormous architecture change and even break the system. So, another potential mitigation method for this problem is encrypting the password field or the whole configuration file with cryptographic hashes Then the plaintext password will not be retrieved by attacker. Also we can assign access permission on the configuration file. So the plaintext password is not accessible to the attackers without permission.
+
+For this vulnerability, we proposed a code fix shown below:
+
+**Original code:**
+
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix7.png)
-<br/>
 
-#### Modified code
+
+**Modified code:** 
+
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix8.png)
-<br/>
-Follow recommendations at https://wiki.openmrs.org/display/docs/Security+and+Encryption we encode the plain password using the built-in "encodeString" function. This change has to be made accross all authentication functions that output password into XML files.
+
+
+
+
 # TEAM 8 MEMBERS IDS:
 ## ZLI36, XDING3, FLUAN, TNNGUYE6
 
