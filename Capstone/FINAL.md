@@ -1570,7 +1570,7 @@ risk = (probability/cost) * impact
       
  ### The protection tree
  
- ![The protection tree](../2-AttackModelling/OpenMRS-ProtectionTree.png)
+ ![The protection tree](../2-AttackModeling/OpenMRS-ProtectionTree.png)
 <br><br>
 
 ##  3.4. Vulnerability History ##
