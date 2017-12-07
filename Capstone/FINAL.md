@@ -10,7 +10,7 @@
 ----------
 
 
-# 1 - Outstanding Vulnerabilities
+# 1 - OUTSTANDING VULNERABILITIES
 
 ## 1-1 Login Location Overflow
 
@@ -144,7 +144,7 @@ For this vulnerability, we proposed a code fix shown below:
 
 ----------
 
-# 2 - Test Cases
+# 2 - TEST CASES
 
 ## [A1 - 01 - Injection] [ Drop Table ]
 
@@ -979,7 +979,7 @@ You can expand the objects and click "try it out" to get sample codes.
 ----------
 
 
-## 3- Attack Modeling with Abuse/Misuse Cases, Attack Trees
+## 3- ATTACK MODELING WITH ABUSE/MISUSE CASES, ATTACK TREES
 
 ## 3.0. Module Selection ##
 
@@ -1616,7 +1616,7 @@ The application should not only focus on the log in part but also everywhere of 
 
 ----------
 
-# 4- Auditing 
+# 4- AUDITING 
 
 ## Test case: Update-1
 
