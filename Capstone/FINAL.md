@@ -91,7 +91,7 @@ Mishandling private information, such as user passwords or private information, 
 For this vulnerability, the method *authenticate()* in *Context.java*:287 mishandles confidential information. More specifically, the password enters the program. Furthermore, the statement `log.debug("Authenticating with username: " + username);` in *authenticate()* will display the username in log when debug is enabled. From a security perspective, system should log all important operations so that any anomalous activity can later be identified. However, when private data is involved, this practice can in fact create risk.
 
 ### Business impact
-This vulnerability would allow attackers access to personal information, sensitive data and system functionabilities. The leakage of personal information will cause a financial loss to employee and patients of hospitals using openMRS system. As a consequence, the reputation of the hospital and openMRS team will also be heavily damaged. The hospital and the openMRS team may even face a charge or financial punishment to compensate the loss of patients and employees.
+This vulnerability would allow attackers access to personal information, sensitive data and system functionality. The leakage of personal information will cause a financial loss to employee and patients of hospitals using openMRS system. As a consequence, the reputation of the hospital and openMRS team will also be heavily damaged. The hospital and the openMRS team may even face a charge or financial punishment to compensate the loss of patients and employees.
 
 ### Consequences
 The application may reveal system data, personal information or debugging information by raising exceptions or generating error messages. Leakage of sensitive data through an output stream or logging function can allow attackers to gain knowledge about the application and craft specialized attacks on the it [[3]](https://www.upguard.com/articles/top-20-owasp-vulnerabilities-and-how-to-fix-them). Once the attackers successfully take advantage of this vulnerability, they can get the username and password of users. After they log in as a user, they can do whatever they want, such as stealing personal information, or even breaking the system.
@@ -575,7 +575,7 @@ Test password: Admin123
 
 ### * Test steps
 1. Go to `http://localhost:8081/openmrs-standalone/login.htm` . Log in as admin (credentials in Test Data section)
-2. Change the link to directorylisting.(`http://localhost:8081/openmrs-standalone/directorylisting`)
+2. Change the link to directory listing.(`http://localhost:8081/openmrs-standalone/directorylisting`)
 
 ### * Expected results
 The application should not list any directory.
@@ -620,7 +620,7 @@ Test password: Admin123
 There should be no information about Frank.
 
 ### * Actual results
-When we check the source code of webpage for patient Fred, the visit patient history part of code showed information of Frank, which is kind of sensitive exposure.
+When we check the source code of web page for patient Fred, the visit patient history part of code showed information of Frank, which is kind of sensitive exposure.
 
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/1-OWASP-Assesment/Test%20Result/A6_002.PNG)
 
@@ -714,7 +714,7 @@ Login page is still available to whoever was doing the attack.
 
 ### * Actual results
 1. There was no log in the service console after logging in with pair 1
-2. With pair 2, post login log in the service console is "Failed login attempt (login=admin) - Invalid usrname and/or password : admin". This meeans the system was not able to record the mallicious string after large enough leading spaces.
+2. With pair 2, post login log in the service console is "Failed login attempt (login=admin) - Invalid usrname and/or password : admin". This means the system was not able to record the malicious string after large enough leading spaces.
 3. There was no log in the service console after logging in with pair 3. This means with large enough trailing spaces, injection attacks on both username and password will go undetected
 
 
@@ -917,7 +917,7 @@ http://localhost:8081/openmrs- standalone/coreapps/activeVisits.page?app=www.goo
 
 ### * Test steps
 1. Open up OpenMRS V. 2.6.0 Standalone. 
-2. direct to the url in the test data
+2. direct to the URL in the test data
 
 ### * Expected results
 1. The page should be redirected to “www.google.com”
@@ -1038,7 +1038,7 @@ Since some of the content contains Chinese, we translated the Chinese reminding 
 | Potential Misuse Profile 	| Skilled. The clerk should at least have some knowledge of web and XSS |
 | Related Business Rules| BR1. System should adopt mitigation techniques to avoid being attacked <br> BR2. Access to private information should be restricted and logged |
 | Stakeholder and Threats	| SH1: Employee: Employees who view the patient page will suffer XSS attack like session exposed <br> SH2: Hospital using this system: The reputation of the hospital will be damaged <br> SH3: Patient: With incorrect information, the patient may meet some problems like being unable to be contacted |
-| Scope 					| Whole system |
+| Scope 					| Registration Module |
 | Abstraction level 		| Abuser goal  |
 | Precision level 			| Focused |
 
@@ -1064,7 +1064,7 @@ Since some of the content contains Chinese, we translated the Chinese reminding 
 | Potential Misuse Profile 	| Common. Knowing how to operate openMRS is enough |
 | Related Business Rules	| BR1. Access to private information should be restricted and logged |
 | Stakeholder and Threats	| SH1: Employee: Employees who use the wrong patient information may cause some problem and thus be punished <br> SH2: Hospital using this system: The reputation of the hospital will be damaged <br> SH3: Patient: With incorrect information, the patient may meet some problems like being unable to be contacted	|
-| Scope 					| Whole system |
+| Scope 					| Registration Module |
 | Abstraction Level 		| Abuser goal  |
 | Precision level 			| Focused 	   |
 
@@ -1090,7 +1090,7 @@ Since some of the content contains Chinese, we translated the Chinese reminding 
 | Potential Misuse Profile 	| Common |
 | Related Business Rules	| BR1. System should support functions of correcting operation error |
 | Stakeholder and Threats	| SH1: Employee: Employees will be confused about the duplicate patient information. Both may need to be updated when patient information changing <br> SH2: Hospital using this system: The reputation of the hospital will be damaged |
-| Scope 					| Whole system 	|
+| Scope 					| Registration Module 	|
 | Abstraction Level 		| Misuser goal  |
 | Precision level 			| Focused 		|
 
@@ -1147,7 +1147,7 @@ Based on the above assumptions, we will use CVSS 3.0 calculator (https://www.fir
 * On top of the base costs, the actual money benefited from exploiting the patient records can be added. For example, if the attackers think they can "sell" the patient records to someone for $20000 then a reasonable amount of total cost for an exploit should be 50% of $20000 plus the base cost. Because it is extremely hard to predict how a particular group of attackers will benefit from their hacking works, we do not attempt to calculate the final cost. The idea is the attacker should not invest more on an exploit than the ROI (return of investment) from an exploit.
 
 ### Cost calculation for protection tree
-* We based our cost on W.H.O recommended cost for health care center cost in Kenya (http://www.who.int/choice/country/ken/cost/en/). We will go with the least cost, per 20 minutes for LCU which is $139 (a quantified unit with consideratios of many factors such as salaries, electricity, fuel, etc). For each type of threat, we will calculate the time needed for us to mitigate the threat. We then add 20% more time and use the final time value together with the above mentioned 20-min unit cost to calculate the final cost. This cost will be served as the MAXIMUM cost of the solution implying that the cost to prevent an issue should not greater than the cost to fix the issue.
+* We based our cost on W.H.O recommended cost for health care center cost in Kenya (http://www.who.int/choice/country/ken/cost/en/). We will go with the least cost, per 20 minutes for LCU which is $139 (a quantified unit with considerations of many factors such as salaries, electricity, fuel, etc). For each type of threat, we will calculate the time needed for us to mitigate the threat. We then add 20% more time and use the final time value together with the above mentioned 20-min unit cost to calculate the final cost. This cost will be served as the MAXIMUM cost of the solution implying that the cost to prevent an issue should not greater than the cost to fix the issue.
 * All of the costs at tree nodes do not include other indirect costs.
 
 ### Impact calculate
@@ -1166,7 +1166,7 @@ We calculate risks on leaf nodes based on this equation
 
 risk = (probability/cost) * impact
 
-### Propogation of metrics
+### Propagation of metrics
 
 ![Propagation](https://github.com/genterist/openMRS-Security/blob/master/Capstone/picture/Propagation.png)
 
@@ -1184,7 +1184,7 @@ risk = (probability/cost) * impact
       
 2. Java zero day
    
-   a. Descriptions : with no account, attacker exploited Java server zero day vulnerability to create a backdoor. Exploit has to be performed on the computer that hosts OpenMRS. Because this may not directly create any OpenMRS log, it may take a while to be fully identified. The only work around is to reinstall java JRE and install host intrusion prevention system with ability to monitor changes to JRE files, and even JRE real time processes.
+   a. Descriptions : with no account, attacker exploited Java server zero day vulnerability to create a backdoor. Exploit has to be performed on the computer that hosts OpenMRS. Because this may not directly create any OpenMRS log, it may take a while to be fully identified. The only work around is to re-install java JRE and install host intrusion prevention system with ability to monitor changes to JRE files, and even JRE real time processes.
    
    b. Tools: strace, ltrace, ADA, other reverse engineer tools, other ROP tools, ...
    
@@ -1194,7 +1194,7 @@ risk = (probability/cost) * impact
       
 3. SQL zero day
    
-   a. Descriptionswith no account, attacker exploited SQL server zero day vulnerability to create a backdoor. Exploit has to be performed on the computer that hosts OpenMRS. Because this may not directly create any OpenMRS log, it may take a while to be fully identified. The only work around is to reinstall SQL and install host intrusion prevention system with ability to monitor changes to SQL files, and even SQL real time processes.
+   a. Descriptions with no account, attacker exploited SQL server zero day vulnerability to create a backdoor. Exploit has to be performed on the computer that hosts OpenMRS. Because this may not directly create any OpenMRS log, it may take a while to be fully identified. The only work around is to re-install SQL and install host intrusion prevention system with ability to monitor changes to SQL files, and even SQL real time processes.
    
    b. Tools: strace, ltrace, ADA, other reverse engineer tools, other ROP tools, ...
    
@@ -1214,9 +1214,9 @@ risk = (probability/cost) * impact
       
 5. Man in the browser
    
-   a. Descriptions: attacker installed a mallicious browser plugin that secretly recorded all data sent between the server and the browser under admin sesssions. Recorded data got stored on local HDD or a local network drive. Mallicious plugin can be identified upon inspection (1 hour)
+   a. Descriptions: attacker installed a malicious browser plugin that secretly recorded all data sent between the server and the browser under admin sessions. Recorded data got stored on local HDD or a local network drive. Malicious plugin can be identified upon inspection (1 hour)
    
-   b. Tools : mallicious extensions, API-hooking,...
+   b. Tools : malicious extensions, API-hooking,...
    
    c. Estimates
       * Probability: 45%
@@ -1224,7 +1224,7 @@ risk = (probability/cost) * impact
       
 6. Cross-site request forgery
    
-   a. Descriptions: attacker crafted a mallicious website that will query the database for full patient list under logged on OpenMRS admin session. Since we assume the Desktop is rarely connected to the internet and uses are strictly for the local clinic, the probability for this kind of attack is low. Network firewall log inspection will reveal the mallicious http requests and can be permanently fixed by whitelisting rules at gateway.
+   a. Descriptions: attacker crafted a malicious website that will query the database for full patient list under logged on OpenMRS admin session. Since we assume the Desktop is rarely connected to the internet and uses are strictly for the local clinic, the probability for this kind of attack is low. Network firewall log inspection will reveal the malicious http requests and can be permanently fixed by whitelisting rules at gateway.
    
    b. Tools: OWASP scanner, BurpSuite, any html editor
    
@@ -1234,7 +1234,7 @@ risk = (probability/cost) * impact
       
 7. Broken authentication
    
-   a. Descriptions: a mallicious indider was able to predict the session ID generation rules and adjusted his/her regular session (with no read patient privilege) to a session with higher privilege. Inspecting login sessions and network logs may reveal inconsistencies in sessions. 
+   a. Descriptions: a malicious insider was able to predict the session ID generation rules and adjusted his/her regular session (with no read patient privilege) to a session with higher privilege. Inspecting login sessions and network logs may reveal inconsistencies in sessions. 
    
    b. Tools: any http header sniff and analyzer, built-in browser developer tool, some cryptography cracking tools, ...
    
@@ -1244,7 +1244,7 @@ risk = (probability/cost) * impact
       
 8. SQL injection
    
-   a. Descriptions: a mallicious indider with no patient record read privilege was able to perform SQL injection on other forms and gained access to full list of patients. Inspecting network logs may reveal suspicious http requests.
+   a. Descriptions: a malicious insider with no patient record read privilege was able to perform SQL injection on other forms and gained access to full list of patients. Inspecting network logs may reveal suspicious http requests.
    
    b. Tools : SQLmap, SQLninja, SQLsus, Mole...
    
@@ -1254,7 +1254,7 @@ risk = (probability/cost) * impact
       
 9. Underprotected API
    
-   a. Descriptions: a mallicious insider with no patient record read privilege was able to exploit bugs in API (either native or third party) and made the API to display full list of patients. Inspecting network logs may reveal suspicious http requests.
+   a. Descriptions: a malicious insider with no patient record read privilege was able to exploit bugs in API (either native or third party) and made the API to display full list of patients. Inspecting network logs may reveal suspicious http requests.
    
    b. Tools: any http header sniff and analyzer, built-in browser developer tool, portable fuzzer tools ...
    
@@ -1378,7 +1378,7 @@ risk = (probability/cost) * impact
 
 ### Protection tree leaf descriptions
 
-1. Proper loggin
+1. Proper logging
    
    a. Descriptions : make sure all log functions from Apache TomCat, SQL, and OpenMRS itself are enabled. Test and make sure all less-than-desirable events are logged. Make sure events are generated correctly - for example, if it should be a 404 error, it should be a 404 error rather than a 200.
    
@@ -1410,7 +1410,7 @@ risk = (probability/cost) * impact
       
 4. Strict session control
    
-   a. Descriptions: make sure the randomizer is good random, use a short window for sessions, only transmit session cookies over encrypted chanel.
+   a. Descriptions: make sure the randomizer is good random, use a short window for sessions, only transmit session cookies over encrypted channel.
    
    b. Estimates
       * Probability: 85%
@@ -1436,9 +1436,9 @@ risk = (probability/cost) * impact
       * Probability: 35%
       * Cost ( 60*1.2)/20 *139 = $500
       
-7. Folow NIST recommendations for authentications
+7. Follow NIST recommendations for authentications
    
-   a. Descriptions: Following NIST's recommendations to implement correctly authentication schemes and prevent situations like a mallicious indider was able to predict the session ID generation rules and adjusted his/her regular session (with no read patient privilege) to a session with higher privilege.
+   a. Descriptions: Following NIST's recommendations to implement correctly authentication schemes and prevent situations like a malicious insider was able to predict the session ID generation rules and adjusted his/her regular session (with no read patient privilege) to a session with higher privilege.
    
    b. Tools: NIST recommendations, existing time-tested solutions ...
    
@@ -1448,7 +1448,7 @@ risk = (probability/cost) * impact
       
 8. Input sanitization
    
-   a. Descriptions: Sanitize inputs and put restrictions on inputs. This will prevent situations like a mallicious indider with no patient record read privilege was able to perform SQL injection on other forms and gained access to full list of patients.
+   a. Descriptions: Sanitize inputs and put restrictions on inputs. This will prevent situations like a malicious insider with no patient record read privilege was able to perform SQL injection on other forms and gained access to full list of patients.
    
    b. Tools : existing time-tested input validation solutions...
    
@@ -1458,7 +1458,7 @@ risk = (probability/cost) * impact
       
 9. Fuzz test the APIs
    
-   a. Descriptions: Use an fuzzer like OWASP fuzz or test cases to fuzz the APIs to make sure there is no detectable vulnerability. This will prevent situations like a mallicious insider with no patient record read privilege was able to exploit bugs in API (either native or third party) and made the API to display full list of patients.
+   a. Descriptions: Use an fuzzer like OWASP fuzz or test cases to fuzz the APIs to make sure there is no detectable vulnerability. This will prevent situations like a malicious insider with no patient record read privilege was able to exploit bugs in API (either native or third party) and made the API to display full list of patients.
    
    b. Tools: any http header sniff and analyzer, built-in browser developer tool, portable fuzzer tools ...
    
@@ -1602,7 +1602,7 @@ URL:
 * https://packetstormsecurity.com/files/134698/OpenMRS-2.3-1.11.4-Cross-Site-Scripting.html
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/2-AttackModelling/picture/10.PNG)
 
-It’s found by the provided URL. We first search by google if there is any vulnerability history with openMRS vulnerability and found there are some( the first curl). Then we use packet storm to find the details.
+It’s found by the provided URL. We first search by Google if there is any vulnerability history with openMRS vulnerability and found there are some( the first curl). Then we use packet storm to find the details.
 
 ## Are these commonly-occurring vulnerabilities?
 Yes, these are commonly-occurring vulnerabilities. Because most of the application should have a log in and registration process. Mostly, the application focused on the log in part and ignore other important part such as registration.
@@ -1648,7 +1648,7 @@ When someone adds a patient’s information, the username, IP address, and time 
 ### * Expected logged info
 1. username
 2. time
-3. ip address
+3. IP address
 4. computer id
 
 ### * Actual results
@@ -1741,7 +1741,7 @@ When someone update a patient’s information, the username, IP address, and tim
 ### * Expected logged info
 1. username
 2. time
-3. ip address
+3. IP address
 4. computer id
 
 ### * Actual results
@@ -1835,7 +1835,7 @@ When someone deletes a patient’s information, the username, IP address, and ti
 ### * Expected logged info
 1. username
 2. time
-3. ip address
+3. IP address
 4. computer id
 
 ### * Actual results
@@ -1877,7 +1877,7 @@ When someone deletes a new patient, his password and session id should not be lo
 4. Click “Delete Patient”
 5. Input “He has no problem” as the reason.
 6. Input username and password
-7. Confrim
+7. Confirm
 
 ### * Expected logged info
 user password or session id should not be logged
@@ -1921,7 +1921,7 @@ When someone views a patient’s information, the username, IP address, and time
 ### * Expected logged info
 1. username
 2. time
-3. ip address
+3. IP address
 4. computer id
 
 ### * Actual results
@@ -2002,7 +2002,7 @@ When someone views a patient’s information, the username, IP address, and time
 ### * Expected logged info
 1. username
 2. time
-3. ip address
+3. IP address
 4. computer id
 
 ### * Actual results
