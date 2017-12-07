@@ -144,7 +144,7 @@ For this vulnerability, we proposed a code fix shown below:
 
 ----------
 
-# 2 - Test Cases (Milestone 1)
+# 2 - Test Cases
 
 ## [A1 - 01 - Injection] [ Drop Table ]
 
@@ -979,7 +979,7 @@ You can expand the objects and click "try it out" to get sample codes.
 ----------
 
 
-## 3- Attack Modeling with Abuse/Misuse Cases, Attack Trees (Milestone 2)
+## 3- Attack Modeling with Abuse/Misuse Cases, Attack Trees
 
 ## 3.0. Module Selection ##
 
@@ -1582,11 +1582,12 @@ risk = (probability/cost) * impact
 ##  3.4. Vulnerability History ##
 
 ### Description
-OpenMrs used to have XSS, CSRF and XXE Injection.
+OpenMRS used to have XSS, CSRF and XXE Injection.
 
 * (XSS and CSRF)Parameters that are displayed back to the user are mostly vulnerable to cross-site scripting as user input was not validate properly and as a result, the malicious script was stored by the application and executed when it was displayed back to the user.
 * (XEE Injection)The vulnerability is caused due to an error when parsing XML entities within ZIP archives and can be exploited to e.g. disclose data from local resources or cause a DoS condition (billion laughs) via a specially crafted XML file including external entity references.
 * (XSS)OpenMRS suffers from multiple stored and reflected cross-site scripting vulnerabilities when input passed via several parameters to several scripts is not properly sanitized before being returned to the user. This can be exploited to execute arbitrary HTML and script code in a user's browser session in context of an affected site.
+* The Reporting Compatibility Add On before 2.0.4 for OpenMRS, as distributed in OpenMRS Reference Application before 2.6.1, does not authenticate users when deserializing XML input into ReportSchema objects. The result is that remote unauthenticated users are able to execute operating system commands by crafting malicious XML payloads, as demonstrated by a single admin/reports/reportSchemaXml.form request.
 
 ### URL and evidence  
 URL:
@@ -1602,6 +1603,8 @@ URL:
 * https://packetstormsecurity.com/files/134698/OpenMRS-2.3-1.11.4-Cross-Site-Scripting.html
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/2-AttackModelling/picture/10.PNG)
 
+* https://nvd.nist.gov/vuln/detail/CVE-2017-12796
+
 It’s found by the provided URL. We first search by Google if there is any vulnerability history with openMRS vulnerability and found there are some( the first curl). Then we use packet storm to find the details.
 
 ## Are these commonly-occurring vulnerabilities?
@@ -1613,11 +1616,11 @@ The application should not only focus on the log in part but also everywhere of 
 
 ----------
 
-# 4- Auditing (Milestone 3)
+# 4- Auditing 
 
-## Test case: U-1
+## Test case: Update-1
 
-### Name of module : [ Update ]
+### Name of module : [ Registration ]
 
 ### Test Description
 When someone adds a patient’s information, the username, IP address, and time should be logged.
@@ -1636,7 +1639,7 @@ When someone adds a patient’s information, the username, IP address, and time 
 2. Password: `Admin123`
 
 ### * Test steps
-1. Start local openMRS and log in with the username and account
+1.  Start local openMRS and log in with the username and password
 2.	Click “Register a patient” in the main page
 3.	Input Kobe in Given field and Bryant in Family Name field
 4.	Choose Male as gender
@@ -1664,13 +1667,13 @@ It is inadequate because you cannot tell whether it was operated by the person.
 
 
 
-## Test case: U-2
+## Test case: Update-2
 
 
-### Name of module : [ Update ]
+### Name of module : [ Registration ]
 
 ### Test Description
-When someone registers a new patient, his password and session id should not be logged.
+When someone registers a new patient, his password and session ID should not be logged.
 
 ### * Precondition
 1. A local computer with administrator privilege
@@ -1686,13 +1689,13 @@ When someone registers a new patient, his password and session id should not be 
 2. Password: `Admin123`
 
 ### * Test steps
-1. Start local openMRS and log in with the username and account
+1. Start local openMRS and log in with the username and password
 2.	Click “Register a patient” in the main page
-3.	Input Kobe in Given field and Bryant in Family Name field
+3.	Input `Adam` in Given field and `Shum` in Family Name field
 4.	Choose Male as gender
-5.	Let the birthday be 8/23/1978
+5.	Let the birthday be 8/10/1978
 6.	Address as Staples Center, Los Angeles, CA, Los Angeles, 90001
-7.	Phone 555-555-5555
+7.	Phone 800-125-5255
 8.	No relatives
 
 ### * Expected logged info
@@ -1710,9 +1713,9 @@ The password and session id is not be logged
 
 
 
-## Test case: U-3
+## Test case: Update-3
 
-### Name of module : [ Update ]
+### Name of module : [ Edit ]
 
 ### Test Description
 When someone update a patient’s information, the username, IP address, and time should be logged.
@@ -1731,7 +1734,7 @@ When someone update a patient’s information, the username, IP address, and tim
 2. Password: `Admin123`
 
 ### * Test steps
-1. Start local openMRS and log in with the username and account
+1. Start local openMRS and log in with the username and password
 2. Click “Find Patient Record” in the main page
 3. Click “Kobe Bryant”
 4. Click “Edit”
@@ -1757,10 +1760,10 @@ It is inadequate because you cannot tell whether it was operated by the person.
 
 
 
-## Test case: U-4
+## Test case: Update-4
 
 
-### Name of module : [ Update ]
+### Name of module : [ Edit ]
 
 ### Test Description
 When someone updates a new patient, his password and session id should not be logged
@@ -1779,7 +1782,7 @@ When someone updates a new patient, his password and session id should not be lo
 2. Password: `Admin123`
 
 ### * Test steps
-1. Start local openMRS and log in with the username and account
+1. Start local openMRS and log in with the username and password
 2. Click “Find Patient Record” in the main page
 3. Click “Kobe Bryant”
 4. Click “Edit”
@@ -1801,11 +1804,10 @@ No private information is exposed
 
 
 
+## Test case: Delete-1
 
-## Test case: U-5
 
-
-### Name of module : [ Update ]
+### Name of module : [ Patient Management ]
 
 ### Test Description
 When someone deletes a patient’s information, the username, IP address, and time should be logged
@@ -1824,13 +1826,13 @@ When someone deletes a patient’s information, the username, IP address, and ti
 2. Password: `Admin123`
 
 ### * Test steps
-1. Start local openMRS and log in with the username and account
+1. Start local openMRS and log in with the username and password
 2. Click “Find Patient Record” in the main page
 3. Click “Kobe Bryant”
 4. Click “Delete Patient”
 5. Input “He has no problem” as the reason.
 6. Input username and password
-7. Confrim
+7. Confirm
 
 ### * Expected logged info
 1. username
@@ -1850,9 +1852,9 @@ It is inadequate because you cannot tell whether it was operated by the person.
 
 
 
-## Test case: D-1
+## Test case: Delete-2
 
-### Name of module : [ Delete ]
+### Name of module : [ Patient Management ]
 
 ### Test Description
 When someone deletes a new patient, his password and session id should not be logged
@@ -1892,9 +1894,9 @@ No private information is exposed
 
 
 
-## Test case: V-1
+## Test case: View-1
 
-### Name of module : [ View ]
+### Name of module : [ View Patient ]
 
 ### Test Description
 When someone views a patient’s information, the username, IP address, and time should be logged
@@ -1913,7 +1915,7 @@ When someone views a patient’s information, the username, IP address, and time
 2. Password: `Admin123`
 
 ### * Test steps
-1. Start local openMRS and log in with the username and account
+1. Start local openMRS and log in with the username and password
 2. Click “Find Patient Record” in the main page
 3. Click “Kobe Bryant”
 
@@ -1935,7 +1937,7 @@ It is inadequate because you cannot tell whether it was operated by the person.
 
 
 
-## Test case: V-2
+## Test case: View-2
 
 ### Name of module : [ View ]
 
@@ -1956,7 +1958,7 @@ When someone views a new patient, his password and session id should not be logg
 2. Password: `Admin123`
 
 ### * Test steps
-1. Start local openMRS and log in with the username and account
+1. Start local openMRS and log in with the username and password
 2. Click “Find Patient Record” in the main page
 3. Click “Kobe Bryant”
 
@@ -1972,52 +1974,7 @@ INFO - LoggingAdvice.invoke(155) |2017-10-24 17:01:36,098| Exiting method saveUs
 No private information is exposed.
 
 
-## Test case: V-3
-
-### Name of module : [ View ]
-
-### Test Description
-When someone views a patient’s information, the username, IP address, and time should be logged
-
-### * Precondition
-1. A local computer with administrator privilege
-2. Java environment installed
-3. OpenMRS Standalone Version 2.6.0 downloaded and unzipped
-4. Latest Chrome browser
-
-### * Assumption
-3. OpenMRS with demo database runs normally
-
-### * Test Data
-1. Username: `Admin`
-2. Password: `Admin123`
-
-### * Test steps
-1. Start local openMRS and log in with the username and account
-2. Click “Appointment Scheduling” in the main page
-3. Click “Manage Appointment”
-4. Input “Kobe Bryant” and search
-
-
-### * Expected logged info
-1. username
-2. time
-3. IP address
-4. computer id
-
-### * Actual results
-INFO - LoggingAdvice.invoke(115) |2017-10-24 17:01:36,095| In method UserService.saveUser. Arguments: User=nurse, 
-INFO - LoggingAdvice.invoke(155) |2017-10-24 17:01:36,098| Exiting method saveUser
-
-### Test status : [ fail ]
-
-
-No IP address or computer ID is tracking. 
-It is inadequate because you cannot tell whether it was operated by the person.
-
-
-
-## Test case: V-4
+## Test case: View-3
 
 ### Name of module : [ View ]
 
@@ -2038,7 +1995,7 @@ When someone views a new patient's appointment, his password and session id shou
 2. Password: `Nurse123`
 
 ### * Test steps
-1. Start local openMRS and log in with the username and account
+1. Start local openMRS and log in with the username and password
 2. Click “Appointment Scheduling” in the main page
 3. Click “Manage Appointment”
 4. Input “Kobe Bryant” and search
@@ -2644,7 +2601,7 @@ Demographics:
 
 ### * Expected results
 + System fail securely
-+ No user should be created successfully with mallicious payload as input OR if a user was created with mallicious inputs, contents of mallicious payloads must be deleted or escaped as plain text.
++ No user should be created successfully with malicious payload as input OR if a user was created with malicious inputs, contents of malicious payloads must be deleted or escaped as plain text.
 
 ### * Post-condition
 OpenMRS should still be operate normally
@@ -2652,7 +2609,7 @@ OpenMRS should still be operate normally
 ### * Actual results
 + 223 attacks were performed
 + Around 31 attacks got accepted by the system, the rest were recognized and denied by 400 code
-+ Around 31 new patients with the same name "Jennifer Lawren" were created but all mallicious payloads were escaped/deletted.
++ Around 31 new patients with the same name "Jennifer Lawren" were created but all malicious payloads were escaped/deleted.
 + 08 failed attacks were responded with HibernateException messages. However, since the deployment of Hybernate is open knowledge and the error messages did not reveal any important information about the error, we decided that those cases were "failed secure" cases. URLs of the cases are included in the Notes section for further inspections.
 
 ### * NOTES:
@@ -2746,7 +2703,7 @@ OpenMRS should still be operating normally
 ### * Actual results
 + 169 fuzz were done on the "password" variable
 + 167 of the entries have 302 code and zero size of Response html body. Confirmed by inspection of html header, noticing that system redirects invalid login to previous page - the login page.
-+ 002 of the fuzz entries were able to force system to leak some debugging informations which can be used for further attacks (to be discussed further in the Notes section)
++ 002 of the fuzz entries were able to force system to leak some debugging information which can be used for further attacks (to be discussed further in the Notes section)
 + We decided that the test is a "FAILED". Even though no exploit directly linked to Injection was successful, the fuzzer was able to leak some important debugging data. 
 
 ### * NOTES:
@@ -2992,13 +2949,13 @@ In the future, we would create more fuzz cases with higher amount of characters
 + Page location : http://localhost:8081/openmrs-standalone/login.htm
 + Attack type : Buffer overflow
 + Attack value : 99999999999999999999
-In this test, we will interup browser requests and try to overflow the value of working "location".
+In this test, we will interrupt browser requests and try to overflow the value of working "location".
 
 
 ### * Precondition
 1. A local computer with administrator privilege
 2. Java JRE installed
-3. OpenMRS Standalone Version 2.6.0 downloaded and unziped
+3. OpenMRS Standalone Version 2.6.0 downloaded and unzipped
 4. OWASP ZAP Version 2.6.0 downloaded and installed
 
 ### * Dependencies
@@ -3065,12 +3022,12 @@ A very detailed stack trace was given which is a violation of "Fail securely" pr
 + Page location : http://localhost:8081/openmrs-standalone/login.htm
 + Attack type : Session hijacking
 + Attack value : the JSESSIONID value of a user's session
-This attack will try to swith the sessions between a clerk with limitted privilege and an administrator. Action is simple and based on modification of http header value.
+This attack will try to swith the sessions between a clerk with limited privilege and an administrator. Action is simple and based on modification of http header value.
 
 ### * Precondition
 1. A local computer with administrator privilege
 2. Java JRE installed
-3. OpenMRS Standalone Version 2.6.0 downloaded and unziped
+3. OpenMRS Standalone Version 2.6.0 downloaded and unzipped
 4. OWASP ZAP Version 2.6.0 downloaded and installed
 
 ### * Dependencies
@@ -3122,7 +3079,7 @@ Copy the value of JSESSIONID. Your value may be different and for our test at th
 ![](https://github.com/genterist/openMRS-Security/blob/master/3-Analysis/images/interup3.png)
 
 Replace it again with the value you recorded in step 11 and then click play button.
-17. The server will refuse and force the original sessionID value of clerk. If we keep changing the clerk's sessionID to the admin's sessionID, we will run into step 16 and loop in it again and again. If we accept the server's value of sessionID, after clicking the play button, we will return back to the login page with no account logged in. Note that this is within the Icognito browser. Admin is still logged in in the regular browser
+17. The server will refuse and force the original sessionID value of clerk. If we keep changing the clerk's sessionID to the admin's sessionID, we will run into step 16 and loop in it again and again. If we accept the server's value of sessionID, after clicking the play button, we will return back to the login page with no account logged in. Note that this is within the Incognito browser. Admin is still logged in in the regular browser
 18. Close the incognito browser. Log out of admin account in the regular browser (once again, you may to click the play button several times to log out)
 
 ### * Expected results
@@ -3153,7 +3110,7 @@ In this test, we will redirect logged in user to a logout page, aiming for an il
 ### * Precondition
 1. A local computer with administrator privilege
 2. Java JRE installed
-3. OpenMRS Standalone Version 2.6.0 downloaded and unziped
+3. OpenMRS Standalone Version 2.6.0 downloaded and unzipped
 4. OWASP ZAP Version 2.6.0 downloaded and installed
 
 ### * Dependencies
@@ -3279,7 +3236,7 @@ OpenMRS should still be operating normally
 
 ![](https://github.com/genterist/openMRS-Security/blob/master/3-Analysis/images/httpMethodError.png)
 
-Login page is still intacted (verified by visiting the login page)
+Login page is still intact (verified by visiting the login page)
 
 ### * NOTES:
 A very detailed stack trace was given which is a violation of "Fail securely" principle. Defaulting user to a default location should be a good way to mitigate this bug.
@@ -3387,7 +3344,7 @@ Result: Failed. The duration for 100000 min is created successfully.
 ### SecReq03
 Module:Manage Service Types
 
-Requirements: The admin must can not change some service type to some existing service type.If the admin try to change some different service type, the system should prevent this behavior and warn the admin.
+Requirements: The admin can not change service type to other existing service type. If the admin try to change the service type, the system should prevent this action and warn the admin by sending warning message.
 
 Result: Pass
 
@@ -3397,18 +3354,18 @@ Result: Pass
 ### SecReq04
 Module:Manage Service Types
 
-Requirements: The system should recognize different service type by the duration. If the differences of the two service type is time duration, that should be ok. Thus the system should allow the admin to register such a service type.
+Requirements: The system should recognize different service type by the duration. If the differences of the two service type is time duration, that should be OK. Thus the system should allow the admin to register such a service type.
 
-Result: Failed There isn't a service type Dermatology and duration 20min. It should be created.
+Result: Failed There isn't a service type Dermatology and duration 20 min. It should be created.
 
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/3-Analysis/images/SecReq04.PNG)
 
 ### SecReq05
 Module:Manage Service Types
 
-Requirements: The system should only give the previlege to the admin to delete the service types. Especially if someone else try to delete the service type, the logging file should write down who did this without the system's preventing.
+Requirements: The system should only give the privilege to the admin to delete the service types. Especially if someone else try to delete the service type, the logging file should write down who did this without the system's preventing.
 
-Result: Failed. The system allowed a clerk to delte the service type and logging file write the operation as an admin did.
+Result: Failed. The system allowed a clerk to delete the service type and logging file write the operation as an admin did.
 
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/3-Analysis/images/SecReq0501.PNG)
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/3-Analysis/images/SecReq0502.PNG)
@@ -3416,7 +3373,7 @@ Result: Failed. The system allowed a clerk to delte the service type and logging
 ### SecReq06
 Module:Register a patient
 
-Requirement: The system should validate the input for every field of the text. Especially for testing whether the input is malicious. If a user registerd with name in url format, the system should generate error message. Because this could cause XML injections or XSS Scripts.
+Requirement: The system should validate the input for every field of the text. Especially for testing whether the input is malicious. If a user registered with name in URL format, the system should generate error message. Because this could cause XML injections or XSS Scripts.
 
 Result: Failed
 
@@ -3435,7 +3392,7 @@ Result: Pass
 Module: Register a patient
 
 Requirement: The system should authenticate the user when editing and saving the patient information. 
-If the user has the previlege to do such things, there should be some log file to trace what the user did. These information should include userid, operation and timestamp at least. Then the new or changed data should be saved into the database. If user has no privilege to save the data, he should be redirected to an error page stating the error.
+If the user has the privilege to do such things, there should be some log file to trace what the user did. These information should include userid, operation and timestamp at least. Then the new or changed data should be saved into the database. If user has no privilege to save the data, he should be redirected to an error page stating the error.
 
 Result: Pass
 
@@ -3444,7 +3401,7 @@ Result: Pass
 ### SecReq09
 Module:Register a patient
 
-Requirement: The system should authorize the user's previlege every time when a user want to access a webpage. Especially when a user copy the url and try to access the webpage. If the user has the previlege, it is ok. If not, which means the user belongs to lower level of previlege, the system should prevent the user from accessing the webpage and generate a error page message. E.g. If user belongs to a lower privilege level and attempts to access higher privilege pages, for e.g. http://localhost:8082/openmrs-standalone/registrationapp/registerPatient.page?appId=referenceapplication.registrationapp.registerPatient 
+Requirement: The system should authorize the user's privilege every time when a user want to access a web page. Especially when a user copy the URL and try to access the web page. If the user has the privilege, it is ok. If not, which means the user belongs to lower level of privilege, the system should prevent the user from accessing the web page and generate a error page message. E.g. If user belongs to a lower privilege level and attempts to access higher privilege pages, for e.g. http://localhost:8082/openmrs-standalone/registrationapp/registerPatient.page?appId=referenceapplication.registrationapp.registerPatient 
 the user should be redirected to error page.
 
 Result: Failed. The nurse does not have the privilege to register a patient.
@@ -3472,11 +3429,11 @@ Test Step:
 * Step 2: Then enter Appointment Scheduling and click Manage Service Types.
 * Step 3: Click New Service Type then copy the url.http://localhost:8082/openmrs-standalone/appointmentschedulingui/appointmentType.page
 * Step 4: Log out and Log in as an clerk.
-* Step 5: Paste the url and then you will find you can manage the service type as a clerk.
+* Step 5: Paste the URL and then you will find you can manage the service type as a clerk.
 
 Result: Failed. As we can see, the privilege of a clerk only include manage appointments, daily appointments and appointments required. Service type is not a function that the clerk can manage.
 
-Solution: The system should manage the access control using something like Role Based Access Control instead of url access. The system should check the role on both client and server side.
+Solution: The system should manage the access control using something like Role Based Access Control instead of URL access. The system should check the role on both client and server side.
 
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/ADP0101.PNG)
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/ADP0102.PNG)
