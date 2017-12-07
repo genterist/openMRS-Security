@@ -1,4 +1,4 @@
-# CSC-515 2017 - Final #
+# CSC-515 - Project Final #
 
 | Member Name       | Unity ID 	|
 | :---              | :---      |
@@ -10,9 +10,9 @@
 ----------
 
 
-# 1 - OUTSTANDING VULNERABILITIES
+# 1 - Outstanding Vulnerabilities
 
-## 1-1 LOGIN LOCATION OVERFLOW
+## 1-1 Login Location Overflow
 
 ### Affected module : OpenMRS login / Registration
 + Page location : http://localhost:8081/openmrs-standalone/login.htm
@@ -47,7 +47,7 @@ The long term fix is to establish a hash table, mapping hashed values with true 
 
 
 
-## 1-2 LOGIN PAGE REDIRECT TO LOGOUT 
+## 1-2 Login Page Redirect to Logout 
 
 ### Affected module : OpenMRS login
 + Page location : http://localhost:8081/openmrs-standalone/login.htm
@@ -81,12 +81,12 @@ For the short term, the solution is to spot and replace any "logout" string with
 
 For the long term solution, we recommend encryption of URL information. Before sending the responses to clients, the server encrypts the redirection URL using a private key. Later on, when receiving back the URL redirection data from client's request, server will decrypt and perform redirection. Due to encryption mechanism, it will be impossible for attackers to guess or forge redirection data. The private key can be deprived from the session key so we will have a new key for each user session.
 
-## 1-3 PRIVACY VIOLATION
+## 1-3 Privacy Violation
 
 ### Affected module : Whole OpenMRS System
 
 ### Vulnerability Description
-Mishandling private information, such as user passwords or private information, can compromise user privacy, and is often illegal. Privacy violations occur when users' private information enters the program, or the data is written to an external location.
+Mishandling private information, such as user passwords or private information, can compromise user privacy, and is often illegal. Privacy violations occur when users' private information enters the program, or the data is written to an external location. [[1]](https://cwe.mitre.org/data/definitions/359.html)
 
 For this vulnerability, the method *authenticate()* in *Context.java*:287 mishandles confidential information. More specifically, the password enters the program. Furthermore, the statement `log.debug("Authenticating with username: " + username);` in *authenticate()* will display the username in log when debug is enabled. From a security perspective, system should log all important operations so that any anomalous activity can later be identified. However, when private data is involved, this practice can in fact create risk.
 
@@ -94,7 +94,7 @@ For this vulnerability, the method *authenticate()* in *Context.java*:287 mishan
 This vulnerability would allow attackers access to personal information, sensitive data and system functionabilities. The leakage of personal information will cause a financial loss to employee and patients of hospitals using openMRS system. As a consequence, the reputation of the hospital and openMRS team will also be heavily damaged. The hospital and the openMRS team may even face a charge or financial punishment to compensate the loss of patients and employees.
 
 ### Consequences
-The application may reveal system data, personal information or debugging information by raising exceptions or generating error messages. Leakage of sensitive data through an output stream or logging function can allow attackers to gain knowledge about the application and craft specialized attacks on the it. Once the attackers successfully take advantage of this vulnerability, they can get the username and password of users. After they log in as a user, they can do whatever they want, such as stealing personal information, or even breaking the system.
+The application may reveal system data, personal information or debugging information by raising exceptions or generating error messages. Leakage of sensitive data through an output stream or logging function can allow attackers to gain knowledge about the application and craft specialized attacks on the it [[3]](https://www.upguard.com/articles/top-20-owasp-vulnerabilities-and-how-to-fix-them). Once the attackers successfully take advantage of this vulnerability, they can get the username and password of users. After they log in as a user, they can do whatever they want, such as stealing personal information, or even breaking the system.
 
 ### Mitigation
 
@@ -112,12 +112,12 @@ For this vulnerability, we proposed a code fix shown below:
 ![alt text](https://github.com/genterist/openMRS-Security/blob/master/4-SecurityPrinciples/images/t-fix8.png)
 
 
-## 1-4 PASSWORD IN CONFIGURATION FILE
+## 1-4 Password in Configuration File
 
 ### Affected module : Whole OpenMRS System
 
 ### Vulnerability Description
-Storing a password in plaintext may result in a system compromise. Password management issues occur when a password is stored in plaintext in an application's properties or configuration file. Storing a plaintext password in a configuration file allows anyone who can read the file access to the password-protected resource.
+Storing a password in plaintext may result in a system compromise. Password management issues occur when a password is stored in plaintext in an application's properties or configuration file. Storing a plaintext password in a configuration file allows anyone who can read the file access to the password-protected resource.[[2]](https://www.owasp.org/index.php/Password_Plaintext_Storage](https://www.owasp.org/index.php/Password_Plaintext_Storage)
 
 For this vulnerability, in *liquibase-core-data.xml*:5, the password is stored as plaintext in the configuration file.  
 
@@ -144,7 +144,7 @@ For this vulnerability, we proposed a code fix shown below:
 
 ----------
 
-# 2 - TEST CASES (Milestone 1)
+# 2 - Test Cases (Milestone 1)
 
 ## [A1 - 01 - Injection] [ Drop Table ]
 
@@ -979,7 +979,7 @@ You can expand the objects and click "try it out" to get sample codes.
 ----------
 
 
-## 3- ATTACK MODELING WITH ABUSE/MISUSE CASES, ATTACK TREES (Milestone 2)
+## 3- Attack Modeling with Abuse/Misuse Cases, Attack Trees (Milestone 2)
 
 ## 3.0. Module Selection ##
 
@@ -1613,7 +1613,7 @@ The application should not only focus on the log in part but also everywhere of 
 
 ----------
 
-# 4- AUDITING (Milestone 3)
+# 4- Auditing (Milestone 3)
 
 ## Test case: U-1
 
@@ -1710,7 +1710,6 @@ The password and session id is not be logged
 
 
 
-
 ## Test case: U-3
 
 ### Name of module : [ Update ]
@@ -1755,7 +1754,6 @@ INFO - LoggingAdvice.invoke(155) |2017-10-24 16:01:46,301| Exiting method saveUs
 
 No IP address or computer ID is tracking. 
 It is inadequate because you cannot tell whether it was operated by the person.
-
 
 
 
@@ -2058,7 +2056,7 @@ No private information is exposed.
 
 ----------
 
-# 5- STATIC ANALYSIS WITH FORTIFY (Milestone 4)
+# 5- Static Analysis with Fortify (Milestone 4)
 
 ### Overview ###
 
@@ -4071,6 +4069,12 @@ Searching 3348 files for "redirectUrl"
 	
 	\openmrs-module-webservices.rest\omod\src\main\webapp\resources\js\swagger-ui-3.0.10\swagger-ui-standalone-preset.js:
 	    <binary>
+
+# References
+
+[[1] https://cwe.mitre.org/data/definitions/359.html](https://cwe.mitre.org/data/definitions/359.html)
+[[2] https://www.owasp.org/index.php/Password_Plaintext_Storage](https://www.owasp.org/index.php/Password_Plaintext_Storage)
+[[3] https://www.upguard.com/articles/top-20-owasp-vulnerabilities-and-how-to-fix-them](https://www.upguard.com/articles/top-20-owasp-vulnerabilities-and-how-to-fix-them)
 
 
 
